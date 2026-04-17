@@ -2003,5 +2003,183 @@ function renderCharts() {
 }
 
 </script>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SURL = 'https://iggsptoueejpmfrhbhrg.supabase.co';
+const SKEY = 'sb_publishable_CsfGJ03eROXHPPiQYji-Aw_7D3X0fqG';
+const sb = supabase.createClient(SURL, SKEY);
+
+// ===== AUTH: تسجيل مستخدم جديد =====
+async function registerUser(name, email, password, role) {
+  try {
+    const { data, error } = await sb.auth.signUp({ email, password });
+    if (error) throw error;
+    // حفظ بيانات المستخدم في جدول users
+    await sb.from('users').insert([{ 
+      id: data.user.id, name, email, role 
+    }]);
+    return { success: true, user: data.user };
+  } catch(e) {
+    return { success: false, error: e.message };
+  }
+}
+
+// ===== AUTH: تسجيل الدخول =====
+async function loginUser(email, password) {
+  try {
+    const { data, error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) throw error;
+    return { success: true, user: data.user };
+  } catch(e) {
+    return { success: false, error: e.message };
+  }
+}
+
+// ===== AUTH: تسجيل الخروج =====
+async function logoutUser() {
+  await sb.auth.signOut();
+  logout();
+}
+
+// ===== BOOKING: حفظ حجز جديد =====
+async function saveBooking(bookingData) {
+  try {
+    const { data: { user } } = await sb.auth.getUser();
+    const { data, error } = await sb.from('bookings').insert([{
+      student_id: user?.id || null,
+      teacher_name: bookingData.teacher,
+      hall: bookingData.hall,
+      section: bookingData.section,
+      date: bookingData.date,
+      time: bookingData.time,
+      package_price: bookingData.price,
+      teacher_share: bookingData.price * 0.7,
+      platform_share: bookingData.price * 0.3,
+      status: 'pending'
+    }]);
+    if (error) throw error;
+    return { success: true };
+  } catch(e) {
+    return { success: false, error: e.message };
+  }
+}
+
+// ===== PAYMENT: حفظ دفعة =====
+async function savePayment(bookingId, amount) {
+  try {
+    const { error } = await sb.from('payments').insert([{
+      booking_id: bookingId,
+      amount: amount,
+      teacher_amount: amount * 0.7,
+      platform_amount: amount * 0.3,
+      status: 'completed'
+    }]);
+    if (error) throw error;
+    return { success: true };
+  } catch(e) {
+    return { success: false, error: e.message };
+  }
+}
+
+// ===== تحقق من الجلسة عند التحميل =====
+async function checkSession() {
+  const { data: { user } } = await sb.auth.getUser();
+  if (user) {
+    const { data } = await sb.from('users').select('*').eq('id', user.id).single();
+    if (data) {
+      CU = { nm: data.name, email: data.email, role: data.role };
+      updUI();
+    }
+  }
+}
+
+// ===== تعديل دوال التسجيل والدخول =====
+const _origDoReg = typeof doReg !== 'undefined' ? doReg : null;
+const _origDoLogin = typeof doLogin !== 'undefined' ? doLogin : null;
+
+// Override doReg
+window.doReg = async function() {
+  const n = document.getElementById('rn')?.value.trim();
+  const e = document.getElementById('re')?.value.trim();
+  const p = document.getElementById('rp')?.value;
+  const r = document.getElementById('rr')?.value;
+  if(!n||!e||!p){showToast('أكمل جميع الحقول','e');return;}
+  showToast('جاري إنشاء الحساب...','i');
+  const result = await registerUser(n, e, p, r);
+  if(result.success) {
+    CU = {nm:n, email:e, role:r};
+    saveU(); updUI(); closeM('authM');
+    showToast('تم إنشاء حسابك بنجاح! 🎉','s');
+    addN('🎉 مرحباً بك في نور العربية!');
+  } else {
+    showToast('خطأ: ' + result.error, 'e');
+  }
+};
+
+// Override doLogin
+window.doLogin = async function() {
+  const e = document.getElementById('le')?.value.trim();
+  const p = document.getElementById('lp')?.value;
+  if(!e||!p){showToast('أدخل البريد وكلمة المرور','e');return;}
+  showToast('جاري تسجيل الدخول...','i');
+  const result = await loginUser(e, p);
+  if(result.success) {
+    CU = {nm: e.split('@')[0], email: e, role: 'student'};
+    saveU(); updUI(); closeM('authM');
+    showToast('مرحباً! تم تسجيل الدخول ✓','s');
+  } else {
+    showToast('خطأ: ' + result.error, 'e');
+  }
+};
+
+// Override procPay
+window.procPay = async function() {
+  document.getElementById('payForm').style.display='none';
+  document.getElementById('payProg').classList.add('sh');
+  
+  const hallEl = document.getElementById('bh');
+  const teacherEl = document.getElementById('bTeacher') || document.querySelector('select[id*="teacher"]');
+  
+  const bookingData = {
+    teacher: 'أ. فاطمة الزهراء',
+    hall: hallEl?.value || 'q',
+    section: document.getElementById('bc')?.value || 'تجويد',
+    date: CAL.sel ? CAL.sel.toLocaleDateString('ar') : new Date().toLocaleDateString('ar'),
+    time: SSLOT || '10:00',
+    price: PAY
+  };
+  
+  const bookResult = await saveBooking(bookingData);
+  
+  setTimeout(async () => {
+    closeM('payM');
+    document.getElementById('payForm').style.display='block';
+    document.getElementById('payProg').classList.remove('sh');
+    
+    if(CAL.sel&&SSLOT){
+      const k=CAL.yr+'-'+CAL.mo+'-'+CAL.sel.getDate();
+      if(!BKDS[k])BKDS[k]=[];
+      BKDS[k].push(SSLOT);
+    }
+    
+    sucM('🎉','تم الدفع بنجاح!',
+      'دُفع $'+PAY.toFixed(2)+'. حصة معلمك $'+(PAY*.7).toFixed(2)+' تُضاف فوراً. ستصلك رابط الفصل المباشر.');
+    addN('💳 تم الدفع — $'+PAY.toFixed(2));
+    addN('📅 درسك محجوز'+(SSLOT?' الساعة '+SSLOT:''));
+    
+    if(bookResult.success) {
+      addN('✅ تم حفظ الحجز في قاعدة البيانات');
+    }
+  }, 2000);
+};
+
+// تحقق من الجلسة عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(checkSession, 500);
+});
+</script>
+
 </body>
 </html>
