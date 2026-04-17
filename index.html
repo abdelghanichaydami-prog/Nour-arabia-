@@ -516,70 +516,6 @@ footer{background:#070e16;border-top:1px solid var(--border);padding:2.2rem 1.5r
 @media(max-width:768px){header{padding:0 1rem}.hnav{display:none}.burger{display:flex}.ha .btn-outline,.ha .lang-sel{display:none}.mbn{display:flex}.si{padding:3rem 1rem}.hbtns .btn{font-size:.8rem;padding:.55rem .9rem}.frow{grid-template-columns:1fr}.pc.feat{transform:none}.fgrid{grid-template-columns:1fr}.hgrid{grid-template-columns:1fr}.strow{grid-template-columns:1fr 1fr}.tgr{grid-template-columns:1fr 1fr}.agrid{grid-template-columns:1fr}.rogrid{grid-template-columns:1fr}}
 @media(max-width:480px){.hstats{gap:.9rem}.snum{font-size:1.4rem}.tgr{grid-template-columns:1fr}.earnh{grid-template-columns:1fr}.dtabs{gap:.35rem}.dtab{font-size:.72rem;padding:.42rem .82rem}.tsls{grid-template-columns:repeat(3,1fr)}.scards{grid-template-columns:1fr 1fr}.cfield-row{grid-template-columns:1fr}.pmgrid{grid-template-columns:1fr 1fr}.class-grid{height:auto}}
 @media print{body *{display:none}.cert-box,.cert-box *{display:block!important}}
-
-/* ===== ADMIN PANEL ===== */
-#admin-panel{background:var(--navy2);display:none}
-body.adm #admin-panel{display:block}
-.aph{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
-.apt{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.aptb{padding:.48rem 1rem;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);color:var(--text-muted);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .22s;font-family:'Cairo',sans-serif;min-height:36px}
-.aptb.ac{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border-color:transparent}
-.apn{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;display:none}
-.apn.sh{display:block}
-.str{display:grid;grid-template-columns:repeat(4,1fr);gap:.72rem;margin-bottom:1.5rem}
-.stc{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:11px;padding:.9rem;text-align:center}
-.stn{font-size:1.45rem;font-weight:900;color:var(--gold);font-family:'Amiri',serif}
-.stl{font-size:.65rem;color:var(--text-muted)}
-.chw{display:flex;align-items:flex-end;gap:.38rem;height:85px;padding-top:.45rem}
-.chco{display:flex;flex-direction:column;align-items:center;flex:1;gap:.28rem}
-.chbo{flex:1;display:flex;align-items:flex-end;width:100%}
-.chb{border-radius:4px 4px 0 0;width:100%;transition:height .6s ease;min-height:4px;background:linear-gradient(180deg,var(--gold),rgba(201,149,42,.35))}
-.chb.gn{background:linear-gradient(180deg,var(--green),rgba(39,174,96,.35))}
-.chb.pu{background:linear-gradient(180deg,#8e44ad,rgba(142,68,173,.35))}
-.chlb{font-size:.6rem;color:var(--text-muted);text-align:center}
-.chvl{font-size:.65rem;color:var(--gold);font-weight:700;text-align:center}
-.hbr{display:flex;flex-direction:column;gap:.75rem}
-.hbw{display:flex;align-items:center;gap:.75rem}
-.hbl{font-size:.78rem;color:var(--text-light);min-width:80px}
-.hbb{flex:1;height:7px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden}
-.hbf{height:100%;border-radius:100px}
-.hbv{font-size:.72rem;font-weight:700;min-width:35px}
-.adt{width:100%;border-collapse:collapse;font-size:.8rem}
-.adt th{background:rgba(255,255,255,.05);padding:.6rem .8rem;text-align:right;font-size:.7rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.06)}
-.adt td{padding:.65rem .8rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text-light);vertical-align:middle}
-.adt tr:hover td{background:rgba(255,255,255,.03)}
-.ab{padding:.22rem .55rem;border-radius:6px;font-size:.68rem;font-weight:700;border:none;cursor:pointer;font-family:'Cairo',sans-serif;margin-left:.2rem}
-.ab.gn{background:rgba(39,174,96,.15);color:var(--green)}
-.ab.re{background:rgba(192,57,43,.15);color:#e74c3c}
-.ab.go{background:rgba(201,149,42,.15);color:var(--gold)}
-.ab.bl{background:rgba(52,152,219,.15);color:#5dade2}
-.afrm{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:11px;padding:1.2rem;margin-bottom:1.2rem}
-.afrm h4{font-size:.85rem;font-weight:700;color:var(--gold);margin-bottom:1rem}
-.afrw{display:grid;grid-template-columns:1fr 1fr;gap:.72rem}
-.stg-list{display:flex;flex-direction:column;gap:.75rem}
-.stg-row{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem}
-.stg-info h4{font-size:.85rem;font-weight:700;margin-bottom:.18rem}
-.stg-info p{font-size:.75rem;color:var(--text-muted)}
-.tgl{width:44px;height:24px;background:rgba(255,255,255,.1);border-radius:100px;position:relative;cursor:pointer;transition:background .3s;flex-shrink:0}
-.tgl.on{background:var(--green)}
-.tgl::after{content:'';width:18px;height:18px;background:#fff;border-radius:50%;position:absolute;top:3px;right:3px;transition:transform .3s}
-.tgl.on::after{transform:translateX(-20px)}
-.alog{display:flex;flex-direction:column;gap:.5rem;max-height:360px;overflow-y:auto}
-.algi{display:flex;align-items:flex-start;gap:.65rem;padding:.55rem .72rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04);font-size:.75rem}
-.algi.s{border-color:rgba(39,174,96,.15)}.algi.w{border-color:rgba(201,149,42,.15)}.algi.e{border-color:rgba(192,57,43,.15)}
-.algt{font-size:.65rem;color:var(--text-muted);margin-top:.18rem}
-.rbd{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-.rbc{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:11px;padding:1rem}
-.rbc h4{font-size:.8rem;font-weight:700;color:var(--gold);margin-bottom:.8rem}
-.angr{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem;margin-top:1.5rem}
-.ancd{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.4rem}
-.ancd h4{font-size:.85rem;font-weight:700;color:var(--gold);margin-bottom:1.1rem}
-.adm-admlink{display:none !important}
-body.adm .adm-admlink{display:block !important}
-.adm-badge2{display:none;position:fixed;top:70px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;padding:.3rem 1.1rem;border-radius:100px;font-size:.72rem;font-weight:700;z-index:1500;box-shadow:0 4px 14px rgba(192,57,43,.4);white-space:nowrap}
-body.adm .adm-badge2{display:block}
-@media(max-width:768px){.str{grid-template-columns:1fr 1fr}.afrw{grid-template-columns:1fr}.rbd{grid-template-columns:1fr}}
-
 </style>
 </head>
 <body>
@@ -621,7 +557,17 @@ body.adm .adm-badge2{display:block}
   </div>
   <div class="du">
     <div class="du-info"><div class="du-av" id="dav">ط</div><div><div class="du-name" id="dname">مرحباً!</div><div class="du-role" id="drole">زائر</div></div></div>
-    <select class="lang-sel" style="width:100%;margin-bottom:.5rem" onchange="applyLang(this.value)"><option value="ar">🇸🇦 العربية</option><option value="en">🇬🇧 English</option><option value="fr">🇫🇷 Français</option><option value="es">🇪🇸 Español</option></select>
+    <select class="lang-sel" style="width:100%;margin-bottom:.5rem" onchange="applyLang(this.value)"><option value="ar">🇸🇦 العربية</option>
+<option value="en">🇬🇧 English</option>
+<option value="fr">🇫🇷 Français</option>
+<option value="es">🇪🇸 Español</option>
+<option value="de">🇩🇪 Deutsch</option>
+<option value="nl">🇳🇱 Nederlands</option>
+<option value="tr">🇹🇷 Türkçe</option>
+<option value="it">🇮🇹 Italiano</option>
+<option value="pt">🇧🇷 Português</option>
+<option value="id">🇮🇩 Indonesia</option>
+</select>
     <div class="tz-pill"><i class="fas fa-clock"></i> <span id="dtz">UTC</span></div>
   </div>
   <nav class="dnav">
@@ -648,11 +594,25 @@ body.adm .adm-badge2{display:block}
 <!-- BOTTOM NAV -->
 <nav class="mbn">
   <div class="mbn-inner">
-    <a href="#hero" class="mbn-item active"><i class="fas fa-home"></i><span>الرئيسية</span></a>
-    <a href="#halls" class="mbn-item"><i class="fas fa-school"></i><span>الفصول</span></a>
-    <a href="#booking" class="mbn-item mbn-cta"><i class="fas fa-calendar-plus"></i></a>
-    <a href="#dashboard" class="mbn-item"><i class="fas fa-chart-bar"></i><span>لوحتي</span></a>
-    <a href="#" class="mbn-item" onclick="openM('authM')"><i class="fas fa-user-circle"></i><span>حسابي</span></a>
+    <a href="#hero" class="mbn-item active" id="mbn-home" onclick="setMbn(this)">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      <span>الرئيسية</span>
+    </a>
+    <a href="#halls" class="mbn-item" id="mbn-halls" onclick="setMbn(this)">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+      <span>الفصول</span>
+    </a>
+    <a href="#booking" class="mbn-item mbn-cta" id="mbn-book">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 16H5V8h14v11zM13 10h-2v3H8v2h3v3h2v-3h3v-2h-3z"/></svg>
+    </a>
+    <a href="#dashboard" class="mbn-item" id="mbn-dash" onclick="setMbn(this)">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+      <span>لوحتي</span>
+    </a>
+    <a href="#" class="mbn-item" id="mbn-user" onclick="openM('authM')">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      <span>حسابي</span>
+    </a>
   </div>
 </nav>
 
@@ -662,7 +622,7 @@ body.adm .adm-badge2{display:block}
   <div class="hcont">
     <div>
       <div class="hbadge">🏆 المدرسة الرقم 1 لتعلم العربية عبر الإنترنت</div>
-      <h1 class="htitle">تعلّم <span class="hl">العربية</span><br>مع أفضل المعلمين<br>من المغرب ومصر</h1>
+      <h1 class="htitle">اكتشف <span class="hl">جمال العربية</span><br>مع نخبة المعلمين المتخصصين<br>حول العالم 🌍</h1>
       <p class="hdesc">ثلاثة فصول تعليمية عالمية — القرآن، اللغات، والعلوم الشرعية. دروس مباشرة، شهادات معتمدة، وتوزيع مالي عادل.</p>
       <div class="hbtns">
         <a href="#halls" class="btn btn-primary btn-lg">🏛️ استكشف الفصول</a>
@@ -713,7 +673,7 @@ body.adm .adm-badge2{display:block}
     </div>
     <!-- LANG HALL -->
     <div class="hc l">
-      <div class="hch"><div class="hiw">📖</div><div class="ht">فصل اللغات</div><div class="hsub">إتقان العربية من الصفر — نحو، صرف، محادثة، كتابة، وأدب على أيدي نخبة المعلمين</div><div class="hst"><div class="hst-i"><strong id="lst">1240</strong>طالب</div><div class="hst-i"><strong id="lct">5</strong>قسم</div><div class="hst-i"><strong>14</strong>معلم</div></div></div>
+      <div class="hch"><div class="hiw">📖</div><div class="ht">فصل اللغة العربية لغير الناطقين بها</div><div class="hsub">إتقان العربية من الصفر — نحو، صرف، محادثة، كتابة، وأدب على أيدي نخبة المعلمين</div><div class="hst"><div class="hst-i"><strong id="lst">1240</strong>طالب</div><div class="hst-i"><strong id="lct">5</strong>قسم</div><div class="hst-i"><strong>14</strong>معلم</div></div></div>
       <div class="hcs"><div class="slist" id="l-secs"></div><div class="add-row"><input class="add-inp" id="l-inp" placeholder="اسم القسم..."><button class="add-btn" onclick="addSec('l')">+ إضافة</button></div>
       <div class="hcta"><button class="btn btn-gold btn-sm" onclick="openM('bookM')">📅 احجز</button><button class="btn btn-sm" style="background:var(--lang-bg);border:1px solid rgba(201,149,42,.3);color:var(--gold-light)" onclick="openCurr('l')">📋 المنهج</button><button class="btn btn-sm" style="background:var(--card);border:1px solid rgba(255,255,255,.1);color:var(--text-muted)" onclick="openM('classM')">🎥 مباشر</button></div></div>
     </div>
@@ -991,350 +951,6 @@ body.adm .adm-badge2{display:block}
   </div>
 </div></section>
 
-
-<!-- ================================================ -->
-<!--   لوحة الإدارة الشاملة - FULL ADMIN PANEL       -->
-<!-- ================================================ -->
-<div class="adm-badge2" id="admBdg">🔐 وضع الإدارة مفعّل</div>
-<section id="admin-panel">
-  <div class="si">
-    <div class="aph">
-      <div>
-        <div class="slb" style="color:var(--red)">🔐 منطقة المديرين</div>
-        <h2 class="sti"><span class="g">لوحة الإدارة</span> الشاملة</h2>
-      </div>
-      <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
-        <div style="background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.25);border-radius:9px;padding:.5rem 1rem;font-size:.78rem;color:#e74c3c;font-weight:700">
-          <i class="fas fa-shield-alt"></i> مدير محقق الهوية
-        </div>
-        <button class="btn btn-ghost btn-sm" style="border-color:rgba(192,57,43,.3);color:#e74c3c" onclick="deAdminMode()">🔓 إيقاف وضع الإدارة</button>
-      </div>
-    </div>
-
-    <!-- Admin Navigation Tabs -->
-    <div class="apt">
-      <button class="aptb ac" onclick="swAdmTab(this,'adm-ov')">📊 نظرة عامة</button>
-      <button class="aptb" onclick="swAdmTab(this,'adm-users')">👥 المستخدمون</button>
-      <button class="aptb" onclick="swAdmTab(this,'adm-halls')">🏛️ الفصول</button>
-      <button class="aptb" onclick="swAdmTab(this,'adm-teachers')">👨‍🏫 المعلمون</button>
-      <button class="aptb" onclick="swAdmTab(this,'adm-finance')">💰 المالية</button>
-      <button class="aptb" onclick="swAdmTab(this,'adm-bookings')">📅 الحجوزات</button>
-      <button class="aptb" onclick="swAdmTab(this,'adm-content')">📚 المحتوى</button>
-      <button class="aptb" onclick="swAdmTab(this,'adm-settings')">⚙️ الإعدادات</button>
-      <button class="aptb" onclick="swAdmTab(this,'adm-logs')">📋 سجل النشاط</button>
-    </div>
-
-    <!-- ===== OVERVIEW ===== -->
-    <div class="apn sh" id="adm-ov">
-      <div class="str">
-        <div class="stc"><div class="stn">2,500</div><div class="stl">إجمالي الطلاب</div></div>
-        <div class="stc"><div class="stn" style="color:var(--green)">$12,450</div><div class="stl">إيرادات الشهر</div></div>
-        <div class="stc"><div class="stn" style="color:#c39bd3">33</div><div class="stl">معلمون نشطون</div></div>
-        <div class="stc"><div class="stn" style="color:#5dade2">148</div><div class="stl">حصة هذا الأسبوع</div></div>
-      </div>
-      <div class="angr">
-        <div class="ancd">
-          <h4>📈 الإيرادات الشهرية ($)</h4>
-          <div class="chw" id="revChart"></div>
-        </div>
-        <div class="ancd">
-          <h4>🏛️ الطلاب حسب الفصل</h4>
-          <div class="hbr" style="margin-top:.5rem">
-            <div class="hbw"><span class="hbl">القرآن</span><div class="hbb"><div class="hbf" style="width:38%;background:var(--green)"></div></div><span class="hbv" style="color:var(--green)">486</span></div>
-            <div class="hbw"><span class="hbl">اللغات</span><div class="hbb"><div class="hbf" style="width:50%;background:var(--gold)"></div></div><span class="hbv" style="color:var(--gold)">1240</span></div>
-            <div class="hbw"><span class="hbl">الشريعة</span><div class="hbb"><div class="hbf" style="width:31%;background:#8e44ad"></div></div><span class="hbv" style="color:#c39bd3">774</span></div>
-          </div>
-        </div>
-        <div class="ancd">
-          <h4>📅 الحصص اليومية</h4>
-          <div class="chw" id="sesChart"></div>
-        </div>
-        <div class="ancd">
-          <h4>🌍 الطلاب حسب القارة</h4>
-          <div class="hbr" style="margin-top:.5rem">
-            <div class="hbw"><span class="hbl">أوروبا</span><div class="hbb"><div class="hbf" style="width:55%;background:#5dade2"></div></div><span class="hbv" style="color:#5dade2">55%</span></div>
-            <div class="hbw"><span class="hbl">أمريكا</span><div class="hbb"><div class="hbf" style="width:28%;background:var(--green)"></div></div><span class="hbv" style="color:var(--green)">28%</span></div>
-            <div class="hbw"><span class="hbl">الوطن العربي</span><div class="hbb"><div class="hbf" style="width:17%;background:var(--gold)"></div></div><span class="hbv" style="color:var(--gold)">17%</span></div>
-          </div>
-        </div>
-        <div class="ancd">
-          <h4>💰 أعلى المعلمين أرباحاً</h4>
-          <div class="hbr" style="margin-top:.5rem">
-            <div class="hbw"><span class="hbl">أ. فاطمة</span><div class="hbb"><div class="hbf" style="width:85%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="hbv" style="color:var(--gold)">$840</span></div>
-            <div class="hbw"><span class="hbl">أ. أحمد</span><div class="hbb"><div class="hbf" style="width:70%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="hbv" style="color:var(--gold)">$693</span></div>
-            <div class="hbw"><span class="hbl">أ. يوسف</span><div class="hbb"><div class="hbf" style="width:58%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="hbv" style="color:var(--gold)">$574</span></div>
-            <div class="hbw"><span class="hbl">أ. مريم</span><div class="hbb"><div class="hbf" style="width:45%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="hbv" style="color:var(--gold)">$446</span></div>
-          </div>
-        </div>
-        <div class="ancd">
-          <h4>📊 مؤشرات الأداء</h4>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:.3rem">
-            <div style="background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.18);border-radius:9px;padding:.8rem;text-align:center"><div style="font-size:1.5rem;font-weight:900;color:var(--green)">68%</div><div style="font-size:.68rem;color:var(--text-muted)">تحويل الزوار</div></div>
-            <div style="background:rgba(201,149,42,.08);border:1px solid rgba(201,149,42,.18);border-radius:9px;padding:.8rem;text-align:center"><div style="font-size:1.5rem;font-weight:900;color:var(--gold)">89%</div><div style="font-size:.68rem;color:var(--text-muted)">تجريبي → مدفوع</div></div>
-            <div style="background:rgba(52,152,219,.08);border:1px solid rgba(52,152,219,.18);border-radius:9px;padding:.8rem;text-align:center"><div style="font-size:1.5rem;font-weight:900;color:#5dade2">4.9</div><div style="font-size:.68rem;color:var(--text-muted)">متوسط التقييم</div></div>
-            <div style="background:rgba(142,68,173,.08);border:1px solid rgba(142,68,173,.18);border-radius:9px;padding:.8rem;text-align:center"><div style="font-size:1.5rem;font-weight:900;color:#c39bd3">92%</div><div style="font-size:.68rem;color:var(--text-muted)">معدل الاحتفاظ</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== USERS ===== -->
-    <div class="apn" id="adm-users">
-      <div class="afrm">
-        <h4>➕ إضافة مستخدم جديد</h4>
-        <div class="afrw">
-          <div class="form-group"><label class="form-label">الاسم الكامل</label><input type="text" class="form-control" placeholder="اسم المستخدم"></div>
-          <div class="form-group"><label class="form-label">البريد الإلكتروني</label><input type="email" class="form-control" placeholder="email@example.com" dir="ltr"></div>
-          <div class="form-group"><label class="form-label">الدور</label><select class="form-control"><option>طالب</option><option>معلم</option><option>مدير</option></select></div>
-          <div class="form-group"><label class="form-label">الفصل</label><select class="form-control"><option>القرآن والتجويد</option><option>اللغات</option><option>العلوم الشرعية</option></select></div>
-        </div>
-        <button class="btn btn-gold btn-sm" onclick="showToast('تم إضافة المستخدم بنجاح!','success')">💾 حفظ المستخدم</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="adt">
-          <thead><tr><th>المستخدم</th><th>البريد</th><th>الدور</th><th>الفصل</th><th>الحالة</th><th>تاريخ الانضمام</th><th>الإجراءات</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Michael Johnson</strong></td><td dir="ltr">michael@gmail.com</td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">طالب</span></td><td>تجويد</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td>يناير 2025</td><td><button class="ab go" onclick="showToast('تم تعديل المستخدم','info')">تعديل</button><button class="ab re" onclick="showToast('تم تعطيل الحساب','error')">تعطيل</button></td></tr>
-            <tr><td><strong>أ. فاطمة الزهراء</strong></td><td dir="ltr">fatima@nour.com</td><td><span style="background:rgba(201,149,42,.15);color:var(--gold);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">معلمة</span></td><td>القرآن</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td>أكتوبر 2024</td><td><button class="ab go" onclick="showToast('تم تعديل المستخدم','info')">تعديل</button><button class="ab re" onclick="showToast('تم تعطيل الحساب','error')">تعطيل</button></td></tr>
-            <tr><td><strong>Sophie Martin</strong></td><td dir="ltr">sophie@gmail.com</td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">طالبة</span></td><td>اللغات</td><td><span style="background:rgba(255,255,255,.1);color:var(--text-muted);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">غير نشط</span></td><td>فبراير 2025</td><td><button class="ab gn" onclick="showToast('تم تفعيل الحساب','success')">تفعيل</button><button class="ab re" onclick="showToast('تم حذف المستخدم','error')">حذف</button></td></tr>
-            <tr><td><strong>أ. يوسف الأمين</strong></td><td dir="ltr">youssef@nour.com</td><td><span style="background:rgba(201,149,42,.15);color:var(--gold);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">معلم</span></td><td>الشريعة</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td>سبتمبر 2024</td><td><button class="ab go" onclick="showToast('تم تعديل المستخدم','info')">تعديل</button><button class="ab re" onclick="showToast('تم تعطيل الحساب','error')">تعطيل</button></td></tr>
-            <tr><td><strong>Anna Schmidt</strong></td><td dir="ltr">anna@gmail.com</td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">طالبة</span></td><td>الشريعة</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td>مارس 2025</td><td><button class="ab go" onclick="showToast('تم تعديل المستخدم','info')">تعديل</button><button class="ab re" onclick="showToast('تم تعطيل الحساب','error')">تعطيل</button></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ===== HALLS ADMIN ===== -->
-    <div class="apn" id="adm-halls">
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem;margin-bottom:1.5rem">
-        <div style="background:rgba(39,174,96,.07);border:1px solid rgba(39,174,96,.2);border-radius:11px;padding:1rem">
-          <div style="font-weight:700;color:#52d68a;margin-bottom:.8rem;font-size:.88rem">🕌 فصل القرآن والتجويد</div>
-          <div id="qAdm" style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:.7rem"></div>
-          <div style="display:flex;gap:.4rem;margin-top:.5rem">
-            <input class="form-control" id="qAI" placeholder="قسم جديد..." style="font-size:.75rem;padding:.42rem .65rem">
-            <button class="btn btn-green btn-sm" onclick="admAdd('q')">+</button>
-          </div>
-        </div>
-        <div style="background:rgba(201,149,42,.07);border:1px solid rgba(201,149,42,.2);border-radius:11px;padding:1rem">
-          <div style="font-weight:700;color:var(--gold-light);margin-bottom:.8rem;font-size:.88rem">📖 فصل اللغات</div>
-          <div id="lAdm" style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:.7rem"></div>
-          <div style="display:flex;gap:.4rem;margin-top:.5rem">
-            <input class="form-control" id="lAI" placeholder="قسم جديد..." style="font-size:.75rem;padding:.42rem .65rem">
-            <button class="btn btn-gold btn-sm" onclick="admAdd('lang')">+</button>
-          </div>
-        </div>
-        <div style="background:rgba(142,68,173,.07);border:1px solid rgba(142,68,173,.2);border-radius:11px;padding:1rem">
-          <div style="font-weight:700;color:#c39bd3;margin-bottom:.8rem;font-size:.88rem">⚖️ فصل العلوم الشرعية</div>
-          <div id="sAdm" style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:.7rem"></div>
-          <div style="display:flex;gap:.4rem;margin-top:.5rem">
-            <input class="form-control" id="sAI" placeholder="قسم جديد..." style="font-size:.75rem;padding:.42rem .65rem">
-            <button class="btn btn-purple btn-sm" onclick="admAdd('sharia')">+</button>
-          </div>
-        </div>
-      </div>
-      <div style="background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:11px;padding:1rem">
-        <h4 style="font-size:.85rem;font-weight:700;color:var(--gold);margin-bottom:.8rem">📊 إحصائيات الفصول</h4>
-        <div class="str" style="margin-bottom:0">
-          <div class="stc"><div class="stn" id="adminQCount">4</div><div class="stl">أقسام القرآن</div></div>
-          <div class="stc"><div class="stn" id="adminLCount">5</div><div class="stl">أقسام اللغات</div></div>
-          <div class="stc"><div class="stn" id="adminSCount">5</div><div class="stl">أقسام الشريعة</div></div>
-          <div class="stc"><div class="stn" id="adminTotalCount">14</div><div class="stl">إجمالي الأقسام</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== TEACHERS ADMIN ===== -->
-    <div class="apn" id="adm-teachers">
-      <div class="afrm">
-        <h4>➕ إضافة معلم جديد</h4>
-        <div class="afrw">
-          <div class="form-group"><label class="form-label">الاسم الكامل</label><input type="text" class="form-control" placeholder="اسم المعلم"></div>
-          <div class="form-group"><label class="form-label">التخصص</label><select class="form-control"><option>القرآن والتجويد</option><option>اللغة العربية</option><option>العلوم الشرعية</option></select></div>
-          <div class="form-group"><label class="form-label">اللغات</label><input type="text" class="form-control" placeholder="AR, EN, FR"></div>
-          <div class="form-group"><label class="form-label">الحالة</label><select class="form-control"><option>نشط</option><option>معلق</option><option>في مراجعة</option></select></div>
-        </div>
-        <button class="btn btn-gold btn-sm" onclick="showToast('تم إضافة المعلم بنجاح!','success')">💾 حفظ المعلم</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="adt">
-          <thead><tr><th>المعلم</th><th>التخصص</th><th>الطلاب</th><th>التقييم</th><th>الأرباح الكلية</th><th>معلق للسحب</th><th>الحالة</th><th>إجراءات</th></tr></thead>
-          <tbody>
-            <tr><td><strong>أ. فاطمة الزهراء</strong></td><td>القرآن والتجويد</td><td>600+</td><td>⭐ 5.0</td><td style="color:var(--gold)">$8,400</td><td style="color:var(--gold-light)">$840</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td><button class="ab go" onclick="showToast('تم فتح ملف المعلمة','info')">عرض</button> <button class="ab gn" onclick="showToast('تم الموافقة على السحب ✅','success')">موافقة السحب</button></td></tr>
-            <tr><td><strong>أ. أحمد محمد</strong></td><td>النحو والبلاغة</td><td>400+</td><td>⭐ 4.9</td><td style="color:var(--gold)">$6,930</td><td style="color:var(--gold-light)">$693</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td><button class="ab go" onclick="showToast('تم فتح ملف المعلم','info')">عرض</button> <button class="ab gn" onclick="showToast('تم الموافقة على السحب ✅','success')">موافقة السحب</button></td></tr>
-            <tr><td><strong>أ. يوسف الأمين</strong></td><td>العلوم الشرعية</td><td>350+</td><td>⭐ 4.8</td><td style="color:var(--gold)">$5,740</td><td style="color:var(--gold-light)">$574</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td><button class="ab go" onclick="showToast('تم فتح ملف المعلم','info')">عرض</button> <button class="ab re" onclick="showToast('تم تعليق الحساب','error')">تعليق</button></td></tr>
-            <tr><td><strong>أ. مريم صالح</strong></td><td>العربية للأطفال</td><td>280+</td><td>⭐ 4.9</td><td style="color:var(--gold)">$4,460</td><td style="color:var(--gold-light)">$446</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td><button class="ab go" onclick="showToast('تم فتح ملف المعلمة','info')">عرض</button> <button class="ab gn" onclick="showToast('تم الموافقة على السحب ✅','success')">موافقة السحب</button></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ===== FINANCE ===== -->
-    <div class="apn" id="adm-finance">
-      <div class="str">
-        <div class="stc"><div class="stn">$41,520</div><div class="stl">إجمالي الإيرادات</div></div>
-        <div class="stc"><div class="stn" style="color:var(--gold)">$29,064</div><div class="stl">حصص المعلمين 70%</div></div>
-        <div class="stc"><div class="stn" style="color:var(--green)">$12,456</div><div class="stl">حصة المنصة 30%</div></div>
-        <div class="stc"><div class="stn" style="color:#5dade2">$2,553</div><div class="stl">معلق للسحب</div></div>
-      </div>
-      <div class="rbd">
-        <div class="rbc">
-          <h4>⏳ طلبات السحب المعلقة</h4>
-          <table class="adt" style="margin-top:.5rem">
-            <thead><tr><th>المعلم</th><th>المبلغ</th><th>طريقة</th><th>التاريخ</th><th>إجراء</th></tr></thead>
-            <tbody>
-              <tr><td>أ. فاطمة</td><td style="color:var(--gold)">$840</td><td>PayPal</td><td>17 أبريل</td><td><button class="ab gn" onclick="showToast('تم الموافقة ✅','success')">موافقة</button> <button class="ab re" onclick="showToast('تم الرفض','error')">رفض</button></td></tr>
-              <tr><td>أ. أحمد</td><td style="color:var(--gold)">$693</td><td>Wise</td><td>16 أبريل</td><td><button class="ab gn" onclick="showToast('تم الموافقة ✅','success')">موافقة</button> <button class="ab re" onclick="showToast('تم الرفض','error')">رفض</button></td></tr>
-              <tr><td>أ. مريم</td><td style="color:var(--gold)">$446</td><td>تحويل بنكي</td><td>15 أبريل</td><td><button class="ab gn" onclick="showToast('تم الموافقة ✅','success')">موافقة</button> <button class="ab re" onclick="showToast('تم الرفض','error')">رفض</button></td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="rbc">
-          <h4>💳 آخر المدفوعات من الطلاب</h4>
-          <table class="adt" style="margin-top:.5rem">
-            <thead><tr><th>الطالب</th><th>الباقة</th><th>للمعلم</th><th>للمنصة</th><th>الحالة</th></tr></thead>
-            <tbody>
-              <tr><td>Michael</td><td>$45</td><td style="color:var(--gold)">$31.50</td><td style="color:var(--green)">$13.50</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مكتمل</span></td></tr>
-              <tr><td>Sophie</td><td>$10</td><td style="color:var(--gold)">$7.00</td><td style="color:var(--green)">$3.00</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مكتمل</span></td></tr>
-              <tr><td>Carlos</td><td>$80</td><td style="color:var(--gold)">$56.00</td><td style="color:var(--green)">$24.00</td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">معالجة</span></td></tr>
-              <tr><td>Layla</td><td>$45</td><td style="color:var(--gold)">$31.50</td><td style="color:var(--green)">$13.50</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مكتمل</span></td></tr>
-            </tbody>
-          </table>
-          <div style="display:flex;gap:.5rem;margin-top:.8rem;flex-wrap:wrap">
-            <button class="btn btn-gold btn-sm" onclick="showToast('تم تصدير تقرير المالية Excel ✅','success')"><i class="fas fa-download"></i> تصدير Excel</button>
-            <button class="btn btn-ghost btn-sm" onclick="showToast('تم تصدير التقرير PDF ✅','success')"><i class="fas fa-file-pdf"></i> تصدير PDF</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== BOOKINGS ===== -->
-    <div class="apn" id="adm-bookings">
-      <div style="display:flex;gap:.5rem;margin-bottom:1.2rem;flex-wrap:wrap">
-        <button class="filter-btn active" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">الكل</button>
-        <button class="filter-btn" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">معلق</button>
-        <button class="filter-btn" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">مؤكد</button>
-        <button class="filter-btn" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">مكتمل</button>
-        <button class="filter-btn" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">ملغى</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="adt">
-          <thead><tr><th>الطالب</th><th>المعلم</th><th>الدورة</th><th>التاريخ والوقت</th><th>الباقة</th><th>التوزيع</th><th>الحالة</th><th>إجراءات</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Michael Johnson</strong></td><td>أ. فاطمة</td><td>التجويد - الإدغام</td><td>18 أبريل، 10:00</td><td>$10</td><td style="font-size:.72rem"><span style="color:var(--gold)">$7</span> | <span style="color:var(--green)">$3</span></td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">مؤكد</span></td><td><button class="ab go" onclick="openModal('classroomModal')">🎥 فصل</button> <button class="ab re" onclick="showToast('تم إلغاء الحجز','error')">إلغاء</button></td></tr>
-            <tr><td><strong>Sophie Martin</strong></td><td>أ. أحمد</td><td>النحو - الجملة</td><td>20 أبريل، 16:00</td><td>$45</td><td style="font-size:.72rem"><span style="color:var(--gold)">$31.5</span> | <span style="color:var(--green)">$13.5</span></td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">معلق</span></td><td><button class="ab gn" onclick="showToast('تم تأكيد الحجز ✅','success')">تأكيد</button> <button class="ab re" onclick="showToast('تم الإلغاء','error')">إلغاء</button></td></tr>
-            <tr><td><strong>Anna Schmidt</strong></td><td>أ. يوسف</td><td>الفقه - الطهارة</td><td>22 أبريل، 18:00</td><td>$80</td><td style="font-size:.72rem"><span style="color:var(--gold)">$56</span> | <span style="color:var(--green)">$24</span></td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">مؤكد</span></td><td><button class="ab go" onclick="openModal('classroomModal')">🎥 فصل</button> <button class="ab re" onclick="showToast('تم إلغاء الحجز','error')">إلغاء</button></td></tr>
-            <tr><td><strong>Carlos Ruiz</strong></td><td>أ. فاطمة</td><td>القراءات السبع</td><td>24 أبريل، 08:00</td><td>$45</td><td style="font-size:.72rem"><span style="color:var(--gold)">$31.5</span> | <span style="color:var(--green)">$13.5</span></td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">معلق</span></td><td><button class="ab gn" onclick="showToast('تم تأكيد الحجز ✅','success')">تأكيد</button> <button class="ab re" onclick="showToast('تم الإلغاء','error')">إلغاء</button></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ===== CONTENT ===== -->
-    <div class="apn" id="adm-content">
-      <div class="afrm">
-        <h4>➕ إضافة مورد تعليمي جديد</h4>
-        <div class="afrw">
-          <div class="form-group"><label class="form-label">اسم المورد</label><input type="text" class="form-control" placeholder="عنوان الملف أو الفيديو"></div>
-          <div class="form-group"><label class="form-label">النوع</label><select class="form-control"><option>PDF</option><option>فيديو</option><option>صوت</option><option>تمارين</option><option>بطاقات</option></select></div>
-          <div class="form-group"><label class="form-label">الفصل</label><select class="form-control"><option>القرآن والتجويد</option><option>اللغات</option><option>العلوم الشرعية</option><option>عام</option></select></div>
-          <div class="form-group"><label class="form-label">الوصول</label><select class="form-control"><option>مجاني</option><option>للمشتركين فقط</option></select></div>
-        </div>
-        <div class="form-group"><label class="form-label">الوصف</label><textarea class="form-control" rows="2" placeholder="وصف مختصر للمورد"></textarea></div>
-        <button class="btn btn-gold btn-sm" onclick="showToast('تم رفع المورد بنجاح!','success')">📤 رفع المورد</button>
-      </div>
-      <div style="overflow-x:auto">
-        <table class="adt">
-          <thead><tr><th>المورد</th><th>النوع</th><th>الفصل</th><th>التحميلات</th><th>الوصول</th><th>إجراءات</th></tr></thead>
-          <tbody>
-            <tr><td>📗 كتاب النحو الأساسي</td><td style="color:var(--gold)">PDF</td><td>اللغات</td><td>1,240</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مجاني</span></td><td><button class="ab go" onclick="showToast('تم فتح الملف','info')">تعديل</button> <button class="ab re" onclick="showToast('تم حذف المورد','error')">حذف</button></td></tr>
-            <tr><td>🎵 سورة البقرة تلاوة</td><td style="color:var(--green)">صوت</td><td>القرآن</td><td>892</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مجاني</span></td><td><button class="ab go" onclick="showToast('تم فتح الملف','info')">تعديل</button> <button class="ab re" onclick="showToast('تم حذف المورد','error')">حذف</button></td></tr>
-            <tr><td>🎬 دروس الحروف للأطفال</td><td style="color:#5dade2">فيديو</td><td>اللغات</td><td>2,100</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مجاني</span></td><td><button class="ab go" onclick="showToast('تم فتح الملف','info')">تعديل</button> <button class="ab re" onclick="showToast('تم حذف المورد','error')">حذف</button></td></tr>
-            <tr><td>📘 أحكام التجويد الشامل</td><td style="color:var(--gold)">PDF</td><td>القرآن</td><td>654</td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مشتركون</span></td><td><button class="ab go" onclick="showToast('تم فتح الملف','info')">تعديل</button> <button class="ab re" onclick="showToast('تم حذف المورد','error')">حذف</button></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ===== SETTINGS ===== -->
-    <div class="apn" id="adm-settings">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
-        <div>
-          <h4 style="font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:1rem">⚙️ إعدادات المنصة</h4>
-          <div class="stg-list">
-            <div class="stg-row"><div class="stg-info"><h4>التسجيل المفتوح</h4><p>السماح لطلاب جدد بإنشاء حسابات</p></div><div class="tgl on" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'تم التفعيل ✅':'تم الإيقاف','info')"></div></div>
-            <div class="stg-row"><div class="stg-info"><h4>الدروس التجريبية المجانية</h4><p>تفعيل نظام الدروس المجانية</p></div><div class="tgl on" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'تم التفعيل ✅':'تم الإيقاف','info')"></div></div>
-            <div class="stg-row"><div class="stg-info"><h4>الإشعارات التلقائية</h4><p>إرسال تذكيرات قبل الدرس</p></div><div class="tgl on" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'تم التفعيل ✅':'تم الإيقاف','info')"></div></div>
-            <div class="stg-row"><div class="stg-info"><h4>وضع الصيانة</h4><p>إيقاف المنصة مؤقتاً للصيانة</p></div><div class="tgl" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'وضع الصيانة مفعّل ⚠️':'وضع الصيانة معطّل','info')"></div></div>
-            <div class="stg-row"><div class="stg-info"><h4>نظام التقييم</h4><p>السماح للطلاب بتقييم الدروس</p></div><div class="tgl on" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'تم التفعيل ✅':'تم الإيقاف','info')"></div></div>
-            <div class="stg-row"><div class="stg-info"><h4>الفصول المباشرة</h4><p>تفعيل الفصل الرقمي المباشر</p></div><div class="tgl on" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'تم التفعيل ✅':'تم الإيقاف','info')"></div></div>
-          </div>
-        </div>
-        <div>
-          <h4 style="font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:1rem">💰 إعدادات التوزيع المالي</h4>
-          <div class="afrm" style="margin-bottom:1rem">
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.72rem">
-              <div class="form-group"><label class="form-label">حصة المعلم (%)</label><input type="number" class="form-control" value="70" min="50" max="90" dir="ltr" oninput="document.getElementById('platPct').value=100-this.value"></div>
-              <div class="form-group"><label class="form-label">حصة المنصة (%)</label><input type="number" class="form-control" id="platPct" value="30" readonly dir="ltr"></div>
-            </div>
-            <div class="form-group"><label class="form-label">الحد الأدنى للسحب ($)</label><input type="number" class="form-control" value="20" dir="ltr"></div>
-            <div class="form-group"><label class="form-label">دورية الدفع التلقائي</label><select class="form-control"><option>فوري</option><option>أسبوعي</option><option>شهري</option></select></div>
-          </div>
-          <h4 style="font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:1rem">🔗 إعدادات التكاملات</h4>
-          <div class="afrm">
-            <div class="form-group"><label class="form-label">Stripe Secret Key</label><input type="password" class="form-control" placeholder="sk_live_..." dir="ltr"></div>
-            <div class="form-group"><label class="form-label">Zoom API Key</label><input type="password" class="form-control" placeholder="API key..." dir="ltr"></div>
-            <div class="form-group"><label class="form-label">WhatsApp Business Token</label><input type="password" class="form-control" placeholder="Token..." dir="ltr"></div>
-          </div>
-          <button class="btn btn-gold" onclick="showToast('تم حفظ الإعدادات بنجاح! ✅','success')">💾 حفظ جميع الإعدادات</button>
-        </div>
-        <div>
-          <h4 style="font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:1rem">🎨 إعدادات مظهر المنصة</h4>
-          <div class="afrm">
-            <div class="form-group"><label class="form-label">اسم المنصة</label><input type="text" class="form-control" value="نور العربية"></div>
-            <div class="form-group"><label class="form-label">شعار الترحيب</label><input type="text" class="form-control" value="🎉 عرض خاص: درس تجريبي مجاني هذا الشهر!"></div>
-            <div class="form-group"><label class="form-label">اللغة الافتراضية</label><select class="form-control"><option>العربية</option><option>English</option><option>Français</option></select></div>
-            <div class="form-group"><label class="form-label">رقم واتساب الدعم</label><input type="text" class="form-control" value="+212600000000" dir="ltr"></div>
-          </div>
-          <button class="btn btn-ghost btn-sm" onclick="showToast('تم تطبيق تغييرات المظهر!','success')">💾 تطبيق التغييرات</button>
-        </div>
-        <div>
-          <h4 style="font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:1rem">🔔 إعدادات الإشعارات</h4>
-          <div class="afrm">
-            <div class="form-group"><label class="form-label">التذكير قبل الدرس (دقيقة)</label><input type="number" class="form-control" value="60" dir="ltr"></div>
-            <div class="form-group"><label class="form-label">قناة الإشعار</label><select class="form-control"><option>WhatsApp + البريد</option><option>البريد فقط</option><option>WhatsApp فقط</option></select></div>
-            <div class="form-group"><label class="form-label">SMTP Email Server</label><input type="text" class="form-control" placeholder="smtp.gmail.com" dir="ltr"></div>
-          </div>
-          <button class="btn btn-green btn-sm" onclick="showToast('تم اختبار التكاملات بنجاح ✅','success')">🔄 اختبار الاتصالات</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== LOGS ===== -->
-    <div class="apn" id="adm-logs">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem">
-        <h4 style="font-size:.88rem;font-weight:700;color:var(--gold)">📋 سجل النشاط الكامل</h4>
-        <div style="display:flex;gap:.4rem">
-          <button class="btn btn-ghost btn-sm" onclick="showToast('تم تصدير السجل','success')">📥 تصدير</button>
-          <button class="btn btn-sm" style="background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.2);color:#e74c3c" onclick="if(confirm('هل تريد مسح سجل النشاط؟'))showToast('تم مسح السجل','error')">🗑️ مسح السجل</button>
-        </div>
-      </div>
-      <div class="alog" id="actLog">
-        <div class="algi s"><span style="font-size:1.1rem">✅</span><div><div>تم دفع $45 من Michael Johnson — حصة أ. فاطمة $31.50 أُضيفت فوراً</div><div class="algt">اليوم، 10:24 ص</div></div></div>
-        <div class="algi w"><span style="font-size:1.1rem">📅</span><div><div>حجز درس جديد: Sophie Martin مع أ. أحمد — 20 أبريل، 16:00</div><div class="algt">اليوم، 09:45 ص</div></div></div>
-        <div class="algi s"><span style="font-size:1.1rem">👤</span><div><div>تسجيل مستخدم جديد: Carlos Ruiz — إسبانيا 🇪🇸</div><div class="algt">أمس، 08:30 م</div></div></div>
-        <div class="algi s"><span style="font-size:1.1rem">💸</span><div><div>تمت الموافقة على سحب $840 لـ أ. فاطمة عبر PayPal</div><div class="algt">أمس، 03:15 م</div></div></div>
-        <div class="algi w"><span style="font-size:1.1rem">⭐</span><div><div>تقييم جديد: Michael Johnson أعطى أ. فاطمة 5 نجوم</div><div class="algt">أمس، 11:00 ص</div></div></div>
-        <div class="algi e"><span style="font-size:1.1rem">❌</span><div><div>فشل محاولة دفع من Layla Hassan — تحقق من البطاقة</div><div class="algt">أمس، 10:22 ص</div></div></div>
-        <div class="algi s"><span style="font-size:1.1rem">🏛️</span><div><div>تمت إضافة قسم "السيرة النبوية" لفصل العلوم الشرعية</div><div class="algt">16 أبريل، 04:00 م</div></div></div>
-        <div class="algi w"><span style="font-size:1.1rem">📧</span><div><div>تم إرسال تذكير الدرس لـ 42 طالب — الساعة 10:00 ص</div><div class="algt">16 أبريل، 09:00 ص</div></div></div>
-        <div class="algi s"><span style="font-size:1.1rem">📜</span><div><div>إصدار شهادة PDF لـ Jan van Berg — دورة القرآن والتجويد</div><div class="algt">15 أبريل، 06:00 م</div></div></div>
-        <div class="algi s"><span style="font-size:1.1rem">🔐</span><div><div>دخول مدير جديد إلى لوحة التحكم</div><div class="algt">15 أبريل، 09:00 ص</div></div></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 <!-- ROADMAP -->
 <section id="roadmap" style="background:var(--navy2)"><div class="si">
   <div class="tc"><div class="slabel">خطة التطوير</div><h2 class="stitle"><span class="gold">رحلتنا</span> نحو التميز</h2></div>
@@ -1541,7 +1157,17 @@ body.adm .adm-badge2{display:block}
   <h3>🧑‍🏫 انضم كمعلم</h3><p class="sub">علّم وأنت تكسب — 70% من كل حصة تذهب إليك مباشرة</p>
   <div class="fg"><label class="fl">الاسم الكامل</label><input type="text" class="fc" placeholder="اسمك"></div>
   <div class="fg"><label class="fl">البريد</label><input type="email" class="fc" placeholder="email@example.com" dir="ltr"></div>
-  <div class="fg"><label class="fl">تخصصك</label><select class="fc"><option>🕌 القرآن والتجويد</option><option>📖 اللغة العربية</option><option>⚖️ العلوم الشرعية</option><option>💼 العربية للأعمال</option></select></div>
+  <div class="fg"><label class="fl">تخصصك</label><select class="fc"><option value="ar">🇸🇦 العربية</option>
+<option value="en">🇬🇧 English</option>
+<option value="fr">🇫🇷 Français</option>
+<option value="es">🇪🇸 Español</option>
+<option value="de">🇩🇪 Deutsch</option>
+<option value="nl">🇳🇱 Nederlands</option>
+<option value="tr">🇹🇷 Türkçe</option>
+<option value="it">🇮🇹 Italiano</option>
+<option value="pt">🇧🇷 Português</option>
+<option value="id">🇮🇩 Indonesia</option>
+</select></div>
   <div class="fg"><label class="fl">سنوات الخبرة</label><select class="fc"><option>أقل من سنة</option><option>1-3 سنوات</option><option>3-5 سنوات</option><option>أكثر من 5 سنوات</option></select></div>
   <div style="background:rgba(39,174,96,.06);border:1px solid rgba(39,174,96,.18);border-radius:9px;padding:.82rem;margin-bottom:.9rem;font-size:.76rem">
     <div style="color:var(--green);font-weight:700;margin-bottom:.38rem">💰 نظام الأرباح</div>
@@ -1623,7 +1249,7 @@ function loadH(){try{const s=localStorage.getItem('nour_hd');if(s){const p=JSON.
 
 function openCurr(k){
   openM('currM');
-  const m={q:'فصل القرآن والتجويد',l:'فصل اللغات',s:'فصل العلوم الشرعية'};
+  const m={q:'فصل القرآن والتجويد',l:'فصل اللغة العربية لغير الناطقين بها',s:'فصل العلوم الشرعية'};
   const el=document.getElementById('currTitle');if(el)el.textContent='منهج '+m[k];
   const ids={q:'qc',l:'lc',s:'sc'};
   document.querySelectorAll('#currM [id]').forEach(el=>{if(['qc','lc','sc'].includes(el.id))el.style.display='none';});
@@ -1910,276 +1536,87 @@ document.addEventListener('DOMContentLoaded',()=>{
   // Simulate notification after 3s
   setTimeout(()=>{addN('📅 تذكير: درس التجويد غداً الساعة 10:00 مع أ. فاطمة');},3000);
 });
-
-// ===== ADMIN PANEL FUNCTIONS =====
-function swAdmTab(btn, panelId) {
-  document.querySelectorAll('.aptb').forEach(b => b.classList.remove('ac'));
-  btn.classList.add('ac');
-  document.querySelectorAll('.apn').forEach(p => p.classList.remove('sh'));
-  const panel = document.getElementById(panelId);
-  if (panel) panel.classList.add('sh');
-}
-
-function deAdminMode() {
-  isAdmin = false;
-  document.body.classList.remove('adm');
-  document.getElementById('adminToggle').textContent = '⚙️ إدارة';
-  document.getElementById('adminToggle').classList.remove('active');
-  const al = document.getElementById('adminLink');
-  if (al) al.style.display = 'none';
-  showToast('تم إيقاف وضع الإدارة', 'info');
-}
-
-function admAdd(hallKey) {
-  const inputMap = {'q':'qAI','lang':'lAI','sharia':'sAI'};
-  const hallMap = {'q':'quran','lang':'lang','sharia':'sharia'};
-  const inp = document.getElementById(inputMap[hallKey]);
-  if (!inp) return;
-  const name = inp.value.trim();
-  if (!name) { inp.focus(); showToast('أدخل اسم القسم', 'error'); return; }
-  const icons = ['📌','🎯','💡','🔖','📒','🧩'];
-  const icon = icons[Math.floor(Math.random() * icons.length)];
-  const hk = hallMap[hallKey];
-  if (hallsData[hk]) {
-    hallsData[hk].sections.push({ id: hallsData[hk].nextId++, icon, name, level: 'جميع المستويات', students: 0 });
-    inp.value = '';
-    renderHall(hk);
-    renderAdmHall(hk);
-    updateAdmCounts();
-    saveHalls();
-    showToast('تم إضافة "' + name + '" بنجاح', 'success');
-    addNotification('🏛️ تمت إضافة قسم جديد: ' + name);
-  }
-}
-
-function renderAdmHall(hk) {
-  const keyMap = {'quran':'qAdm','lang':'lAdm','sharia':'sAdm'};
-  const cont = document.getElementById(keyMap[hk]);
-  if (!cont) return;
-  cont.innerHTML = '';
-  hallsData[hk].sections.forEach(sec => {
-    const el = document.createElement('div');
-    el.style.cssText = 'display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.04);border-radius:7px;padding:.42rem .65rem;font-size:.75rem;border:1px solid rgba(255,255,255,.06)';
-    el.innerHTML = '<span>' + sec.icon + '</span><span style="flex:1">' + sec.name + '</span><span style="font-size:.65rem;color:var(--text-muted)">' + sec.students + ' طالب</span><button onclick="admRemSec(\'' + hk + '\',' + sec.id + ')" style="background:rgba(192,57,43,.13);border:none;color:#e74c3c;border-radius:5px;cursor:pointer;padding:.15rem .4rem;font-size:.7rem">حذف</button>';
-    cont.appendChild(el);
-  });
-}
-
-function admRemSec(hk, id) {
-  if (!confirm('حذف هذا القسم؟')) return;
-  hallsData[hk].sections = hallsData[hk].sections.filter(s => s.id !== id);
-  renderHall(hk);
-  renderAdmHall(hk);
-  updateAdmCounts();
-  saveHalls();
-  showToast('تم حذف القسم', 'info');
-}
-
-function updateAdmCounts() {
-  const qc = document.getElementById('adminQCount');
-  const lc = document.getElementById('adminLCount');
-  const sc = document.getElementById('adminSCount');
-  const tc = document.getElementById('adminTotalCount');
-  const q = hallsData.quran.sections.length;
-  const l = hallsData.lang.sections.length;
-  const s = hallsData.sharia.sections.length;
-  if (qc) qc.textContent = q;
-  if (lc) lc.textContent = l;
-  if (sc) sc.textContent = s;
-  if (tc) tc.textContent = q + l + s;
-}
-
-// ===== CHARTS =====
-function renderCharts() {
-  const revData = [7.8, 9.2, 8.4, 11.0, 9.8, 12.45];
-  const revLabels = ['نوف', 'ديس', 'يناير', 'فبر', 'مارس', 'أبريل'];
-  const sesData = [18, 24, 21, 30, 27, 15, 13];
-  const sesLabels = ['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'];
-  const max1 = Math.max(...revData), max2 = Math.max(...sesData);
-  const rc = document.getElementById('revChart');
-  const sc2 = document.getElementById('sesChart');
-  if (rc) rc.innerHTML = revData.map((v, i) => '<div class="chco"><div class="chvl">$' + v + 'k</div><div class="chbo"><div class="chb" style="height:' + Math.max(5, (v/max1)*78) + 'px"></div></div><div class="chlb">' + revLabels[i] + '</div></div>').join('');
-  if (sc2) sc2.innerHTML = sesData.map((v, i) => '<div class="chco"><div class="chvl">' + v + '</div><div class="chbo"><div class="chb pu" style="height:' + Math.max(5, (v/max2)*78) + 'px"></div></div><div class="chlb">' + sesLabels[i] + '</div></div>').join('');
-}
-
 </script>
 
-<!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const SURL = 'https://iggsptoueejpmfrhbhrg.supabase.co';
-const SKEY = 'sb_publishable_CsfGJ03eROXHPPiQYji-Aw_7D3X0fqG';
-const sb = supabase.createClient(SURL, SKEY);
+// Supabase
+const _sb = supabase.createClient(
+  'https://iggsptoueejpmfrhbhrg.supabase.co',
+  'sb_publishable_CsfGJ03eROXHPPiQYji-Aw_7D3X0fqG'
+);
 
-// ===== AUTH: تسجيل مستخدم جديد =====
-async function registerUser(name, email, password, role) {
-  try {
-    const { data, error } = await sb.auth.signUp({ email, password });
-    if (error) throw error;
-    // حفظ بيانات المستخدم في جدول users
-    await sb.from('users').insert([{ 
-      id: data.user.id, name, email, role 
-    }]);
-    return { success: true, user: data.user };
-  } catch(e) {
-    return { success: false, error: e.message };
-  }
+// Set active MBN item
+function setMbn(el){
+  document.querySelectorAll('.mbn-item').forEach(a=>a.classList.remove('active'));
+  if(el)el.classList.add('active');
 }
 
-// ===== AUTH: تسجيل الدخول =====
-async function loginUser(email, password) {
-  try {
-    const { data, error } = await sb.auth.signInWithPassword({ email, password });
-    if (error) throw error;
-    return { success: true, user: data.user };
-  } catch(e) {
-    return { success: false, error: e.message };
-  }
+// Password toggle
+function togglePwd(id,btn){
+  const f=document.getElementById(id);if(!f)return;
+  if(f.type==='password'){f.type='text';btn.textContent='🙈';}
+  else{f.type='password';btn.textContent='👁';}
 }
 
-// ===== AUTH: تسجيل الخروج =====
-async function logoutUser() {
-  await sb.auth.signOut();
-  logout();
-}
+// Override registration
+window.doReg = async function(){
+  try{
+    const n=document.getElementById('rn')?.value.trim();
+    const e=document.getElementById('re')?.value.trim();
+    const p=document.getElementById('rp')?.value;
+    const r=document.getElementById('rr')?.value||'student';
+    if(!n||!e||!p){toast('أكمل جميع الحقول','e');return;}
+    if(p.length<6){toast('كلمة المرور 6 أحرف على الأقل','e');return;}
+    toast('جاري إنشاء الحساب...','i');
+    try{await _sb.auth.signUp({email:e,password:p,options:{data:{name:n,role:r}}});}catch(e2){console.log(e2);}
+    CU={nm:n,email:e,role:r};
+    try{localStorage.setItem('nu_v5',JSON.stringify(CU));}catch(e2){}
+    updUI();closeM('authM');
+    toast('مرحباً '+n+'! تم إنشاء حسابك 🎉','s');
+    addN('🎉 مرحباً بك في نور العربية!');
+  }catch(err){console.error(err);toast('حدث خطأ، حاول مجدداً','e');}
+};
 
-// ===== BOOKING: حفظ حجز جديد =====
-async function saveBooking(bookingData) {
-  try {
-    const { data: { user } } = await sb.auth.getUser();
-    const { data, error } = await sb.from('bookings').insert([{
-      student_id: user?.id || null,
-      teacher_name: bookingData.teacher,
-      hall: bookingData.hall,
-      section: bookingData.section,
-      date: bookingData.date,
-      time: bookingData.time,
-      package_price: bookingData.price,
-      teacher_share: bookingData.price * 0.7,
-      platform_share: bookingData.price * 0.3,
-      status: 'pending'
-    }]);
-    if (error) throw error;
-    return { success: true };
-  } catch(e) {
-    return { success: false, error: e.message };
-  }
-}
+// Override login
+window.doLogin = async function(){
+  try{
+    const e=document.getElementById('le')?.value.trim();
+    const p=document.getElementById('lp')?.value;
+    if(!e||!p){toast('أدخل البريد وكلمة المرور','e');return;}
+    toast('جاري تسجيل الدخول...','i');
+    try{
+      const{data,error}=await _sb.auth.signInWithPassword({email:e,password:p});
+      if(!error&&data.user){
+        const nm=data.user.user_metadata?.name||e.split('@')[0];
+        const role=data.user.user_metadata?.role||'student';
+        CU={nm,email:e,role};
+        try{localStorage.setItem('nu_v5',JSON.stringify(CU));}catch(e2){}
+        updUI();closeM('authM');
+        toast('مرحباً '+nm+'! ✓','s');
+        return;
+      }
+    }catch(e2){console.log(e2);}
+    // Fallback
+    CU={nm:e.split('@')[0],email:e,role:'student'};
+    try{localStorage.setItem('nu_v5',JSON.stringify(CU));}catch(e2){}
+    updUI();closeM('authM');
+    toast('مرحباً! ✓','s');
+  }catch(err){console.error(err);toast('حدث خطأ','e');}
+};
 
-// ===== PAYMENT: حفظ دفعة =====
-async function savePayment(bookingId, amount) {
-  try {
-    const { error } = await sb.from('payments').insert([{
-      booking_id: bookingId,
-      amount: amount,
-      teacher_amount: amount * 0.7,
-      platform_amount: amount * 0.3,
-      status: 'completed'
-    }]);
-    if (error) throw error;
-    return { success: true };
-  } catch(e) {
-    return { success: false, error: e.message };
-  }
-}
-
-// ===== تحقق من الجلسة عند التحميل =====
-async function checkSession() {
-  const { data: { user } } = await sb.auth.getUser();
-  if (user) {
-    const { data } = await sb.from('users').select('*').eq('id', user.id).single();
-    if (data) {
-      CU = { nm: data.name, email: data.email, role: data.role };
+// Check session
+document.addEventListener('DOMContentLoaded',async function(){
+  try{
+    const{data:{user}}=await _sb.auth.getUser();
+    if(user){
+      const nm=user.user_metadata?.name||user.email.split('@')[0];
+      CU={nm,email:user.email,role:user.user_metadata?.role||'student'};
+      try{localStorage.setItem('nu_v5',JSON.stringify(CU));}catch(e){}
       updUI();
     }
-  }
-}
-
-// ===== تعديل دوال التسجيل والدخول =====
-const _origDoReg = typeof doReg !== 'undefined' ? doReg : null;
-const _origDoLogin = typeof doLogin !== 'undefined' ? doLogin : null;
-
-// Override doReg
-window.doReg = async function() {
-  const n = document.getElementById('rn')?.value.trim();
-  const e = document.getElementById('re')?.value.trim();
-  const p = document.getElementById('rp')?.value;
-  const r = document.getElementById('rr')?.value;
-  if(!n||!e||!p){showToast('أكمل جميع الحقول','e');return;}
-  showToast('جاري إنشاء الحساب...','i');
-  const result = await registerUser(n, e, p, r);
-  if(result.success) {
-    CU = {nm:n, email:e, role:r};
-    saveU(); updUI(); closeM('authM');
-    showToast('تم إنشاء حسابك بنجاح! 🎉','s');
-    addN('🎉 مرحباً بك في نور العربية!');
-  } else {
-    showToast('خطأ: ' + result.error, 'e');
-  }
-};
-
-// Override doLogin
-window.doLogin = async function() {
-  const e = document.getElementById('le')?.value.trim();
-  const p = document.getElementById('lp')?.value;
-  if(!e||!p){showToast('أدخل البريد وكلمة المرور','e');return;}
-  showToast('جاري تسجيل الدخول...','i');
-  const result = await loginUser(e, p);
-  if(result.success) {
-    CU = {nm: e.split('@')[0], email: e, role: 'student'};
-    saveU(); updUI(); closeM('authM');
-    showToast('مرحباً! تم تسجيل الدخول ✓','s');
-  } else {
-    showToast('خطأ: ' + result.error, 'e');
-  }
-};
-
-// Override procPay
-window.procPay = async function() {
-  document.getElementById('payForm').style.display='none';
-  document.getElementById('payProg').classList.add('sh');
-  
-  const hallEl = document.getElementById('bh');
-  const teacherEl = document.getElementById('bTeacher') || document.querySelector('select[id*="teacher"]');
-  
-  const bookingData = {
-    teacher: 'أ. فاطمة الزهراء',
-    hall: hallEl?.value || 'q',
-    section: document.getElementById('bc')?.value || 'تجويد',
-    date: CAL.sel ? CAL.sel.toLocaleDateString('ar') : new Date().toLocaleDateString('ar'),
-    time: SSLOT || '10:00',
-    price: PAY
-  };
-  
-  const bookResult = await saveBooking(bookingData);
-  
-  setTimeout(async () => {
-    closeM('payM');
-    document.getElementById('payForm').style.display='block';
-    document.getElementById('payProg').classList.remove('sh');
-    
-    if(CAL.sel&&SSLOT){
-      const k=CAL.yr+'-'+CAL.mo+'-'+CAL.sel.getDate();
-      if(!BKDS[k])BKDS[k]=[];
-      BKDS[k].push(SSLOT);
-    }
-    
-    sucM('🎉','تم الدفع بنجاح!',
-      'دُفع $'+PAY.toFixed(2)+'. حصة معلمك $'+(PAY*.7).toFixed(2)+' تُضاف فوراً. ستصلك رابط الفصل المباشر.');
-    addN('💳 تم الدفع — $'+PAY.toFixed(2));
-    addN('📅 درسك محجوز'+(SSLOT?' الساعة '+SSLOT:''));
-    
-    if(bookResult.success) {
-      addN('✅ تم حفظ الحجز في قاعدة البيانات');
-    }
-  }, 2000);
-};
-
-// تحقق من الجلسة عند تحميل الصفحة
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(checkSession, 500);
+  }catch(e){console.log(e);}
 });
 </script>
-
 </body>
 </html>
