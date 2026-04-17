@@ -1,0 +1,2007 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0d1b2a">
+<title>نور العربية | منصة تعليمية عالمية</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{
+  --navy:#0d1b2a;--navy2:#1b2d42;--navy3:#243650;
+  --gold:#c9952a;--gold-light:#f0c04a;--gold-dim:rgba(201,149,42,.12);
+  --red:#c0392b;--green:#27ae60;--green-light:#52d68a;
+  --blue:#3498db;--purple:#8e44ad;--purple-light:#c39bd3;
+  --white:#fff;--text-light:#cdd5e0;--text-muted:#8899aa;
+  --border:rgba(201,149,42,.22);--card:rgba(255,255,255,.04);
+  --quran:#27ae60;--quran-bg:rgba(39,174,96,.1);
+  --lang:#c9952a;--lang-bg:rgba(201,149,42,.1);
+  --sharia:#8e44ad;--sharia-bg:rgba(142,68,173,.1);
+  --r:14px;--r-lg:22px;--sh:0 8px 30px rgba(0,0,0,.3);
+  --nav-h:60px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;direction:rtl;padding-bottom:var(--nav-h)}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ---- TOAST ---- */
+#toastBox{position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:.4rem;align-items:center;pointer-events:none;width:min(90vw,380px)}
+.toast{background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:.65rem 1rem;font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:.5rem;animation:tIn .3s ease;box-shadow:var(--sh);width:100%}
+.toast.s{border-color:rgba(39,174,96,.4);color:var(--green-light)}.toast.e{border-color:rgba(192,57,43,.4);color:#e74c3c}.toast.i{border-color:var(--border);color:var(--gold-light)}
+@keyframes tIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tOut{to{opacity:0;transform:translateY(-14px)}}
+
+/* ---- BANNER ---- */
+.notif-banner{background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));background-size:200% 100%;animation:shim 3s linear infinite;color:var(--navy);text-align:center;padding:.5rem 3rem .5rem 1rem;font-size:.78rem;font-weight:700;position:relative;z-index:1001}
+@keyframes shim{0%{background-position:0%}100%{background-position:200%}}
+.banner-x{position:absolute;left:.8rem;top:50%;transform:translateY(-50%);cursor:pointer;opacity:.7}
+
+/* ---- HEADER ---- */
+header{position:fixed;top:0;width:100%;z-index:1000;transition:all .3s;padding:0 1.5rem}
+header.sc{background:rgba(13,27,42,.97);backdrop-filter:blur(20px);box-shadow:0 2px 24px rgba(0,0,0,.4);border-bottom:1px solid var(--border)}
+.hi{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.7rem 0;gap:.8rem}
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;flex-shrink:0}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Amiri',serif;font-size:1.3rem;color:var(--navy);font-weight:700;box-shadow:0 4px 14px rgba(201,149,42,.35)}
+.logo-text{font-size:.95rem;font-weight:700;line-height:1.2}.logo-text span{color:var(--gold);font-size:.68rem;font-weight:400;display:block}
+.hnav{display:flex;align-items:center;gap:.1rem}
+.hnav a{color:var(--text-light);text-decoration:none;font-size:.78rem;font-weight:600;padding:.42rem .6rem;border-radius:8px;transition:all .25s;white-space:nowrap}
+.hnav a:hover{color:var(--gold);background:var(--gold-dim)}
+.ha{display:flex;align-items:center;gap:.4rem;flex-shrink:0}
+
+/* notif bell */
+.nbell{position:relative;width:36px;height:36px;background:var(--card);border:1px solid var(--border);border-radius:9px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-light);transition:all .25s;flex-shrink:0}
+.nbell:hover{border-color:var(--gold);color:var(--gold)}
+.ndot{position:absolute;top:5px;right:5px;width:7px;height:7px;background:var(--red);border-radius:50%;border:2px solid var(--navy)}
+.ndd{display:none;position:absolute;top:calc(100% + .4rem);left:0;width:290px;background:var(--navy2);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);z-index:3000}
+.ndd.open{display:block}
+.ndh{padding:.7rem .9rem;border-bottom:1px solid var(--border);font-size:.78rem;font-weight:700;color:var(--gold);display:flex;justify-content:space-between}
+.ni{padding:.65rem .9rem;border-bottom:1px solid rgba(255,255,255,.04);font-size:.76rem;display:flex;gap:.5rem;cursor:pointer;transition:background .2s}
+.ni:hover{background:var(--card)}.ni.ur{background:rgba(201,149,42,.04)}
+.ni-icon{font-size:1.1rem;flex-shrink:0;margin-top:.1rem}
+.ni-txt{color:var(--text-light);line-height:1.5}
+.ni-time{font-size:.67rem;color:var(--text-muted);margin-top:.15rem}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.5rem 1rem;border-radius:9px;font-weight:700;font-size:.8rem;cursor:pointer;transition:all .22s;border:none;text-decoration:none;white-space:nowrap;font-family:'Cairo',sans-serif;justify-content:center;min-height:38px}
+.btn-outline{border:1.5px solid var(--gold);color:var(--gold);background:transparent}.btn-outline:hover{background:var(--gold);color:var(--navy)}
+.btn-primary{background:var(--red);color:var(--white)}.btn-primary:hover{background:#a93226}
+.btn-green{background:var(--green);color:var(--white)}.btn-green:hover{background:#219a52}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);font-weight:800}.btn-gold:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,149,42,.4)}
+.btn-purple{background:linear-gradient(135deg,var(--purple),var(--purple-light));color:var(--white);font-weight:700}
+.btn-ghost{background:var(--card);border:1px solid var(--border);color:var(--text-light)}.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-sm{padding:.3rem .7rem;font-size:.72rem;min-height:30px}
+.btn-lg{padding:.7rem 1.6rem;font-size:.95rem;min-height:46px}
+.btn-full{width:100%}
+.lang-sel{background:var(--card);border:1px solid var(--border);color:var(--white);padding:.35rem .55rem;border-radius:8px;font-size:.75rem;cursor:pointer;font-family:'Cairo',sans-serif}
+.lang-sel option{background:var(--navy2)}
+.uavbtn{display:none;align-items:center;gap:.45rem;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:.3rem .65rem;cursor:pointer;color:var(--white);font-size:.75rem;font-weight:700;min-height:38px}
+.uavbtn.show{display:flex}.uavbtn:hover{border-color:var(--gold)}
+.uav-mini{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--navy)}
+
+/* hamburger */
+.burger{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:.35rem;border-radius:7px}
+.burger span{width:20px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+
+/* ---- DRAWER ---- */
+.drawer{position:fixed;top:0;right:-100%;width:min(82vw,300px);height:100vh;background:var(--navy2);border-left:1px solid var(--border);z-index:1200;transition:right .32s cubic-bezier(.4,0,.2,1);overflow-y:auto;display:flex;flex-direction:column}
+.drawer.open{right:0}
+.doverlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1100;display:none;backdrop-filter:blur(2px)}
+.doverlay.open{display:block}
+.dh{padding:1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.dx{background:none;border:none;color:var(--text-muted);font-size:1.1rem;cursor:pointer;padding:.25rem}
+.du{padding:.9rem 1rem;border-bottom:1px solid var(--border)}
+.du-info{display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem}
+.du-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:var(--navy)}
+.du-name{font-weight:700;font-size:.92rem}
+.du-role{font-size:.72rem;color:var(--gold)}
+.tz-pill{display:inline-flex;align-items:center;gap:.35rem;background:rgba(52,152,219,.1);border:1px solid rgba(52,152,219,.2);border-radius:7px;padding:.25rem .6rem;font-size:.68rem;color:#5dade2;margin-top:.4rem}
+.dnav a{display:flex;align-items:center;gap:.7rem;padding:.78rem 1rem;color:var(--text-light);text-decoration:none;font-size:.85rem;font-weight:600;transition:all .2s;border-bottom:1px solid rgba(255,255,255,.04)}
+.dnav a:hover,.dnav a.active{background:var(--gold-dim);color:var(--gold)}
+.dnav a .di{width:18px;text-align:center;font-size:.92rem}
+.dact{padding:.9rem 1rem;margin-top:auto;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:.4rem}
+
+/* ---- BOTTOM NAV ---- */
+.mbn{display:none;position:fixed;bottom:0;left:0;right:0;height:var(--nav-h);background:rgba(13,27,42,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);z-index:1000;padding:0 .3rem}
+.mbn-inner{display:flex;height:100%;align-items:center;justify-content:space-around;max-width:480px;margin:0 auto}
+.mbn-item{display:flex;flex-direction:column;align-items:center;gap:.15rem;text-decoration:none;color:var(--text-muted);padding:.35rem .7rem;border-radius:9px;transition:all .2s;flex:1;min-height:40px;justify-content:center}
+.mbn-item.active,.mbn-item:hover{color:var(--gold)}.mbn-item.active{background:var(--gold-dim)}
+.mbn-item i{font-size:1rem}.mbn-item span{font-size:.58rem;font-weight:700}
+.mbn-cta{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy)!important;border-radius:50%;width:48px;height:48px;padding:0;margin-top:-14px;box-shadow:0 4px 18px rgba(201,149,42,.5)}
+.mbn-cta i{font-size:1.2rem}.mbn-cta span{display:none}
+
+/* ---- SECTIONS ---- */
+section{position:relative}
+.si{max-width:1400px;margin:0 auto;padding:4rem 1.5rem}
+.slabel{display:inline-flex;align-items:center;gap:.4rem;color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:.55rem}
+.slabel::before,.slabel::after{content:'—';opacity:.5}
+.stitle{font-family:'Amiri',serif;font-size:clamp(1.55rem,3vw,2.5rem);line-height:1.3;margin-bottom:.7rem}
+.stitle .gold{color:var(--gold)}
+.sdesc{color:var(--text-light);font-size:.92rem;line-height:1.8;max-width:570px;margin-bottom:2.2rem}
+.tc{text-align:center}.tc .sdesc{margin-left:auto;margin-right:auto}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.22}
+.reveal{opacity:0;transform:translateY(20px);transition:all .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ---- HERO ---- */
+#hero{min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:5rem 1.5rem 3rem;background:radial-gradient(ellipse 80% 60% at 30% 50%,rgba(201,149,42,.09),transparent 60%),radial-gradient(ellipse 60% 80% at 80% 30%,rgba(13,70,130,.22),transparent 60%),linear-gradient(160deg,#0d1b2a,#0a2540 50%,#0d1b2a);position:relative}
+.hpat{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z' fill='none' stroke='rgba(201,149,42,0.05)' stroke-width='1'/%3E%3C/svg%3E");background-size:80px 80px}
+.hcal{position:absolute;left:-3%;top:8%;font-family:'Amiri',serif;font-size:min(18rem,40vw);color:rgba(201,149,42,.03);line-height:1;user-select:none;pointer-events:none}
+.hcont{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
+.hbadge{display:inline-flex;align-items:center;gap:.45rem;background:rgba(201,149,42,.1);border:1px solid rgba(201,149,42,.32);color:var(--gold-light);padding:.32rem .85rem;border-radius:100px;font-size:.75rem;font-weight:600;margin-bottom:1.1rem;animation:fid .7s ease}
+.hbadge::before{content:'';width:5px;height:5px;background:var(--gold-light);border-radius:50%;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes fid{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fiu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.htitle{font-family:'Amiri',serif;font-size:clamp(1.9rem,4vw,3.4rem);line-height:1.3;margin-bottom:.9rem;animation:fiu .7s .2s both}
+.hl{background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hdesc{color:var(--text-light);font-size:.97rem;line-height:1.8;margin-bottom:1.7rem;animation:fiu .7s .4s both;max-width:510px}
+.hbtns{display:flex;gap:.7rem;flex-wrap:wrap;animation:fiu .7s .6s both;margin-bottom:1.9rem}
+.hstats{display:flex;gap:1.6rem;flex-wrap:wrap;animation:fiu .7s .8s both}
+.snum{font-size:1.7rem;font-weight:900;color:var(--gold);font-family:'Amiri',serif}
+.slb{font-size:.68rem;color:var(--text-muted);font-weight:600}
+.hvis{position:relative;animation:fid 1s .4s both}
+.hcard{background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
+.hvid{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,var(--navy2),#0a2540);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hvid::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(201,149,42,.12),transparent 60%),radial-gradient(ellipse at 70% 60%,rgba(39,174,96,.08),transparent 60%)}
+.playbtn{width:66px;height:66px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;color:var(--navy);cursor:pointer;animation:pp 2s infinite;transition:transform .3s;z-index:1}
+.playbtn:hover{transform:scale(1.1)}
+@keyframes pp{0%,100%{box-shadow:0 0 0 0 rgba(201,149,42,.4)}70%{box-shadow:0 0 0 18px rgba(201,149,42,0)}}
+.hfl{position:absolute;background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border:1px solid rgba(201,149,42,.2);border-radius:12px;padding:.65rem .95rem;backdrop-filter:blur(10px);display:flex;align-items:center;gap:.45rem;font-size:.74rem;animation:fl 4s ease-in-out infinite}
+.hfl1{bottom:-1.1rem;right:-1.1rem}.hfl2{top:-1.1rem;left:-1.1rem;animation-delay:2s}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+
+/* ---- TRUST ---- */
+#trust{background:var(--navy2)}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.9rem}
+.tc-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.4rem 1.1rem;text-align:center;transition:all .32s;position:relative;overflow:hidden}
+.tc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transform:scaleX(0);transition:.32s}
+.tc-card:hover{transform:translateY(-4px);border-color:var(--gold);background:var(--gold-dim)}
+.tc-card:hover::before{transform:scaleX(1)}
+.tc-icon{font-size:2rem;margin-bottom:.7rem;display:block}
+.tc-card h3{font-size:.85rem;font-weight:700;margin-bottom:.35rem}
+.tc-card p{color:var(--text-muted);font-size:.76rem;line-height:1.6}
+
+/* ---- HALLS ---- */
+#halls{background:var(--navy)}
+.hgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-bottom:1.8rem}
+.hc{border-radius:var(--r-lg);overflow:hidden;border:1.5px solid transparent;transition:all .32s;background:var(--card)}
+.hc.q{border-color:rgba(39,174,96,.18)}.hc.l{border-color:rgba(201,149,42,.18)}.hc.s{border-color:rgba(142,68,173,.18)}
+.hc:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(0,0,0,.32)}
+.hc.q:hover{border-color:var(--quran)}.hc.l:hover{border-color:var(--lang)}.hc.s:hover{border-color:var(--sharia)}
+.hch{padding:1.4rem 1.4rem .9rem}
+.hiw{width:54px;height:54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:.7rem}
+.hc.q .hiw{background:var(--quran-bg)}.hc.l .hiw{background:var(--lang-bg)}.hc.s .hiw{background:var(--sharia-bg)}
+.ht{font-family:'Amiri',serif;font-size:1.25rem;font-weight:700;margin-bottom:.28rem}
+.hc.q .ht{color:#52d68a}.hc.l .ht{color:var(--gold-light)}.hc.s .ht{color:var(--purple-light)}
+.hsub{color:var(--text-muted);font-size:.76rem;line-height:1.6;margin-bottom:.75rem}
+.hst{display:flex;gap:1.1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.hst-i{font-size:.72rem;color:var(--text-muted)}.hst-i strong{color:var(--white);font-size:.9rem;display:block;font-weight:700}
+.hcs{padding:.7rem 1.4rem 1.4rem}
+.slist{display:flex;flex-direction:column;gap:.45rem;margin-bottom:.7rem}
+.si-item{display:flex;align-items:center;gap:.65rem;background:rgba(255,255,255,.04);border-radius:9px;padding:.58rem .82rem;cursor:pointer;transition:all .22s;border:1px solid transparent}
+.si-item:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.1)}
+.sii{font-size:1.1rem;flex-shrink:0}.sn{font-size:.8rem;font-weight:700;flex:1}.sm{font-size:.66rem;color:var(--text-muted)}
+.stag{font-size:.62rem;font-weight:700;padding:.1rem .42rem;border-radius:5px}
+.hc.q .stag{background:var(--quran-bg);color:#52d68a}.hc.l .stag{background:var(--lang-bg);color:var(--gold-light)}.hc.s .stag{background:var(--sharia-bg);color:var(--purple-light)}
+.rm-btn{display:none;background:rgba(192,57,43,.14);border:none;color:#e74c3c;width:20px;height:20px;border-radius:5px;cursor:pointer;font-size:.72rem;align-items:center;justify-content:center;flex-shrink:0}
+body.admin .rm-btn{display:flex}
+.add-row{display:none;gap:.38rem;margin-bottom:.7rem}
+body.admin .add-row{display:flex}
+.add-inp{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.42rem .65rem;color:var(--white);font-family:'Cairo',sans-serif;font-size:.78rem;direction:rtl}
+.add-inp:focus{outline:none;border-color:var(--gold)}
+.add-btn{padding:.42rem .7rem;border-radius:8px;border:none;cursor:pointer;font-weight:700;font-family:'Cairo',sans-serif;font-size:.75rem;transition:all .22s}
+.hc.q .add-btn{background:var(--quran);color:white}.hc.l .add-btn{background:var(--lang);color:var(--navy)}.hc.s .add-btn{background:var(--sharia);color:white}
+.hcta{display:flex;gap:.45rem}
+.hcta .btn{flex:1;font-size:.72rem;padding:.42rem .45rem}
+.admin-badge{display:none;position:fixed;top:68px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#c0392b,#e74c3c);color:white;padding:.32rem 1.1rem;border-radius:100px;font-size:.72rem;font-weight:700;z-index:1500;box-shadow:0 4px 14px rgba(192,57,43,.4)}
+body.admin .admin-badge{display:block}
+
+/* ---- TEACHERS ---- */
+#teachers{background:var(--navy2)}
+.tgr{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1rem}
+.tc2{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.7rem;text-align:center;transition:all .32s;position:relative;overflow:hidden}
+.tc2::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transform:scaleX(0);transition:.32s}
+.tc2:hover{transform:translateY(-4px);border-color:var(--gold)}.tc2:hover::after{transform:scaleX(1)}
+.tav{width:76px;height:76px;border-radius:50%;margin:0 auto .75rem;display:flex;align-items:center;justify-content:center;font-size:1.9rem;color:var(--navy);font-weight:700;font-family:'Amiri',serif;border:3px solid rgba(201,149,42,.22);box-shadow:0 0 0 6px rgba(201,149,42,.07);background:linear-gradient(135deg,var(--gold),var(--gold-light))}
+.tn{font-size:.95rem;font-weight:700;margin-bottom:.22rem}.tt{color:var(--gold);font-size:.75rem;font-weight:600;margin-bottom:.65rem}
+.tlangs{display:flex;gap:.32rem;justify-content:center;flex-wrap:wrap;margin-bottom:.65rem}
+.ltag{background:var(--gold-dim);color:var(--gold-light);padding:.12rem .45rem;border-radius:100px;font-size:.64rem;font-weight:600}
+.texp{color:var(--text-muted);font-size:.74rem;margin-bottom:.65rem}.tst{color:var(--gold);margin-bottom:.75rem;font-size:.85rem}
+.tc2 .btn{width:100%;font-size:.76rem;padding:.48rem}
+
+/* ---- PRICING ---- */
+#pricing{background:var(--navy)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1rem;align-items:stretch}
+.pc{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.8rem 1.4rem;text-align:center;transition:all .32s;position:relative;overflow:hidden}
+.pc.feat{background:linear-gradient(145deg,rgba(201,149,42,.12),rgba(201,149,42,.04));border-color:var(--gold);transform:scale(1.03);box-shadow:0 14px 45px rgba(201,149,42,.17)}
+.pc:hover:not(.feat){transform:translateY(-4px);border-color:rgba(201,149,42,.42)}
+.pbadge{position:absolute;top:.9rem;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);font-size:.66rem;font-weight:800;padding:.18rem .8rem;border-radius:100px;white-space:nowrap}
+.pname{font-size:.74rem;font-weight:700;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin:1.1rem 0 .55rem}
+.pprice{font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:.22rem}
+.pprice sup{font-size:1.2rem;color:var(--gold);font-weight:700;vertical-align:top;margin-top:.38rem;display:inline-block}
+.pper{color:var(--text-muted);font-size:.74rem;margin-bottom:1.4rem}
+.pfeats{list-style:none;margin-bottom:1.3rem;text-align:right}
+.pfeats li{color:var(--text-light);font-size:.78rem;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:.4rem}
+.pfeats li .fi{color:var(--green);font-style:normal;font-weight:700}
+.shint{background:rgba(201,149,42,.06);border-radius:7px;padding:.42rem;font-size:.67rem;color:var(--text-muted);margin-bottom:.9rem;text-align:center}
+.pmethods{display:flex;gap:.4rem;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:1.4rem}
+.pmi{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:.28rem .65rem;font-size:.72rem}
+
+/* ---- REVENUE ---- */
+#revenue{background:linear-gradient(160deg,#0a1628,#0d2a1a,#0d1b2a)}
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:2.2rem;align-items:start}
+.rfeat{display:flex;gap:.75rem;align-items:flex-start;background:var(--card);border:1px solid rgba(201,149,42,.1);border-radius:var(--r);padding:.95rem 1.1rem;transition:all .28s;margin-bottom:.9rem}
+.rfeat:hover{border-color:rgba(201,149,42,.28);background:var(--gold-dim)}
+.rfi{font-size:1.6rem;flex-shrink:0}
+.rfeat h4{font-size:.84rem;font-weight:700;margin-bottom:.18rem}
+.rfeat p{color:var(--text-muted);font-size:.74rem;line-height:1.6}
+.rsteps h4{font-size:.82rem;font-weight:700;color:var(--gold);margin-bottom:.7rem}
+.rstep{display:flex;gap:.6rem;align-items:center;font-size:.78rem;color:var(--text-light);margin-bottom:.5rem}
+.rsn{width:24px;height:24px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:900;font-size:.68rem;flex-shrink:0}
+.rcalc{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.6rem;position:sticky;top:75px}
+.calt{font-size:.95rem;font-weight:700;margin-bottom:1.1rem}
+.calrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem}
+.calinp{background:rgba(255,255,255,.08);border:1px solid var(--border);border-radius:9px;padding:.45rem .8rem;color:var(--white);font-family:'Cairo',sans-serif;font-size:.95rem;font-weight:700;width:120px;text-align:center;direction:ltr}
+.calinp:focus{outline:none;border-color:var(--gold)}
+.sbar{height:12px;border-radius:100px;overflow:hidden;display:flex;margin:1.1rem 0}
+.sbt{background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .4s}
+.sbp{background:rgba(255,255,255,.09);flex:1}
+.scards{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.9rem}
+.sc{border-radius:11px;padding:.9rem;text-align:center}
+.sc.t{background:rgba(201,149,42,.1);border:1px solid rgba(201,149,42,.22)}
+.sc.p{background:var(--card);border:1px solid rgba(255,255,255,.09)}
+.scl{font-size:.64rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.22rem}
+.scp{font-size:1.55rem;font-weight:900;line-height:1;margin-bottom:.13rem}
+.sc.t .scp{color:var(--gold)}.sc.p .scp{color:var(--text-muted)}
+.sca{font-size:.95rem;font-weight:700}
+.sc.t .sca{color:var(--gold-light)}
+.smth{background:rgba(39,174,96,.06);border:1px solid rgba(39,174,96,.16);border-radius:11px;padding:.8rem;margin-top:.7rem}
+.smthl{font-size:.68rem;color:var(--green);font-weight:700;margin-bottom:.42rem}
+.smthg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem;text-align:center}
+.smthi{font-size:.66rem;color:var(--text-muted)}.smthi strong{color:var(--white);font-size:.85rem;display:block}
+
+/* ---- BOOKING ---- */
+#booking{background:var(--navy2)}
+.bcont{display:grid;grid-template-columns:1fr 1.4fr;gap:2.2rem;align-items:start}
+.bstep{display:flex;gap:.7rem;margin-bottom:1.1rem;align-items:flex-start}
+.bsn{width:34px;height:34px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:900;font-size:.8rem;flex-shrink:0}
+.bst h4{font-size:.84rem;font-weight:700;margin-bottom:.13rem}.bst p{color:var(--text-muted);font-size:.74rem}
+.bform{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.8rem}
+.bform h3{font-size:1.1rem;font-weight:700;margin-bottom:1.1rem}
+.fg{margin-bottom:.9rem}
+.fl{font-size:.74rem;font-weight:700;color:var(--gold);margin-bottom:.32rem;display:flex;align-items:center;gap:.35rem}
+.fc{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.6rem .85rem;color:var(--white);font-family:'Cairo',sans-serif;font-size:.82rem;transition:border-color .22s;direction:rtl}
+.fc:focus{outline:none;border-color:var(--gold)}.fc option{background:var(--navy2)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.tz-pill2{display:inline-flex;align-items:center;gap:.35rem;background:rgba(52,152,219,.1);border:1px solid rgba(52,152,219,.2);border-radius:7px;padding:.22rem .55rem;font-size:.66rem;color:#5dade2;margin-bottom:.7rem}
+
+/* calendar */
+.cal{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:11px;overflow:hidden;margin-bottom:.9rem}
+.calh{display:flex;align-items:center;justify-content:space-between;padding:.62rem .9rem;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06)}
+.calh h4{font-size:.82rem;font-weight:700}
+.calnav{background:none;border:none;color:var(--gold);cursor:pointer;font-size:.95rem;padding:.18rem .45rem;border-radius:5px;transition:background .2s}
+.calnav:hover{background:var(--gold-dim)}
+.calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;padding:.55rem}
+.cdn{font-size:.6rem;font-weight:700;color:var(--text-muted);text-align:center;padding:.25rem 0}
+.cd{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.74rem;border-radius:7px;cursor:pointer;transition:all .18s;font-weight:600;border:1.5px solid transparent;position:relative}
+.cd:hover:not(.empty):not(.past){background:var(--gold-dim);color:var(--gold)}
+.cd.empty,.cd.past{cursor:default}.cd.past{color:var(--text-muted);opacity:.38}
+.cd.sel{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border-color:transparent;font-weight:900}
+.cd.today{border-color:var(--gold);color:var(--gold)}
+.cd.hs::after{content:'';width:3px;height:3px;background:var(--green);border-radius:50%;position:absolute;bottom:2px;left:50%;transform:translateX(-50%)}
+.sddisp{font-size:.74rem;color:var(--gold);margin:.35rem 0;display:none}
+
+/* time slots */
+.tsl-group{display:none}
+.tsls{display:grid;grid-template-columns:repeat(4,1fr);gap:.35rem;margin-bottom:.9rem}
+.tsl{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:7px;padding:.45rem .35rem;font-size:.72rem;font-weight:700;text-align:center;cursor:pointer;transition:all .18s;color:var(--text-light)}
+.tsl:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+.tsl.sel{background:linear-gradient(135deg,var(--gold),var(--gold-light));border-color:transparent;color:var(--navy)}
+.tsl.bkd{opacity:.38;cursor:not-allowed;text-decoration:line-through}
+
+/* split preview */
+.bsp{background:var(--gold-dim);border:1px solid rgba(201,149,42,.2);border-radius:9px;padding:.82rem;margin-top:.7rem}
+.bspt{font-weight:700;color:var(--gold);margin-bottom:.38rem;font-size:.78rem}
+.bspr{display:flex;justify-content:space-between;color:var(--text-muted);margin:.18rem 0;font-size:.76rem}
+.bspr strong{color:var(--white)}
+
+/* ---- TESTIMONIALS ---- */
+#testimonials{padding:3.5rem 0;overflow:hidden;background:var(--navy)}
+.track{display:flex;gap:1.1rem;animation:sl 28s linear infinite;width:max-content}
+.track:hover{animation-play-state:paused}
+@keyframes sl{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tc3{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem 1.5rem;width:290px;flex-shrink:0;position:relative}
+.tc3::before{content:'"';position:absolute;top:-.35rem;right:1.1rem;font-size:4.2rem;color:var(--gold);font-family:'Amiri',serif;opacity:.22;line-height:1}
+.ts{color:var(--gold);font-size:.82rem;margin-bottom:.55rem}
+.tt2{color:var(--text-light);font-size:.78rem;line-height:1.7;margin-bottom:.8rem}
+.ta{display:flex;align-items:center;gap:.65rem}
+.tav2{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--navy);font-weight:700;flex-shrink:0}
+.tn2{font-size:.78rem;font-weight:700}.tl{font-size:.66rem;color:var(--text-muted)}
+
+/* ---- RESOURCES ---- */
+#resources{background:var(--navy2)}
+.fbar{display:flex;gap:.38rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.fbtn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--text-light);padding:.38rem .85rem;border-radius:100px;font-size:.74rem;font-weight:600;cursor:pointer;transition:all .22s;font-family:'Cairo',sans-serif;min-height:34px}
+.fbtn.active,.fbtn:hover{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.rgr{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.9rem}
+.rc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem;transition:all .22s;cursor:pointer}
+.rc:hover{transform:translateY(-3px);border-color:var(--gold);background:var(--gold-dim)}
+.rtype{font-size:.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:.45rem}
+.ricon{font-size:1.7rem;margin-bottom:.55rem}
+.rname{font-size:.82rem;font-weight:700;margin-bottom:.28rem}
+.rdesc{font-size:.72rem;color:var(--text-muted);line-height:1.5}
+
+/* ---- AI ---- */
+#ai{background:linear-gradient(160deg,#0a1628,#0d2a1a,#0d1b2a)}
+.aigrid{display:grid;grid-template-columns:1fr 1fr;gap:2.2rem;align-items:center}
+.aif{display:flex;gap:.75rem;align-items:flex-start;background:var(--card);border:1px solid rgba(39,174,96,.16);border-radius:var(--r);padding:.95rem 1.1rem;transition:all .22s;margin-bottom:.9rem}
+.aif:hover{border-color:rgba(39,174,96,.38);background:rgba(39,174,96,.06)}
+.afic{font-size:1.5rem;flex-shrink:0}
+.aif h4{font-size:.84rem;font-weight:700;margin-bottom:.18rem}
+.aif p{color:var(--text-muted);font-size:.74rem;line-height:1.6}
+.aidemo{background:var(--card);border:1px solid rgba(39,174,96,.22);border-radius:var(--r-lg);overflow:hidden}
+.aidh{background:rgba(39,174,96,.1);padding:.82rem 1.1rem;display:flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:700;color:var(--green);border-bottom:1px solid rgba(39,174,96,.16)}
+.aichat{padding:1.1rem;display:flex;flex-direction:column;gap:.75rem;height:240px;overflow-y:auto}
+.aim{padding:.65rem .85rem;border-radius:10px;font-size:.78rem;line-height:1.6;max-width:84%}
+.aim.bot{background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.16);align-self:flex-start;color:var(--text-light)}
+.aim.usr{background:rgba(201,149,42,.1);border:1px solid rgba(201,149,42,.16);align-self:flex-end;text-align:right}
+.aiinp{padding:.82rem 1.1rem;border-top:1px solid rgba(39,174,96,.16);display:flex;gap:.38rem}
+.aiinp input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.45rem .85rem;color:var(--white);font-family:'Cairo',sans-serif;font-size:.78rem;direction:rtl}
+.aiinp input:focus{outline:none;border-color:var(--green)}
+
+/* ---- DASHBOARD ---- */
+#dashboard{background:var(--navy)}
+.dtabs{display:flex;gap:.7rem;margin-bottom:1.4rem;flex-wrap:wrap}
+.dtab{padding:.5rem 1.1rem;border-radius:100px;background:var(--card);border:1px solid rgba(255,255,255,.1);color:var(--text-light);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .22s;font-family:'Cairo',sans-serif;min-height:38px}
+.dtab.active{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border-color:transparent}
+.dpanel{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.6rem}
+.prog-item{margin-bottom:.82rem}
+.prog-lbl{display:flex;justify-content:space-between;font-size:.76rem;margin-bottom:.32rem}
+.prog-bar{height:7px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden}
+.prog-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width 1s ease}
+.prog-fill.gn{background:linear-gradient(90deg,var(--green),var(--green-light))}
+.dscards{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:.9rem}
+.dsc{border-radius:11px;padding:.82rem;text-align:center}
+.dsc.g{background:rgba(201,149,42,.1);border:1px solid rgba(201,149,42,.2)}
+.dsc.gr{background:rgba(39,174,96,.1);border:1px solid rgba(39,174,96,.2)}
+.dscn{font-size:1.7rem;font-weight:900}
+.dsc.g .dscn{color:var(--gold)}.dsc.gr .dscn{color:var(--green)}
+.dscl{font-size:.68rem;color:var(--text-muted)}
+.litem{display:flex;align-items:center;gap:.82rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:9px;padding:.82rem;margin-bottom:.65rem}
+.ldate{width:42px;height:42px;background:rgba(201,149,42,.11);border-radius:9px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.lday{font-size:1.05rem;font-weight:900;color:var(--gold);line-height:1}.lmon{font-size:.58rem;color:var(--text-muted);text-transform:uppercase}
+.linfo h4{font-size:.8rem;font-weight:700}.linfo p{font-size:.68rem;color:var(--text-muted)}
+.ljoin{margin-right:auto}
+.earnh{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:1.3rem}
+.earn{border-radius:11px;padding:.9rem;text-align:center}
+.earn.tot{background:rgba(201,149,42,.11);border:1px solid rgba(201,149,42,.22)}
+.earn.mon{background:rgba(39,174,96,.09);border:1px solid rgba(39,174,96,.18)}
+.earn.pen{background:rgba(52,152,219,.09);border:1px solid rgba(52,152,219,.18)}
+.elbl{font-size:.62rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:.22rem}
+.earn.tot .elbl{color:var(--gold)}.earn.mon .elbl{color:var(--green)}.earn.pen .elbl{color:#5dade2}
+.eamt{font-size:1.6rem;font-weight:900;font-family:'Amiri',serif}
+.earn.tot .eamt{color:var(--gold)}.earn.mon .eamt{color:var(--green)}.earn.pen .eamt{color:#5dade2}
+.enote{font-size:.62rem;color:var(--text-muted);margin-top:.13rem}
+.etable{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:11px;overflow:hidden}
+.etr{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:.7rem;padding:.65rem .85rem;font-size:.74rem;border-bottom:1px solid rgba(255,255,255,.04);align-items:center}
+.etr:last-child{border-bottom:none}
+.etr.hdr{background:rgba(255,255,255,.05);color:var(--text-muted);font-size:.65rem;font-weight:700;text-transform:uppercase}
+.esh{color:var(--gold);font-weight:700}
+.est{padding:.16rem .5rem;border-radius:100px;font-size:.64rem;font-weight:700;width:fit-content}
+.est.paid{background:rgba(39,174,96,.14);color:var(--green)}.est.pend{background:rgba(52,152,219,.14);color:#5dade2}
+
+/* ---- ADMIN ANALYTICS ---- */
+#admin-an{background:var(--navy2);display:none}
+body.admin #admin-an{display:block}
+.agrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.3rem}
+.acard{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.4rem}
+.acard h4{font-size:.84rem;font-weight:700;color:var(--gold);margin-bottom:1.1rem;display:flex;align-items:center;gap:.38rem}
+.chart-wr{display:flex;align-items:flex-end;gap:.35rem;height:85px}
+.ccol{display:flex;flex-direction:column;align-items:center;flex:1;gap:.25rem}
+.cbo{flex:1;display:flex;align-items:flex-end;width:100%}
+.cb{background:linear-gradient(180deg,var(--gold),rgba(201,149,42,.4));border-radius:3px 3px 0 0;width:100%;transition:height .6s;min-height:4px}
+.cb.gn{background:linear-gradient(180deg,var(--green),rgba(39,174,96,.4))}.cb.pu{background:linear-gradient(180deg,var(--purple),rgba(142,68,173,.4))}
+.clbl{font-size:.58rem;color:var(--text-muted);text-align:center}.cval{font-size:.65rem;color:var(--gold);font-weight:700}
+.hbar-row{display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem}
+.hbar-lbl{font-size:.76rem;color:var(--text-light);min-width:72px}
+.hbar-wr{flex:1;height:7px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden}
+.hbar{height:100%;border-radius:100px}
+.hbar-val{font-size:.7rem;font-weight:700;min-width:32px;text-align:left}
+.strow{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1.4rem}
+.stmini{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:.82rem;text-align:center}
+.stmn{font-size:1.4rem;font-weight:900;color:var(--gold);font-family:'Amiri',serif}
+.stml{font-size:.64rem;color:var(--text-muted)}
+
+/* ---- ROADMAP ---- */
+#roadmap{background:var(--navy)}
+.rogrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1.1rem}
+.rocard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.6rem;position:relative;overflow:hidden;transition:all .32s}
+.rocard:hover{transform:translateY(-4px);border-color:var(--gold)}
+.roph{font-size:.62rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem}
+.rot{font-size:.72rem;color:var(--text-muted);margin-bottom:.72rem}
+.rocard h3{font-size:.95rem;font-weight:700;margin-bottom:.72rem}
+.roitems{list-style:none}
+.roitems li{color:var(--text-light);font-size:.76rem;padding:.22rem 0;display:flex;align-items:center;gap:.38rem}
+.roitems li::before{content:'→';color:var(--gold)}
+.ronum{position:absolute;bottom:.7rem;left:1.1rem;font-size:4.2rem;font-weight:900;color:rgba(201,149,42,.05);line-height:1;font-family:'Amiri',serif}
+
+/* ---- CONTACT ---- */
+#contact{background:var(--navy2)}
+.cngrid{display:grid;grid-template-columns:1fr 1.4fr;gap:2.2rem;align-items:start}
+.cnopts{display:flex;flex-direction:column;gap:.72rem}
+.cnopt{display:flex;gap:.75rem;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:.95rem 1.1rem;transition:all .22s;text-decoration:none;color:inherit}
+.cnopt:hover{border-color:var(--gold);background:var(--gold-dim);transform:translateX(-3px)}
+.cnoi{width:42px;height:42px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.cnoi.wa{background:rgba(37,211,102,.11)}.cnoi.em{background:rgba(201,149,42,.11)}.cnoi.ph{background:rgba(52,152,219,.11)}
+.cnol{font-size:.66rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+.cnov{font-size:.82rem;font-weight:700}
+
+/* ---- FOOTER ---- */
+footer{background:#070e16;border-top:1px solid var(--border);padding:2.2rem 1.5rem 1.3rem}
+.fi{max-width:1400px;margin:0 auto}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:1.8rem;margin-bottom:2rem}
+.fb p{color:var(--text-muted);font-size:.78rem;line-height:1.7;margin-top:.7rem;margin-bottom:1.1rem}
+.sl{display:flex;gap:.38rem}
+.slink{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--text-muted);text-decoration:none;font-size:.8rem;transition:all .22s}
+.slink:hover{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.fcol h4{font-size:.74rem;font-weight:700;color:var(--gold);margin-bottom:.82rem;text-transform:uppercase;letter-spacing:1px}
+.fcol a{display:block;color:var(--text-muted);text-decoration:none;font-size:.76rem;padding:.22rem 0;transition:color .22s}
+.fcol a:hover{color:var(--white)}
+.fbot{border-top:1px solid rgba(255,255,255,.06);padding-top:1.3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem}
+.fbot p{color:var(--text-muted);font-size:.7rem}
+.wa-float{position:fixed;bottom:calc(var(--nav-h) + .8rem);left:1.3rem;z-index:998;background:#25d366;color:white;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 4px 16px rgba(37,211,102,.42);text-decoration:none;animation:wap 2s infinite}
+@keyframes wap{0%,100%{box-shadow:0 4px 16px rgba(37,211,102,.42)}50%{box-shadow:0 4px 28px rgba(37,211,102,.65)}}
+
+/* ---- MODALS ---- */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:3000;align-items:flex-start;justify-content:center;backdrop-filter:blur(4px);padding:1rem;overflow-y:auto}
+.mo.open{display:flex}
+.modal{background:var(--navy2);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.8rem;max-width:500px;width:100%;position:relative;animation:mIn .32s ease;margin:auto;max-height:90vh;overflow-y:auto}
+.modal-lg{max-width:650px}.modal-xl{max-width:880px}
+@keyframes mIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.mc{position:absolute;top:.8rem;left:.8rem;background:rgba(255,255,255,.08);border:none;color:var(--white);width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .22s}
+.mc:hover{background:var(--red)}
+.modal h3{font-size:1.3rem;font-weight:700;margin-bottom:.38rem}
+.modal .sub{color:var(--text-muted);font-size:.8rem;margin-bottom:1.2rem}
+.mtabs{display:flex;gap:.38rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.mtab{padding:.35rem .85rem;border-radius:100px;font-size:.74rem;font-weight:700;cursor:pointer;border:1px solid rgba(255,255,255,.1);background:var(--card);color:var(--text-muted);font-family:'Cairo',sans-serif;transition:all .22s;min-height:34px}
+.mtab.active{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.atabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.4rem}
+.atab{flex:1;padding:.65rem;text-align:center;font-size:.84rem;font-weight:700;cursor:pointer;transition:all .22s;border-bottom:2px solid transparent;color:var(--text-muted)}
+.atab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.soclogin{display:flex;gap:.55rem;margin-bottom:.9rem}
+.soclogin .btn{flex:1;font-size:.76rem}
+.dline{display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem;color:var(--text-muted);font-size:.7rem}
+.dline::before,.dline::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08)}
+.pmgrid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;margin:1rem 0}
+.pmeth{background:var(--card);border:1.5px solid rgba(255,255,255,.1);border-radius:9px;padding:.72rem;text-align:center;cursor:pointer;transition:all .22s;font-size:.76rem;font-weight:700}
+.pmeth:hover,.pmeth.sel{border-color:var(--gold);background:var(--gold-dim);color:var(--gold)}
+.cfield-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:.55rem}
+.cert-box{background:linear-gradient(145deg,#0a1e2e,#1a3550);border:2px solid var(--gold);border-radius:var(--r-lg);padding:2.2rem;text-align:center;margin-bottom:.9rem}
+.cert-seal{width:72px;height:72px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--navy);margin:0 auto 1.2rem}
+.cert-title{font-family:'Amiri',serif;font-size:1.2rem;color:var(--gold);margin-bottom:.38rem}
+.cert-name{font-family:'Amiri',serif;font-size:1.8rem;font-weight:700;margin:1rem 0}
+.cert-course{font-size:.9rem;color:var(--gold-light);margin-bottom:.42rem}
+.cert-date{font-size:.74rem;color:var(--text-muted)}
+.cert-deco{display:flex;justify-content:center;gap:.9rem;margin-top:1rem;color:var(--gold);opacity:.38;font-size:1.4rem}
+.rstars{display:flex;gap:.45rem;justify-content:center;margin:1rem 0}
+.rstar{font-size:2.3rem;cursor:pointer;transition:transform .18s;color:var(--text-muted)}
+.rstar.active,.rstar:hover{color:var(--gold);transform:scale(1.14)}
+.class-grid{display:grid;grid-template-columns:1fr 280px;gap:.9rem;height:60vh;min-height:380px}
+.class-main{background:#000;border-radius:var(--r);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.class-lbl{position:absolute;bottom:.7rem;right:.7rem;background:rgba(0,0,0,.7);border-radius:7px;padding:.28rem .65rem;font-size:.72rem;font-weight:700}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:.38rem;margin-bottom:.55rem}
+.vthumb{aspect-ratio:16/9;background:#111;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;border:1.5px solid rgba(255,255,255,.1);position:relative;overflow:hidden}
+.vtlbl{position:absolute;bottom:.25rem;right:.25rem;font-size:.58rem;background:rgba(0,0,0,.7);padding:.12rem .38rem;border-radius:4px;color:white}
+.csidebar{display:flex;flex-direction:column;gap:.55rem}
+.cchat{flex:1;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;min-height:180px}
+.cmsgs{flex:1;padding:.7rem;display:flex;flex-direction:column;gap:.42rem;overflow-y:auto;max-height:160px}
+.cmsg{font-size:.7rem;line-height:1.5}.cmsg strong{color:var(--gold);font-size:.67rem}
+.cinput-row{padding:.42rem;border-top:1px solid rgba(255,255,255,.06);display:flex;gap:.35rem}
+.cinput{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:.32rem .55rem;color:white;font-family:'Cairo',sans-serif;font-size:.7rem;direction:rtl}
+.cinput:focus{outline:none;border-color:var(--green)}
+.ctrls{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.72rem;border-top:1px solid rgba(255,255,255,.08)}
+.ctrl{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:white;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .22s}
+.ctrl:hover{border-color:var(--gold);color:var(--gold)}
+.ctrl.red{background:var(--red);border-color:var(--red)}
+.ctrl.on{background:var(--green);border-color:var(--green)}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:1100px){.hgrid{grid-template-columns:1fr}.rgrid{grid-template-columns:1fr}.rcalc{position:static}}
+@media(max-width:900px){.hcont{grid-template-columns:1fr}.hvis{display:none}.aigrid{grid-template-columns:1fr}.bcont{grid-template-columns:1fr}.cngrid{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr 1fr}.class-grid{grid-template-columns:1fr;height:auto}.earnh{grid-template-columns:1fr}.etable{display:none}.tgr{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){header{padding:0 1rem}.hnav{display:none}.burger{display:flex}.ha .btn-outline,.ha .lang-sel{display:none}.mbn{display:flex}.si{padding:3rem 1rem}.hbtns .btn{font-size:.8rem;padding:.55rem .9rem}.frow{grid-template-columns:1fr}.pc.feat{transform:none}.fgrid{grid-template-columns:1fr}.hgrid{grid-template-columns:1fr}.strow{grid-template-columns:1fr 1fr}.tgr{grid-template-columns:1fr 1fr}.agrid{grid-template-columns:1fr}.rogrid{grid-template-columns:1fr}}
+@media(max-width:480px){.hstats{gap:.9rem}.snum{font-size:1.4rem}.tgr{grid-template-columns:1fr}.earnh{grid-template-columns:1fr}.dtabs{gap:.35rem}.dtab{font-size:.72rem;padding:.42rem .82rem}.tsls{grid-template-columns:repeat(3,1fr)}.scards{grid-template-columns:1fr 1fr}.cfield-row{grid-template-columns:1fr}.pmgrid{grid-template-columns:1fr 1fr}.class-grid{height:auto}}
+@media print{body *{display:none}.cert-box,.cert-box *{display:block!important}}
+
+/* ===== ADMIN PANEL ===== */
+#admin-panel{background:var(--navy2);display:none}
+body.adm #admin-panel{display:block}
+.aph{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem}
+.apt{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.aptb{padding:.48rem 1rem;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);color:var(--text-muted);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .22s;font-family:'Cairo',sans-serif;min-height:36px}
+.aptb.ac{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border-color:transparent}
+.apn{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;display:none}
+.apn.sh{display:block}
+.str{display:grid;grid-template-columns:repeat(4,1fr);gap:.72rem;margin-bottom:1.5rem}
+.stc{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:11px;padding:.9rem;text-align:center}
+.stn{font-size:1.45rem;font-weight:900;color:var(--gold);font-family:'Amiri',serif}
+.stl{font-size:.65rem;color:var(--text-muted)}
+.chw{display:flex;align-items:flex-end;gap:.38rem;height:85px;padding-top:.45rem}
+.chco{display:flex;flex-direction:column;align-items:center;flex:1;gap:.28rem}
+.chbo{flex:1;display:flex;align-items:flex-end;width:100%}
+.chb{border-radius:4px 4px 0 0;width:100%;transition:height .6s ease;min-height:4px;background:linear-gradient(180deg,var(--gold),rgba(201,149,42,.35))}
+.chb.gn{background:linear-gradient(180deg,var(--green),rgba(39,174,96,.35))}
+.chb.pu{background:linear-gradient(180deg,#8e44ad,rgba(142,68,173,.35))}
+.chlb{font-size:.6rem;color:var(--text-muted);text-align:center}
+.chvl{font-size:.65rem;color:var(--gold);font-weight:700;text-align:center}
+.hbr{display:flex;flex-direction:column;gap:.75rem}
+.hbw{display:flex;align-items:center;gap:.75rem}
+.hbl{font-size:.78rem;color:var(--text-light);min-width:80px}
+.hbb{flex:1;height:7px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden}
+.hbf{height:100%;border-radius:100px}
+.hbv{font-size:.72rem;font-weight:700;min-width:35px}
+.adt{width:100%;border-collapse:collapse;font-size:.8rem}
+.adt th{background:rgba(255,255,255,.05);padding:.6rem .8rem;text-align:right;font-size:.7rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.06)}
+.adt td{padding:.65rem .8rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--text-light);vertical-align:middle}
+.adt tr:hover td{background:rgba(255,255,255,.03)}
+.ab{padding:.22rem .55rem;border-radius:6px;font-size:.68rem;font-weight:700;border:none;cursor:pointer;font-family:'Cairo',sans-serif;margin-left:.2rem}
+.ab.gn{background:rgba(39,174,96,.15);color:var(--green)}
+.ab.re{background:rgba(192,57,43,.15);color:#e74c3c}
+.ab.go{background:rgba(201,149,42,.15);color:var(--gold)}
+.ab.bl{background:rgba(52,152,219,.15);color:#5dade2}
+.afrm{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:11px;padding:1.2rem;margin-bottom:1.2rem}
+.afrm h4{font-size:.85rem;font-weight:700;color:var(--gold);margin-bottom:1rem}
+.afrw{display:grid;grid-template-columns:1fr 1fr;gap:.72rem}
+.stg-list{display:flex;flex-direction:column;gap:.75rem}
+.stg-row{display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;padding:.85rem 1rem}
+.stg-info h4{font-size:.85rem;font-weight:700;margin-bottom:.18rem}
+.stg-info p{font-size:.75rem;color:var(--text-muted)}
+.tgl{width:44px;height:24px;background:rgba(255,255,255,.1);border-radius:100px;position:relative;cursor:pointer;transition:background .3s;flex-shrink:0}
+.tgl.on{background:var(--green)}
+.tgl::after{content:'';width:18px;height:18px;background:#fff;border-radius:50%;position:absolute;top:3px;right:3px;transition:transform .3s}
+.tgl.on::after{transform:translateX(-20px)}
+.alog{display:flex;flex-direction:column;gap:.5rem;max-height:360px;overflow-y:auto}
+.algi{display:flex;align-items:flex-start;gap:.65rem;padding:.55rem .72rem;border-radius:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.04);font-size:.75rem}
+.algi.s{border-color:rgba(39,174,96,.15)}.algi.w{border-color:rgba(201,149,42,.15)}.algi.e{border-color:rgba(192,57,43,.15)}
+.algt{font-size:.65rem;color:var(--text-muted);margin-top:.18rem}
+.rbd{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.rbc{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:11px;padding:1rem}
+.rbc h4{font-size:.8rem;font-weight:700;color:var(--gold);margin-bottom:.8rem}
+.angr{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem;margin-top:1.5rem}
+.ancd{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.4rem}
+.ancd h4{font-size:.85rem;font-weight:700;color:var(--gold);margin-bottom:1.1rem}
+.adm-admlink{display:none !important}
+body.adm .adm-admlink{display:block !important}
+.adm-badge2{display:none;position:fixed;top:70px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#c0392b,#e74c3c);color:#fff;padding:.3rem 1.1rem;border-radius:100px;font-size:.72rem;font-weight:700;z-index:1500;box-shadow:0 4px 14px rgba(192,57,43,.4);white-space:nowrap}
+body.adm .adm-badge2{display:block}
+@media(max-width:768px){.str{grid-template-columns:1fr 1fr}.afrw{grid-template-columns:1fr}.rbd{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div id="toastBox"></div>
+<div class="admin-badge" id="adminBadge">🔐 وضع الإدارة — إضافة وحذف الأقسام مفعّل</div>
+<div class="notif-banner" id="banner">🎉 <span id="bannerTxt">عرض خاص: درس تجريبي مجاني للطلاب الجدد! احجز الآن</span><span class="banner-x" onclick="this.parentElement.style.display='none'">✕</span></div>
+<a href="https://wa.me/212600000000" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div class="hi">
+    <a href="#" class="logo"><div class="logo-icon">ن</div><div class="logo-text">نور العربية<span>Nour Al-Arabia</span></div></a>
+    <nav class="hnav">
+      <a href="#hero">الرئيسية</a><a href="#halls">🏛️ الفصول</a><a href="#teachers">المعلمون</a>
+      <a href="#pricing">الأسعار</a><a href="#revenue">💰 التوزيع</a><a href="#booking">احجز</a>
+      <a href="#dashboard">لوحتي</a><a href="#contact">تواصل</a>
+    </nav>
+    <div class="ha">
+      <div style="position:relative">
+        <div class="nbell" id="nbell" onclick="toggleND()"><i class="fas fa-bell" style="font-size:.85rem"></i><div class="ndot" id="ndot"></div></div>
+        <div class="ndd" id="ndd"><div class="ndh">الإشعارات<button onclick="markRead()" style="background:none;border:none;color:var(--text-muted);font-size:.68rem;cursor:pointer">قراءة الكل</button></div><div id="nlist"></div></div>
+      </div>
+      <button class="btn btn-ghost btn-sm" id="adminBtn" onclick="toggleAdmin()">⚙️ إدارة</button>
+      <select class="lang-sel" id="langSel"><option value="ar">🇸🇦 AR</option><option value="en">🇬🇧 EN</option><option value="fr">🇫🇷 FR</option><option value="es">🇪🇸 ES</option><option value="de">🇩🇪 DE</option></select>
+      <a href="#" class="btn btn-outline btn-sm" id="loginBtn" onclick="openM('authM')">دخول</a>
+      <button class="uavbtn" id="uavbtn" onclick="openDrawer()"><div class="uav-mini" id="uavmini">ط</div><span id="uname">طالب</span><i class="fas fa-chevron-down" style="font-size:.6rem;color:var(--text-muted)"></i></button>
+      <div class="burger" id="burger" onclick="toggleDrawer()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+
+<!-- DRAWER OVERLAY -->
+<div class="doverlay" id="doverlay" onclick="closeDrawer()"></div>
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+  <div class="dh">
+    <div class="logo"><div class="logo-icon">ن</div><div class="logo-text">نور العربية<span>Nour Al-Arabia</span></div></div>
+    <button class="dx" onclick="closeDrawer()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="du">
+    <div class="du-info"><div class="du-av" id="dav">ط</div><div><div class="du-name" id="dname">مرحباً!</div><div class="du-role" id="drole">زائر</div></div></div>
+    <select class="lang-sel" style="width:100%;margin-bottom:.5rem" onchange="applyLang(this.value)"><option value="ar">🇸🇦 العربية</option><option value="en">🇬🇧 English</option><option value="fr">🇫🇷 Français</option><option value="es">🇪🇸 Español</option></select>
+    <div class="tz-pill"><i class="fas fa-clock"></i> <span id="dtz">UTC</span></div>
+  </div>
+  <nav class="dnav">
+    <a href="#hero" onclick="closeDrawer()"><span class="di">🏠</span>الرئيسية</a>
+    <a href="#halls" onclick="closeDrawer()"><span class="di">🏛️</span>الفصول الثلاثة</a>
+    <a href="#courses" onclick="closeDrawer()"><span class="di">📚</span>الدورات</a>
+    <a href="#teachers" onclick="closeDrawer()"><span class="di">👨‍🏫</span>المعلمون</a>
+    <a href="#pricing" onclick="closeDrawer()"><span class="di">💳</span>الأسعار</a>
+    <a href="#revenue" onclick="closeDrawer()"><span class="di">💰</span>التوزيع المالي</a>
+    <a href="#booking" onclick="closeDrawer()"><span class="di">📅</span>احجز درساً</a>
+    <a href="#dashboard" onclick="closeDrawer()"><span class="di">📊</span>لوحتي الشخصية</a>
+    <a href="#resources" onclick="closeDrawer()"><span class="di">📖</span>المكتبة</a>
+    <a href="#" onclick="openM('classM');closeDrawer()"><span class="di">🎥</span>الفصل المباشر</a>
+    <a href="#" onclick="openM('certM');closeDrawer()"><span class="di">📜</span>شهاداتي</a>
+    <a href="#contact" onclick="closeDrawer()"><span class="di">✉️</span>تواصل معنا</a>
+  </nav>
+  <div class="dact">
+    <button class="btn btn-gold btn-full" onclick="openM('trialM');closeDrawer()">🎓 درس تجريبي مجاني</button>
+    <button class="btn btn-ghost btn-full" id="dauthbtn" onclick="openM('authM');closeDrawer()">تسجيل الدخول</button>
+    <button class="btn btn-ghost btn-sm btn-full" onclick="toggleAdmin();closeDrawer()">⚙️ وضع الإدارة</button>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav class="mbn">
+  <div class="mbn-inner">
+    <a href="#hero" class="mbn-item active"><i class="fas fa-home"></i><span>الرئيسية</span></a>
+    <a href="#halls" class="mbn-item"><i class="fas fa-school"></i><span>الفصول</span></a>
+    <a href="#booking" class="mbn-item mbn-cta"><i class="fas fa-calendar-plus"></i></a>
+    <a href="#dashboard" class="mbn-item"><i class="fas fa-chart-bar"></i><span>لوحتي</span></a>
+    <a href="#" class="mbn-item" onclick="openM('authM')"><i class="fas fa-user-circle"></i><span>حسابي</span></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hpat"></div><div class="hcal">ع</div>
+  <div class="hcont">
+    <div>
+      <div class="hbadge">🏆 المدرسة الرقم 1 لتعلم العربية عبر الإنترنت</div>
+      <h1 class="htitle">تعلّم <span class="hl">العربية</span><br>مع أفضل المعلمين<br>من المغرب ومصر</h1>
+      <p class="hdesc">ثلاثة فصول تعليمية عالمية — القرآن، اللغات، والعلوم الشرعية. دروس مباشرة، شهادات معتمدة، وتوزيع مالي عادل.</p>
+      <div class="hbtns">
+        <a href="#halls" class="btn btn-primary btn-lg">🏛️ استكشف الفصول</a>
+        <a href="#" class="btn btn-gold btn-lg" onclick="openM('trialM')">🎓 درس مجاني</a>
+        <a href="https://wa.me/212600000000" class="btn btn-green btn-lg" target="_blank"><i class="fab fa-whatsapp"></i> واتساب</a>
+      </div>
+      <div class="hstats">
+        <div><div class="snum">+2500</div><div class="slb">طالب نشط</div></div>
+        <div><div class="snum">35+</div><div class="slb">معلم محترف</div></div>
+        <div><div class="snum">+50</div><div class="slb">دولة</div></div>
+        <div><div class="snum">4.9⭐</div><div class="slb">تقييم</div></div>
+      </div>
+    </div>
+    <div class="hvis">
+      <div class="hcard"><div class="hvid"><div class="playbtn" onclick="openM('classM')">▶</div></div></div>
+      <div class="hfl hfl1"><span style="font-size:1.2rem">📖</span><div><div style="font-size:.7rem;font-weight:700">درس مباشر الآن</div><div style="font-size:.66rem;color:var(--text-muted)">42 طالب متصل</div></div></div>
+      <div class="hfl hfl2"><span style="font-size:1.2rem">🏆</span><div><div style="font-size:.7rem;font-weight:700">شهادة معتمدة</div><div style="font-size:.66rem;color:var(--text-muted)">بعد إتمام الدورة</div></div></div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- TRUST -->
+<section id="trust"><div class="si">
+  <div class="tc"><div class="slabel">لماذا تختارنا</div><h2 class="stitle"><span class="gold">مدرستنا</span> تختلف عن الجميع</h2><p class="sdesc">نؤمن بأن تعلم العربية رحلة روحية وفكرية. لذلك نقدم أفضل تجربة تعليمية متكاملة.</p></div>
+  <div class="tgrid reveal">
+    <div class="tc-card"><span class="tc-icon">👨‍🏫</span><h3>مدرسون محترفون</h3><p>متخصصون بشهادات عليا من المغرب ومصر</p></div>
+    <div class="tc-card"><span class="tc-icon">🎯</span><h3>متابعة فردية</h3><p>خطة تعلم مخصصة لكل طالب وفق مستواه</p></div>
+    <div class="tc-card"><span class="tc-icon">📜</span><h3>شهادات معتمدة</h3><p>شهادة موثقة PDF بعد إنهاء كل دورة</p></div>
+    <div class="tc-card"><span class="tc-icon">🌐</span><h3>7 لغات تدريس</h3><p>العربية، الإنجليزية، الفرنسية، الإسبانية وأكثر</p></div>
+    <div class="tc-card"><span class="tc-icon">🕌</span><h3>محتوى شرعي موثوق</h3><p>مناهج معتمدة من علماء مختصين</p></div>
+    <div class="tc-card"><span class="tc-icon">⏰</span><h3>مرونة تامة في المواعيد</h3><p>24/7 بتوقيتك المحلي تلقائياً</p></div>
+    <div class="tc-card"><span class="tc-icon">💰</span><h3>70% للمعلم</h3><p>نظام توزيع مالي عادل وشفاف وتلقائي</p></div>
+    <div class="tc-card"><span class="tc-icon">⭐</span><h3>تقييم حقيقي بعد كل درس</h3><p>شفافية كاملة بين الطالب والمعلم والمنصة</p></div>
+  </div>
+</div></section>
+<div class="divider"></div>
+
+<!-- HALLS -->
+<section id="halls"><div class="si">
+  <div class="tc"><div class="slabel">المنصة التعليمية الشاملة</div><h2 class="stitle"><span class="gold">الفصول الثلاثة</span> العالمية</h2><p class="sdesc">كل فصل وحدة تعليمية مستقلة ومتكاملة، بأقسام قابلة للتوسع المستمر</p></div>
+  <div class="hgrid reveal">
+    <!-- QURAN HALL -->
+    <div class="hc q">
+      <div class="hch"><div class="hiw">🕌</div><div class="ht">فصل القرآن والتجويد</div><div class="hsub">تعلم القرآن الكريم وأحكام التجويد على يد حفاظ متخصصين مجازين بالسند المتصل</div><div class="hst"><div class="hst-i"><strong id="qst">486</strong>طالب</div><div class="hst-i"><strong id="qct">4</strong>قسم</div><div class="hst-i"><strong>8</strong>معلم</div></div></div>
+      <div class="hcs"><div class="slist" id="q-secs"></div><div class="add-row"><input class="add-inp" id="q-inp" placeholder="اسم القسم..."><button class="add-btn" onclick="addSec('q')">+ إضافة</button></div>
+      <div class="hcta"><button class="btn btn-green btn-sm" onclick="openM('bookM')">📅 احجز</button><button class="btn btn-sm" style="background:var(--quran-bg);border:1px solid rgba(39,174,96,.3);color:#52d68a" onclick="openCurr('q')">📋 المنهج</button><button class="btn btn-sm" style="background:var(--card);border:1px solid rgba(255,255,255,.1);color:var(--text-muted)" onclick="openM('classM')">🎥 مباشر</button></div></div>
+    </div>
+    <!-- LANG HALL -->
+    <div class="hc l">
+      <div class="hch"><div class="hiw">📖</div><div class="ht">فصل اللغات</div><div class="hsub">إتقان العربية من الصفر — نحو، صرف، محادثة، كتابة، وأدب على أيدي نخبة المعلمين</div><div class="hst"><div class="hst-i"><strong id="lst">1240</strong>طالب</div><div class="hst-i"><strong id="lct">5</strong>قسم</div><div class="hst-i"><strong>14</strong>معلم</div></div></div>
+      <div class="hcs"><div class="slist" id="l-secs"></div><div class="add-row"><input class="add-inp" id="l-inp" placeholder="اسم القسم..."><button class="add-btn" onclick="addSec('l')">+ إضافة</button></div>
+      <div class="hcta"><button class="btn btn-gold btn-sm" onclick="openM('bookM')">📅 احجز</button><button class="btn btn-sm" style="background:var(--lang-bg);border:1px solid rgba(201,149,42,.3);color:var(--gold-light)" onclick="openCurr('l')">📋 المنهج</button><button class="btn btn-sm" style="background:var(--card);border:1px solid rgba(255,255,255,.1);color:var(--text-muted)" onclick="openM('classM')">🎥 مباشر</button></div></div>
+    </div>
+    <!-- SHARIA HALL -->
+    <div class="hc s">
+      <div class="hch"><div class="hiw">⚖️</div><div class="ht">فصل العلوم الشرعية</div><div class="hsub">الفقه وأصوله، الحديث، التفسير، العقيدة والسيرة — تعليم إسلامي شامل ومتكامل</div><div class="hst"><div class="hst-i"><strong id="sst">774</strong>طالب</div><div class="hst-i"><strong id="sct">5</strong>قسم</div><div class="hst-i"><strong>11</strong>معلم</div></div></div>
+      <div class="hcs"><div class="slist" id="s-secs"></div><div class="add-row"><input class="add-inp" id="s-inp" placeholder="اسم القسم..."><button class="add-btn" onclick="addSec('s')">+ إضافة</button></div>
+      <div class="hcta"><button class="btn btn-purple btn-sm" onclick="openM('bookM')">📅 احجز</button><button class="btn btn-sm" style="background:var(--sharia-bg);border:1px solid rgba(142,68,173,.3);color:var(--purple-light)" onclick="openCurr('s')">📋 المنهج</button><button class="btn btn-sm" style="background:var(--card);border:1px solid rgba(255,255,255,.1);color:var(--text-muted)" onclick="openM('classM')">🎥 مباشر</button></div></div>
+    </div>
+  </div>
+  <!-- Summary -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.2rem 2rem;display:flex;gap:2rem;flex-wrap:wrap;align-items:center;justify-content:center" class="reveal">
+    <div style="text-align:center"><div style="font-size:1.8rem;font-weight:900;color:var(--gold);font-family:'Amiri',serif" id="totSecs">14</div><div style="font-size:.68rem;color:var(--text-muted)">قسم تعليمي</div></div>
+    <div style="width:1px;height:34px;background:var(--border)"></div>
+    <div style="text-align:center"><div style="font-size:1.8rem;font-weight:900;color:var(--green);font-family:'Amiri',serif">2500+</div><div style="font-size:.68rem;color:var(--text-muted)">طالب</div></div>
+    <div style="width:1px;height:34px;background:var(--border)"></div>
+    <div style="text-align:center"><div style="font-size:1.8rem;font-weight:900;color:var(--purple-light);font-family:'Amiri',serif">33</div><div style="font-size:.68rem;color:var(--text-muted)">معلم</div></div>
+    <div style="flex:1;min-width:200px;font-size:.78rem;color:var(--text-muted);line-height:1.7">✨ كل فصل وحدة مستقلة — يمكن التسجيل في أكثر من فصل بآنٍ واحد</div>
+    <button class="btn btn-gold" onclick="openM('trialM')">ابدأ مجاناً الآن</button>
+  </div>
+</div></section>
+<div class="divider"></div>
+
+<!-- TEACHERS -->
+<section id="teachers"><div class="si">
+  <div class="tc"><div class="slabel">نخبة من الكفاءات</div><h2 class="stitle"><span class="gold">معلمونا</span> المحترفون</h2><p class="sdesc">كل معلم مختار بعناية ومُقيَّم من طلابه الحقيقيين بعد كل درس</p></div>
+  <div class="tgr reveal">
+    <div class="tc2"><div class="tav">أح</div><div class="tn">أ. أحمد محمد</div><div class="tt">النحو والبلاغة</div><div class="tlangs"><span class="ltag">AR</span><span class="ltag">EN</span><span class="ltag">FR</span></div><div class="texp">8 سنوات • 400+ طالب</div><div class="tst">⭐⭐⭐⭐⭐ (4.9)</div><button class="btn btn-gold" onclick="openM('bookM')">احجز الآن</button></div>
+    <div class="tc2"><div class="tav" style="background:linear-gradient(135deg,#27ae60,#52d68a)">فا</div><div class="tn">أ. فاطمة الزهراء</div><div class="tt">القرآن والتجويد</div><div class="tlangs"><span class="ltag">AR</span><span class="ltag">FR</span><span class="ltag">ES</span></div><div class="texp">10 سنوات • 600+ طالب</div><div class="tst">⭐⭐⭐⭐⭐ (5.0)</div><button class="btn btn-gold" onclick="openM('bookM')">احجز الآن</button></div>
+    <div class="tc2"><div class="tav" style="background:linear-gradient(135deg,#3498db,#5dade2)">يو</div><div class="tn">أ. يوسف الأمين</div><div class="tt">العلوم الشرعية</div><div class="tlangs"><span class="ltag">AR</span><span class="ltag">EN</span><span class="ltag">DE</span></div><div class="texp">6 سنوات • 350+ طالب</div><div class="tst">⭐⭐⭐⭐⭐ (4.8)</div><button class="btn btn-gold" onclick="openM('bookM')">احجز الآن</button></div>
+    <div class="tc2"><div class="tav" style="background:linear-gradient(135deg,#9b59b6,#c39bd3)">مر</div><div class="tn">أ. مريم صالح</div><div class="tt">العربية للأطفال</div><div class="tlangs"><span class="ltag">AR</span><span class="ltag">NL</span><span class="ltag">FR</span></div><div class="texp">5 سنوات • 280+ طالب</div><div class="tst">⭐⭐⭐⭐⭐ (4.9)</div><button class="btn btn-gold" onclick="openM('bookM')">احجز الآن</button></div>
+  </div>
+  <div style="text-align:center;margin-top:1.4rem"><button class="btn btn-outline" onclick="openM('teachM')">🧑‍🏫 انضم كمعلم واكسب 70%</button></div>
+</div></section>
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section id="pricing" style="background:var(--navy2)"><div class="si">
+  <div class="tc"><div class="slabel">أسعار شفافة</div><h2 class="stitle"><span class="gold">خطط</span> تناسب الجميع</h2><p class="sdesc">بدون رسوم خفية. توزيع 70%/30% تلقائي على كل دفعة.</p></div>
+  <div class="pgrid reveal">
+    <div class="pc"><div class="pname">حصة واحدة</div><div class="pprice"><sup>$</sup>10</div><div class="pper">درس • 45 دقيقة</div><ul class="pfeats"><li><i class="fi">✓</i>درس مباشر عبر الفصل الرقمي</li><li><i class="fi">✓</i>اختيار المعلم والفصل</li><li><i class="fi">✓</i>تقرير بعد الدرس</li></ul><div class="shint">💡 المعلم: <strong style="color:var(--gold)">$7</strong> | المنصة: <strong>$3</strong></div><button class="btn btn-outline btn-full" onclick="openPay(10)">اشترِ الآن</button></div>
+    <div class="pc feat"><div class="pbadge">الأكثر شعبية ⭐</div><div class="pname">5 حصص</div><div class="pprice"><sup>$</sup>45</div><div class="pper">5 دروس • توفير $5</div><ul class="pfeats"><li><i class="fi">✓</i>5 دروس مباشرة</li><li><i class="fi">✓</i>متابعة أسبوعية</li><li><i class="fi">✓</i>تقرير تقدم الطالب</li><li><i class="fi">✓</i>وصول لمكتبة الموارد</li></ul><div class="shint" style="background:rgba(201,149,42,.1)">💡 المعلم: <strong style="color:var(--gold)">$31.50</strong> | المنصة: <strong style="color:var(--gold-light)">$13.50</strong></div><button class="btn btn-gold btn-full" onclick="openPay(45)">اشترِ الآن</button></div>
+    <div class="pc"><div class="pname">10 حصص</div><div class="pprice"><sup>$</sup>80</div><div class="pper">10 دروس • توفير $20</div><ul class="pfeats"><li><i class="fi">✓</i>10 دروس مباشرة</li><li><i class="fi">✓</i>متابعة + شهادة PDF</li><li><i class="fi">✓</i>تمارين مخصصة</li><li><i class="fi">✓</i>دعم WhatsApp مباشر</li></ul><div class="shint">💡 المعلم: <strong style="color:var(--gold)">$56</strong> | المنصة: <strong>$24</strong></div><button class="btn btn-primary btn-full" onclick="openPay(80)">اشترِ الآن</button></div>
+  </div>
+  <div class="pmethods"><span style="font-size:.72rem;color:var(--text-muted)">طرق الدفع:</span><span class="pmi">💳 Visa</span><span class="pmi">💳 MasterCard</span><span class="pmi">🅿️ PayPal</span><span class="pmi">Stripe</span><span class="pmi">🟢 WhatsApp</span></div>
+</div></section>
+<div class="divider"></div>
+
+<!-- REVENUE -->
+<section id="revenue"><div class="si">
+  <div class="tc"><div class="slabel">الشفافية المالية</div><h2 class="stitle"><span class="gold">نظام التوزيع</span> المالي التلقائي</h2><p class="sdesc">70% للمعلم + 30% للمنصة — تُحسب تلقائياً عند كل دفعة</p></div>
+  <div class="rgrid reveal">
+    <div>
+      <div class="rfeat"><div class="rfi">🤝</div><div><h4>توزيع عادل ومضمون</h4><p>الحصص تُحسب تلقائياً — لا تدخل يدوي، لا تأخير</p></div></div>
+      <div class="rfeat"><div class="rfi">⚡</div><div><h4>تحويل فوري لمحفظتك</h4><p>حصة المعلم تُضاف فور تأكيد الدفع من الطالب</p></div></div>
+      <div class="rfeat"><div class="rfi">📊</div><div><h4>تقارير في الوقت الفعلي</h4><p>لوحة أرباح تفصيلية: إجمالي، شهري، ومعلق مع سجل كامل</p></div></div>
+      <div class="rfeat"><div class="rfi">💸</div><div><h4>سحب مرن في أي وقت</h4><p>PayPal، Wise، تحويل بنكي دولي بدون حد أدنى مرتفع</p></div></div>
+      <div class="rsteps" style="margin-top:1.4rem">
+        <h4>كيف يعمل النظام؟</h4>
+        <div class="rstep"><div class="rsn">1</div>الطالب يدفع ثمن الحصة أو الباقة</div>
+        <div class="rstep"><div class="rsn">2</div>النظام يحسب الحصص تلقائياً (70% / 30%)</div>
+        <div class="rstep"><div class="rsn">3</div>حصة المعلم تُضاف فوراً لمحفظته</div>
+        <div class="rstep"><div class="rsn">4</div>المعلم يطلب السحب في أي وقت</div>
+        <div class="rstep"><div class="rsn">5</div>تقارير أرباح تفصيلية شهرية وسنوية</div>
+      </div>
+      <button class="btn btn-gold" style="margin-top:1.2rem" onclick="openM('teachM')">🧑‍🏫 انضم كمعلم الآن</button>
+    </div>
+    <div class="rcalc">
+      <div class="calt">🧮 حاسبة التوزيع المالي</div>
+      <div class="calrow"><span style="font-size:.78rem;color:var(--text-muted)">قيمة الدفعة ($)</span><input class="calinp" type="number" id="sinp" value="45" min="1" oninput="calcS()"></div>
+      <div class="sbar"><div class="sbt" id="sbt" style="width:70%"></div><div class="sbp"></div></div>
+      <div class="scards">
+        <div class="sc t"><div class="scl">🧑‍🏫 المعلم</div><div class="scp">70%</div><div class="sca" id="tamt">$31.50</div><div style="font-size:.6rem;color:var(--text-muted)">يُدفع فوراً</div></div>
+        <div class="sc p"><div class="scl">🏛️ المنصة</div><div class="scp">30%</div><div class="sca" id="pamt">$13.50</div><div style="font-size:.6rem;color:var(--text-muted)">تشغيل</div></div>
+      </div>
+      <div class="smth"><div class="smthl">📅 تقدير أرباح شهرية</div><div class="smthg"><div class="smthi"><strong id="e20">$630</strong>20 طالب</div><div class="smthi"><strong id="e40">$1,260</strong>40 طالب</div><div class="smthi"><strong id="e80">$2,520</strong>80 طالب</div></div></div>
+      <button class="btn btn-gold btn-full" style="margin-top:.9rem" onclick="openM('teachM')">🧑‍🏫 انضم كمعلم</button>
+    </div>
+  </div>
+</div></section>
+<div class="divider"></div>
+
+<!-- BOOKING -->
+<section id="booking"><div class="si">
+  <div class="bcont">
+    <div>
+      <div class="slabel">الحجز السهل</div><h2 class="stitle"><span class="gold">احجز</span> درسك الآن</h2><p class="sdesc">4 خطوات بسيطة لبدء رحلتك التعليمية</p>
+      <div class="booking-steps">
+        <div class="bstep"><div class="bsn">1</div><div class="bst"><h4>اختر فصلك وقسمك</h4><p>القرآن، اللغات، أو الشريعة</p></div></div>
+        <div class="bstep"><div class="bsn">2</div><div class="bst"><h4>اختر معلمك</h4><p>تصفح التقييمات واختر الأنسب</p></div></div>
+        <div class="bstep"><div class="bsn">3</div><div class="bst"><h4>اختر التاريخ والوقت</h4><p>التقويم يعرض المواعيد بتوقيتك تلقائياً</p></div></div>
+        <div class="bstep"><div class="bsn">4</div><div class="bst"><h4>الدفع الآمن</h4><p>ادفع وستصلك رابط الفصل المباشر فوراً</p></div></div>
+      </div>
+      <div class="tz-pill2" id="tzPill"><i class="fas fa-globe"></i> توقيتك: <span id="tzDisp">UTC</span></div>
+    </div>
+    <div class="bform reveal">
+      <h3>📅 احجز درسك الآن</h3>
+      <div class="fg"><label class="fl">الاسم الكامل</label><input type="text" class="fc" id="bname" placeholder="أدخل اسمك"></div>
+      <div class="fg"><label class="fl">البريد الإلكتروني</label><input type="email" class="fc" id="bemail" placeholder="email@example.com" dir="ltr"></div>
+      <div class="frow">
+        <div class="fg"><label class="fl">الفصل</label><select class="fc" id="bhall" onchange="updBCourse()"><option value="q">🕌 القرآن</option><option value="l">📖 اللغات</option><option value="s">⚖️ الشريعة</option></select></div>
+        <div class="fg"><label class="fl">القسم</label><select class="fc" id="bcourse"></select></div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="fl">المعلم</label><select class="fc" id="bteacher"><option>أ. فاطمة الزهراء</option><option>أ. أحمد محمد</option><option>أ. يوسف الأمين</option><option>أ. مريم صالح</option></select></div>
+        <div class="fg"><label class="fl">الباقة</label><select class="fc" id="bpkg" onchange="updBSplit()"><option value="10">حصة واحدة — $10</option><option value="45" selected>5 حصص — $45</option><option value="80">10 حصص — $80</option></select></div>
+      </div>
+      <!-- Calendar -->
+      <div class="fg"><label class="fl"><i class="fas fa-calendar"></i> اختر التاريخ</label><div class="cal" id="calW"></div><div class="sddisp" id="sddisp"><i class="fas fa-check-circle"></i> <span id="sddtxt"></span></div></div>
+      <!-- Time slots -->
+      <div class="fg tsl-group" id="tslg"><label class="fl"><i class="fas fa-clock"></i> اختر الوقت (<span id="tzSlbl">UTC</span>)</label><div class="tsls" id="tsls"></div></div>
+      <!-- Split preview -->
+      <div class="bsp" id="bspv">
+        <div class="bspt">💡 ملخص التوزيع المالي</div>
+        <div class="bspr"><span>الإجمالي</span><strong id="btot">$45</strong></div>
+        <div class="bspr"><span>🧑‍🏫 المعلم (70%)</span><strong id="btea" style="color:var(--gold)">$31.50</strong></div>
+        <div class="bspr"><span>🏛️ المنصة (30%)</span><strong id="bplat">$13.50</strong></div>
+      </div>
+      <button class="btn btn-gold btn-full btn-lg" style="margin-top:.9rem" onclick="submitBook()">✅ تأكيد الحجز والدفع</button>
+    </div>
+  </div>
+</div></section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="padding:3.5rem 0;overflow:hidden;background:var(--navy)">
+  <div style="max-width:1400px;margin:0 auto;padding:0 1.5rem 1.8rem"><div class="tc"><div class="slabel">آراء طلابنا</div><h2 class="stitle"><span class="gold">قصص</span> نجاح حقيقية</h2></div></div>
+  <div style="overflow:hidden"><div class="track">
+    <div class="tc3"><div class="ts">⭐⭐⭐⭐⭐</div><p class="tt2">"أفضل تجربة لتعلم العربية! تعلمت في 3 أشهر ما لم أتعلمه في سنة. الفصل المباشر رائع جداً!"</p><div class="ta"><div class="tav2">M</div><div><div class="tn2">Michael Johnson</div><div class="tl">🇺🇸 الولايات المتحدة</div></div></div></div>
+    <div class="tc3"><div class="ts">⭐⭐⭐⭐⭐</div><p class="tt2">"المعلمون ممتازون والمتابعة شخصية فعلاً. الشهادة PDF جاءت جميلة جداً!"</p><div class="ta"><div class="tav2" style="background:linear-gradient(135deg,#c9952a,#f0c04a)">S</div><div><div class="tn2">Sophie Martin</div><div class="tl">🇫🇷 فرنسا</div></div></div></div>
+    <div class="tc3"><div class="ts">⭐⭐⭐⭐⭐</div><p class="tt2">"نظام التقييم بعد كل درس رائع — شعرت أن رأيي مهم. أنصح به بشدة!"</p><div class="ta"><div class="tav2" style="background:linear-gradient(135deg,#27ae60,#52d68a)">A</div><div><div class="tn2">Anna Schmidt</div><div class="tl">🇩🇪 ألمانيا</div></div></div></div>
+    <div class="tc3"><div class="ts">⭐⭐⭐⭐⭐</div><p class="tt2">"التقويم يعرض المواعيد بتوقيت مدريد تلقائياً — هذا رائع جداً!"</p><div class="ta"><div class="tav2" style="background:linear-gradient(135deg,#e74c3c,#f1948a)">C</div><div><div class="tn2">Carlos Ruiz</div><div class="tl">🇪🇸 إسبانيا</div></div></div></div>
+    <div class="tc3"><div class="ts">⭐⭐⭐⭐⭐</div><p class="tt2">"المعلم يحصل على 70% — هذا يجعله أكثر حماساً وتفانياً في التدريس!"</p><div class="ta"><div class="tav2" style="background:linear-gradient(135deg,#3498db,#5dade2)">J</div><div><div class="tn2">Jan van Berg</div><div class="tl">🇳🇱 هولندا</div></div></div></div>
+    <div class="tc3"><div class="ts">⭐⭐⭐⭐⭐</div><p class="tt2">"ابنتي تعلمت القرآن مع أ. فاطمة. نظام التقييم شجعها على التحسن المستمر!"</p><div class="ta"><div class="tav2" style="background:linear-gradient(135deg,#9b59b6,#c39bd3)">L</div><div><div class="tn2">Layla Hassan</div><div class="tl">🇬🇧 المملكة المتحدة</div></div></div></div>
+    <!-- duplicates for loop -->
+    <div class="tc3"><div class="ts">⭐⭐⭐⭐⭐</div><p class="tt2">"أفضل تجربة لتعلم العربية! تعلمت في 3 أشهر ما لم أتعلمه في سنة."</p><div class="ta"><div class="tav2">M</div><div><div class="tn2">Michael Johnson</div><div class="tl">🇺🇸 الولايات المتحدة</div></div></div></div>
+    <div class="tc3"><div class="ts">⭐⭐⭐⭐⭐</div><p class="tt2">"المعلمون ممتازون والمتابعة شخصية فعلاً."</p><div class="ta"><div class="tav2" style="background:linear-gradient(135deg,#c9952a,#f0c04a)">S</div><div><div class="tn2">Sophie Martin</div><div class="tl">🇫🇷 فرنسا</div></div></div></div>
+  </div></div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources"><div class="si">
+  <div class="tc"><div class="slabel">مكتبة رقمية</div><h2 class="stitle"><span class="gold">موارد</span> تعليمية مجانية</h2><p class="sdesc">مئات الملفات والتمارين التفاعلية لدعم مسيرتك التعليمية</p></div>
+  <div class="fbar"><button class="fbtn active" onclick="filterR('all',this)">الكل</button><button class="fbtn" onclick="filterR('pdf',this)">PDF</button><button class="fbtn" onclick="filterR('audio',this)">صوتيات</button><button class="fbtn" onclick="filterR('video',this)">فيديوهات</button><button class="fbtn" onclick="filterR('ex',this)">تمارين</button><button class="fbtn" onclick="filterR('flash',this)">بطاقات</button></div>
+  <div class="rgr reveal" id="rgr">
+    <div class="rc" data-cat="pdf"><div class="rtype">PDF</div><div class="ricon">📗</div><div class="rname">كتاب النحو الأساسي</div><div class="rdesc">أساسيات قواعد العربية للمبتدئين</div></div>
+    <div class="rc" data-cat="audio"><div class="rtype" style="color:#27ae60">🔊 صوت</div><div class="ricon">🎵</div><div class="rname">سورة البقرة - تلاوة</div><div class="rdesc">تلاوة بصوت المشايخ مع التجويد</div></div>
+    <div class="rc" data-cat="video"><div class="rtype" style="color:#3498db">▶ فيديو</div><div class="ricon">🎬</div><div class="rname">دروس الحروف للأطفال</div><div class="rdesc">فيديوهات تفاعلية للأطفال</div></div>
+    <div class="rc" data-cat="ex"><div class="rtype" style="color:#9b59b6">✏️ تمارين</div><div class="ricon">📝</div><div class="rname">اختبار المستوى</div><div class="rdesc">اعرف مستواك في العربية الآن</div></div>
+    <div class="rc" data-cat="flash"><div class="rtype" style="color:#e67e22">🃏 بطاقات</div><div class="ricon">🗂</div><div class="rname">بطاقات المفردات</div><div class="rdesc">500 كلمة عربية مع الترجمة</div></div>
+    <div class="rc" data-cat="pdf"><div class="rtype">PDF</div><div class="ricon">📘</div><div class="rname">أحكام التجويد</div><div class="rdesc">دليل شامل مع أمثلة</div></div>
+    <div class="rc" data-cat="audio"><div class="rtype" style="color:#27ae60">🔊 صوت</div><div class="ricon">🎙</div><div class="rname">الأربعون النووية</div><div class="rdesc">الأحاديث بالشرح الصوتي</div></div>
+    <div class="rc" data-cat="ex"><div class="rtype" style="color:#9b59b6">✏️ تمارين</div><div class="ricon">🧩</div><div class="rname">تمارين الإعراب</div><div class="rdesc">50 جملة للتطبيق مع الحلول</div></div>
+  </div>
+</div></section>
+
+<!-- AI -->
+<section id="ai"><div class="si">
+  <div class="aigrid">
+    <div>
+      <div class="slabel">الذكاء الاصطناعي</div><h2 class="stitle"><span class="gold">مدرسة</span> المستقبل اليوم</h2><p class="sdesc">ندمج أحدث تقنيات الذكاء الاصطناعي لجعل تعلمك أسرع وأكثر فاعلية</p>
+      <div class="reveal">
+        <div class="aif"><div class="afic">🎙️</div><div><h4>تقييم النطق بالذكاء الاصطناعي</h4><p>يحلل نطقك ويعطيك تقييماً فورياً مع اقتراحات</p></div></div>
+        <div class="aif"><div class="afic">📊</div><div><h4>تحليل الأداء وتخصيص المنهج</h4><p>يتتبع تقدمك ويقترح دروساً مخصصة</p></div></div>
+        <div class="aif"><div class="afic">🤖</div><div><h4>مساعد AI على مدار الساعة</h4><p>اسأل أي سؤال في أي وقت وستحصل على إجابة فورية</p></div></div>
+        <div class="aif"><div class="afic">✍️</div><div><h4>إنشاء تمارين تلقائي</h4><p>تمارين جديدة ومخصصة تُنشأ بناءً على مستواك</p></div></div>
+      </div>
+    </div>
+    <div class="aidemo">
+      <div class="aidh"><span>🤖</span> مساعد نور العربية<span style="margin-right:auto;font-size:.7rem;color:var(--green)">● متصل</span></div>
+      <div class="aichat" id="aichat">
+        <div class="aim bot">مرحباً! أنا مساعدك في تعلم العربية. كيف يمكنني مساعدتك؟ 😊</div>
+        <div class="aim usr">ما الفرق بين الفعل الماضي والمضارع؟</div>
+        <div class="aim bot">سؤال رائع! 🌟 الماضي: "كَتَبَ" — حدث وقع سابقاً. المضارع: "يَكْتُبُ" — حدث حاضر أو مستقبل. هل تريد أمثلة؟</div>
+      </div>
+      <div class="aiinp"><input type="text" id="aiinp" placeholder="اكتب سؤالك هنا..." onkeypress="if(event.key==='Enter')sendAI()"><button class="btn btn-green btn-sm" onclick="sendAI()">إرسال</button></div>
+    </div>
+  </div>
+</div></section>
+<div class="divider"></div>
+
+<!-- DASHBOARD -->
+<section id="dashboard"><div class="si">
+  <div class="tc"><div class="slabel">منصة متكاملة</div><h2 class="stitle"><span class="gold">لوحة</span> التحكم الشخصية</h2><p class="sdesc">تابع تقدمك وأرباحك — كل شيء في مكان واحد</p></div>
+  <div class="dtabs">
+    <button class="dtab active" onclick="switchT(this,'sp')">👨‍🎓 الطالب</button>
+    <button class="dtab" onclick="switchT(this,'tp')">👨‍🏫 المعلم</button>
+    <button class="dtab" onclick="switchT(this,'ep')">💰 الأرباح</button>
+  </div>
+  <!-- Student -->
+  <div class="dpanel reveal" id="sp">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem">
+      <div>
+        <h4 style="margin-bottom:.9rem;font-size:.84rem;font-weight:700">📈 تقدم الدورات</h4>
+        <div class="prog-item"><div class="prog-lbl"><span>القرآن والتجويد</span><span style="color:var(--gold)">72%</span></div><div class="prog-bar"><div class="prog-fill" style="width:72%"></div></div></div>
+        <div class="prog-item"><div class="prog-lbl"><span>النحو المتوسط</span><span style="color:var(--gold)">45%</span></div><div class="prog-bar"><div class="prog-fill" style="width:45%"></div></div></div>
+        <div class="prog-item"><div class="prog-lbl"><span>المفردات الأساسية</span><span style="color:var(--green)">91%</span></div><div class="prog-bar"><div class="prog-fill gn" style="width:91%"></div></div></div>
+        <div class="dscards"><div class="dsc g"><div class="dscn">28</div><div class="dscl">حصة مكتملة</div></div><div class="dsc gr"><div class="dscn">4.8</div><div class="dscl">متوسط الدرجات</div></div></div>
+        <button class="btn btn-gold btn-full" style="margin-top:.9rem" onclick="openM('certM')">📜 شهاداتي</button>
+      </div>
+      <div>
+        <h4 style="margin-bottom:.9rem;font-size:.84rem;font-weight:700">📅 الدروس القادمة</h4>
+        <div class="litem"><div class="ldate"><div class="lday">18</div><div class="lmon">Apr</div></div><div class="linfo"><h4>التجويد — الإدغام</h4><p>أ. فاطمة • 10:00 صباحاً</p></div><button class="btn btn-green btn-sm ljoin" onclick="openM('classM')">انضم</button></div>
+        <div class="litem"><div class="ldate"><div class="lday">20</div><div class="lmon">Apr</div></div><div class="linfo"><h4>النحو — الجملة الفعلية</h4><p>أ. أحمد • 04:00 مساءً</p></div><button class="btn btn-ghost btn-sm ljoin">عرض</button></div>
+        <div class="litem"><div class="ldate"><div class="lday">22</div><div class="lmon">Apr</div></div><div class="linfo"><h4>الفقه — الطهارة</h4><p>أ. يوسف • 06:00 مساءً</p></div><button class="btn btn-ghost btn-sm ljoin">عرض</button></div>
+        <button class="btn btn-outline btn-full" style="margin-top:.5rem" onclick="openM('rateM')">⭐ قيّم درسك الأخير</button>
+      </div>
+    </div>
+  </div>
+  <!-- Teacher -->
+  <div class="dpanel" id="tp" style="display:none">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.4rem">
+      <div>
+        <h4 style="margin-bottom:.9rem;font-size:.84rem;font-weight:700">👨‍🎓 طلابي (12 طالب)</h4>
+        <div style="display:flex;flex-direction:column;gap:.55rem">
+          <div style="display:flex;align-items:center;gap:.65rem;background:rgba(255,255,255,.04);border-radius:8px;padding:.65rem"><div style="width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:700;font-size:.75rem">M</div><div style="flex:1"><div style="font-size:.8rem;font-weight:700">Michael Johnson</div><div style="font-size:.68rem;color:var(--text-muted)">تجويد • متوسط</div></div><span style="font-size:.68rem;color:var(--green)">● نشط</span></div>
+          <div style="display:flex;align-items:center;gap:.65rem;background:rgba(255,255,255,.04);border-radius:8px;padding:.65rem"><div style="width:32px;height:32px;background:linear-gradient(135deg,#3498db,#5dade2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:.75rem">S</div><div style="flex:1"><div style="font-size:.8rem;font-weight:700">Sophie Martin</div><div style="font-size:.68rem;color:var(--text-muted)">نحو • مبتدئ</div></div><span style="font-size:.68rem;color:var(--text-muted)">● غائب</span></div>
+          <div style="display:flex;align-items:center;gap:.65rem;background:rgba(255,255,255,.04);border-radius:8px;padding:.65rem"><div style="width:32px;height:32px;background:linear-gradient(135deg,#27ae60,#52d68a);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:.75rem">A</div><div style="flex:1"><div style="font-size:.8rem;font-weight:700">Anna Schmidt</div><div style="font-size:.68rem;color:var(--text-muted)">فقه • مبتدئ</div></div><span style="font-size:.68rem;color:var(--green)">● نشط</span></div>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin-bottom:.9rem;font-size:.84rem;font-weight:700">📅 جدولي اليوم</h4>
+        <div style="display:flex;flex-direction:column;gap:.55rem">
+          <div style="background:rgba(201,149,42,.1);border:1px solid var(--border);border-radius:8px;padding:.65rem;font-size:.78rem"><div style="color:var(--gold);font-weight:700">10:00 - 10:45</div><div>تجويد مع Michael</div></div>
+          <div style="background:rgba(39,174,96,.1);border:1px solid rgba(39,174,96,.18);border-radius:8px;padding:.65rem;font-size:.78rem"><div style="color:var(--green);font-weight:700">14:00 - 14:45</div><div>نحو مع Anna Schmidt</div></div>
+          <div style="background:rgba(142,68,173,.1);border:1px solid rgba(142,68,173,.18);border-radius:8px;padding:.65rem;font-size:.78rem"><div style="color:var(--purple-light);font-weight:700">17:00 - 17:45</div><div>فقه مع Sophie</div></div>
+        </div>
+        <button class="btn btn-gold btn-full" style="margin-top:.9rem" onclick="openM('wdrawM')">💸 طلب سحب الأرباح</button>
+      </div>
+    </div>
+  </div>
+  <!-- Earnings -->
+  <div class="dpanel" id="ep" style="display:none">
+    <div class="earnh">
+      <div class="earn tot"><div class="elbl">إجمالي الأرباح</div><div class="eamt">$1,890</div><div class="enote">منذ الانضمام</div></div>
+      <div class="earn mon"><div class="elbl">هذا الشهر</div><div class="eamt">$315</div><div class="enote">15 حصة</div></div>
+      <div class="earn pen"><div class="elbl">في الانتظار</div><div class="eamt">$126</div><div class="enote">قيد المعالجة</div></div>
+    </div>
+    <div style="background:rgba(201,149,42,.06);border:1px solid rgba(201,149,42,.12);border-radius:11px;padding:.85rem;margin-bottom:1.1rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div style="flex:1;min-width:180px"><div style="font-size:.74rem;color:var(--text-muted);margin-bottom:.28rem">توزيع كل دفعة</div><div style="display:flex;align-items:center;gap:.7rem"><div style="font-size:1.1rem;font-weight:900;color:var(--gold)">70%</div><div style="flex:1;height:6px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden"><div style="width:70%;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><div style="font-size:.7rem;color:var(--text-muted)">لك</div></div></div>
+      <button class="btn btn-gold btn-sm" onclick="openM('wdrawM')">💸 طلب سحب</button>
+    </div>
+    <div class="etable">
+      <div class="etr hdr"><div>الطالب / الحصة</div><div>التاريخ</div><div>المبلغ</div><div>حصتك 70%</div></div>
+      <div class="etr"><div style="font-size:.78rem;font-weight:700">Michael — تجويد</div><div style="color:var(--text-muted)">15 أبريل</div><div>$10</div><div class="esh">$7.00</div></div>
+      <div class="etr"><div style="font-size:.78rem;font-weight:700">Sophie — نحو ×5</div><div style="color:var(--text-muted)">12 أبريل</div><div>$45</div><div class="esh">$31.50</div></div>
+      <div class="etr"><div style="font-size:.78rem;font-weight:700">Anna — فقه ×10</div><div style="color:var(--text-muted)">10 أبريل</div><div>$80</div><div class="esh">$56.00</div></div>
+      <div class="etr"><div style="font-size:.78rem;font-weight:700">Carlos — قرآن ×5</div><div style="color:var(--text-muted)">18 أبريل</div><div>$45</div><div class="esh">$31.50</div></div>
+    </div>
+  </div>
+</div></section>
+<div class="divider"></div>
+
+<!-- ADMIN ANALYTICS -->
+<section id="admin-an"><div class="si">
+  <div class="slabel">🔐 لوحة الإدارة</div><h2 class="stitle"><span class="gold">إحصائيات</span> المنصة الشاملة</h2>
+  <div class="strow">
+    <div class="stmini"><div class="stmn">2,500</div><div class="stml">إجمالي الطلاب</div></div>
+    <div class="stmini"><div class="stmn" style="color:var(--green)">$12,450</div><div class="stml">إيرادات الشهر</div></div>
+    <div class="stmini"><div class="stmn" style="color:var(--purple-light)">33</div><div class="stml">معلمون نشطون</div></div>
+    <div class="stmini"><div class="stmn" style="color:#5dade2">148</div><div class="stml">حصة هذا الأسبوع</div></div>
+  </div>
+  <div class="agrid">
+    <div class="acard"><h4>📈 الإيرادات الشهرية ($)</h4><div class="chart-wr" id="rChart"></div></div>
+    <div class="acard"><h4>🏛️ الطلاب حسب الفصل</h4><div class="hall-breakdown">
+      <div class="hbar-row"><span class="hbar-lbl">القرآن</span><div class="hbar-wr"><div class="hbar" style="width:38%;background:var(--quran)"></div></div><span class="hbar-val" style="color:var(--quran)">38%</span></div>
+      <div class="hbar-row"><span class="hbar-lbl">اللغات</span><div class="hbar-wr"><div class="hbar" style="width:49%;background:var(--lang)"></div></div><span class="hbar-val" style="color:var(--lang)">49%</span></div>
+      <div class="hbar-row"><span class="hbar-lbl">الشريعة</span><div class="hbar-wr"><div class="hbar" style="width:31%;background:var(--sharia)"></div></div><span class="hbar-val" style="color:var(--sharia)">31%</span></div>
+    </div></div>
+    <div class="acard"><h4>📅 الحصص اليومية (هذا الأسبوع)</h4><div class="chart-wr" id="sChart"></div></div>
+    <div class="acard"><h4>🌍 الطلاب حسب القارة</h4><div class="hall-breakdown">
+      <div class="hbar-row"><span class="hbar-lbl">أوروبا</span><div class="hbar-wr"><div class="hbar" style="width:55%;background:#5dade2"></div></div><span class="hbar-val" style="color:#5dade2">55%</span></div>
+      <div class="hbar-row"><span class="hbar-lbl">أمريكا</span><div class="hbar-wr"><div class="hbar" style="width:28%;background:var(--green)"></div></div><span class="hbar-val" style="color:var(--green)">28%</span></div>
+      <div class="hbar-row"><span class="hbar-lbl">الوطن العربي</span><div class="hbar-wr"><div class="hbar" style="width:17%;background:var(--gold)"></div></div><span class="hbar-val" style="color:var(--gold)">17%</span></div>
+    </div></div>
+  </div>
+</div></section>
+
+
+<!-- ================================================ -->
+<!--   لوحة الإدارة الشاملة - FULL ADMIN PANEL       -->
+<!-- ================================================ -->
+<div class="adm-badge2" id="admBdg">🔐 وضع الإدارة مفعّل</div>
+<section id="admin-panel">
+  <div class="si">
+    <div class="aph">
+      <div>
+        <div class="slb" style="color:var(--red)">🔐 منطقة المديرين</div>
+        <h2 class="sti"><span class="g">لوحة الإدارة</span> الشاملة</h2>
+      </div>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;align-items:center">
+        <div style="background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.25);border-radius:9px;padding:.5rem 1rem;font-size:.78rem;color:#e74c3c;font-weight:700">
+          <i class="fas fa-shield-alt"></i> مدير محقق الهوية
+        </div>
+        <button class="btn btn-ghost btn-sm" style="border-color:rgba(192,57,43,.3);color:#e74c3c" onclick="deAdminMode()">🔓 إيقاف وضع الإدارة</button>
+      </div>
+    </div>
+
+    <!-- Admin Navigation Tabs -->
+    <div class="apt">
+      <button class="aptb ac" onclick="swAdmTab(this,'adm-ov')">📊 نظرة عامة</button>
+      <button class="aptb" onclick="swAdmTab(this,'adm-users')">👥 المستخدمون</button>
+      <button class="aptb" onclick="swAdmTab(this,'adm-halls')">🏛️ الفصول</button>
+      <button class="aptb" onclick="swAdmTab(this,'adm-teachers')">👨‍🏫 المعلمون</button>
+      <button class="aptb" onclick="swAdmTab(this,'adm-finance')">💰 المالية</button>
+      <button class="aptb" onclick="swAdmTab(this,'adm-bookings')">📅 الحجوزات</button>
+      <button class="aptb" onclick="swAdmTab(this,'adm-content')">📚 المحتوى</button>
+      <button class="aptb" onclick="swAdmTab(this,'adm-settings')">⚙️ الإعدادات</button>
+      <button class="aptb" onclick="swAdmTab(this,'adm-logs')">📋 سجل النشاط</button>
+    </div>
+
+    <!-- ===== OVERVIEW ===== -->
+    <div class="apn sh" id="adm-ov">
+      <div class="str">
+        <div class="stc"><div class="stn">2,500</div><div class="stl">إجمالي الطلاب</div></div>
+        <div class="stc"><div class="stn" style="color:var(--green)">$12,450</div><div class="stl">إيرادات الشهر</div></div>
+        <div class="stc"><div class="stn" style="color:#c39bd3">33</div><div class="stl">معلمون نشطون</div></div>
+        <div class="stc"><div class="stn" style="color:#5dade2">148</div><div class="stl">حصة هذا الأسبوع</div></div>
+      </div>
+      <div class="angr">
+        <div class="ancd">
+          <h4>📈 الإيرادات الشهرية ($)</h4>
+          <div class="chw" id="revChart"></div>
+        </div>
+        <div class="ancd">
+          <h4>🏛️ الطلاب حسب الفصل</h4>
+          <div class="hbr" style="margin-top:.5rem">
+            <div class="hbw"><span class="hbl">القرآن</span><div class="hbb"><div class="hbf" style="width:38%;background:var(--green)"></div></div><span class="hbv" style="color:var(--green)">486</span></div>
+            <div class="hbw"><span class="hbl">اللغات</span><div class="hbb"><div class="hbf" style="width:50%;background:var(--gold)"></div></div><span class="hbv" style="color:var(--gold)">1240</span></div>
+            <div class="hbw"><span class="hbl">الشريعة</span><div class="hbb"><div class="hbf" style="width:31%;background:#8e44ad"></div></div><span class="hbv" style="color:#c39bd3">774</span></div>
+          </div>
+        </div>
+        <div class="ancd">
+          <h4>📅 الحصص اليومية</h4>
+          <div class="chw" id="sesChart"></div>
+        </div>
+        <div class="ancd">
+          <h4>🌍 الطلاب حسب القارة</h4>
+          <div class="hbr" style="margin-top:.5rem">
+            <div class="hbw"><span class="hbl">أوروبا</span><div class="hbb"><div class="hbf" style="width:55%;background:#5dade2"></div></div><span class="hbv" style="color:#5dade2">55%</span></div>
+            <div class="hbw"><span class="hbl">أمريكا</span><div class="hbb"><div class="hbf" style="width:28%;background:var(--green)"></div></div><span class="hbv" style="color:var(--green)">28%</span></div>
+            <div class="hbw"><span class="hbl">الوطن العربي</span><div class="hbb"><div class="hbf" style="width:17%;background:var(--gold)"></div></div><span class="hbv" style="color:var(--gold)">17%</span></div>
+          </div>
+        </div>
+        <div class="ancd">
+          <h4>💰 أعلى المعلمين أرباحاً</h4>
+          <div class="hbr" style="margin-top:.5rem">
+            <div class="hbw"><span class="hbl">أ. فاطمة</span><div class="hbb"><div class="hbf" style="width:85%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="hbv" style="color:var(--gold)">$840</span></div>
+            <div class="hbw"><span class="hbl">أ. أحمد</span><div class="hbb"><div class="hbf" style="width:70%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="hbv" style="color:var(--gold)">$693</span></div>
+            <div class="hbw"><span class="hbl">أ. يوسف</span><div class="hbb"><div class="hbf" style="width:58%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="hbv" style="color:var(--gold)">$574</span></div>
+            <div class="hbw"><span class="hbl">أ. مريم</span><div class="hbb"><div class="hbf" style="width:45%;background:linear-gradient(90deg,var(--gold),var(--gold-light))"></div></div><span class="hbv" style="color:var(--gold)">$446</span></div>
+          </div>
+        </div>
+        <div class="ancd">
+          <h4>📊 مؤشرات الأداء</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:.3rem">
+            <div style="background:rgba(39,174,96,.08);border:1px solid rgba(39,174,96,.18);border-radius:9px;padding:.8rem;text-align:center"><div style="font-size:1.5rem;font-weight:900;color:var(--green)">68%</div><div style="font-size:.68rem;color:var(--text-muted)">تحويل الزوار</div></div>
+            <div style="background:rgba(201,149,42,.08);border:1px solid rgba(201,149,42,.18);border-radius:9px;padding:.8rem;text-align:center"><div style="font-size:1.5rem;font-weight:900;color:var(--gold)">89%</div><div style="font-size:.68rem;color:var(--text-muted)">تجريبي → مدفوع</div></div>
+            <div style="background:rgba(52,152,219,.08);border:1px solid rgba(52,152,219,.18);border-radius:9px;padding:.8rem;text-align:center"><div style="font-size:1.5rem;font-weight:900;color:#5dade2">4.9</div><div style="font-size:.68rem;color:var(--text-muted)">متوسط التقييم</div></div>
+            <div style="background:rgba(142,68,173,.08);border:1px solid rgba(142,68,173,.18);border-radius:9px;padding:.8rem;text-align:center"><div style="font-size:1.5rem;font-weight:900;color:#c39bd3">92%</div><div style="font-size:.68rem;color:var(--text-muted)">معدل الاحتفاظ</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== USERS ===== -->
+    <div class="apn" id="adm-users">
+      <div class="afrm">
+        <h4>➕ إضافة مستخدم جديد</h4>
+        <div class="afrw">
+          <div class="form-group"><label class="form-label">الاسم الكامل</label><input type="text" class="form-control" placeholder="اسم المستخدم"></div>
+          <div class="form-group"><label class="form-label">البريد الإلكتروني</label><input type="email" class="form-control" placeholder="email@example.com" dir="ltr"></div>
+          <div class="form-group"><label class="form-label">الدور</label><select class="form-control"><option>طالب</option><option>معلم</option><option>مدير</option></select></div>
+          <div class="form-group"><label class="form-label">الفصل</label><select class="form-control"><option>القرآن والتجويد</option><option>اللغات</option><option>العلوم الشرعية</option></select></div>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="showToast('تم إضافة المستخدم بنجاح!','success')">💾 حفظ المستخدم</button>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="adt">
+          <thead><tr><th>المستخدم</th><th>البريد</th><th>الدور</th><th>الفصل</th><th>الحالة</th><th>تاريخ الانضمام</th><th>الإجراءات</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Michael Johnson</strong></td><td dir="ltr">michael@gmail.com</td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">طالب</span></td><td>تجويد</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td>يناير 2025</td><td><button class="ab go" onclick="showToast('تم تعديل المستخدم','info')">تعديل</button><button class="ab re" onclick="showToast('تم تعطيل الحساب','error')">تعطيل</button></td></tr>
+            <tr><td><strong>أ. فاطمة الزهراء</strong></td><td dir="ltr">fatima@nour.com</td><td><span style="background:rgba(201,149,42,.15);color:var(--gold);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">معلمة</span></td><td>القرآن</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td>أكتوبر 2024</td><td><button class="ab go" onclick="showToast('تم تعديل المستخدم','info')">تعديل</button><button class="ab re" onclick="showToast('تم تعطيل الحساب','error')">تعطيل</button></td></tr>
+            <tr><td><strong>Sophie Martin</strong></td><td dir="ltr">sophie@gmail.com</td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">طالبة</span></td><td>اللغات</td><td><span style="background:rgba(255,255,255,.1);color:var(--text-muted);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">غير نشط</span></td><td>فبراير 2025</td><td><button class="ab gn" onclick="showToast('تم تفعيل الحساب','success')">تفعيل</button><button class="ab re" onclick="showToast('تم حذف المستخدم','error')">حذف</button></td></tr>
+            <tr><td><strong>أ. يوسف الأمين</strong></td><td dir="ltr">youssef@nour.com</td><td><span style="background:rgba(201,149,42,.15);color:var(--gold);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">معلم</span></td><td>الشريعة</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td>سبتمبر 2024</td><td><button class="ab go" onclick="showToast('تم تعديل المستخدم','info')">تعديل</button><button class="ab re" onclick="showToast('تم تعطيل الحساب','error')">تعطيل</button></td></tr>
+            <tr><td><strong>Anna Schmidt</strong></td><td dir="ltr">anna@gmail.com</td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">طالبة</span></td><td>الشريعة</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td>مارس 2025</td><td><button class="ab go" onclick="showToast('تم تعديل المستخدم','info')">تعديل</button><button class="ab re" onclick="showToast('تم تعطيل الحساب','error')">تعطيل</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== HALLS ADMIN ===== -->
+    <div class="apn" id="adm-halls">
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem;margin-bottom:1.5rem">
+        <div style="background:rgba(39,174,96,.07);border:1px solid rgba(39,174,96,.2);border-radius:11px;padding:1rem">
+          <div style="font-weight:700;color:#52d68a;margin-bottom:.8rem;font-size:.88rem">🕌 فصل القرآن والتجويد</div>
+          <div id="qAdm" style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:.7rem"></div>
+          <div style="display:flex;gap:.4rem;margin-top:.5rem">
+            <input class="form-control" id="qAI" placeholder="قسم جديد..." style="font-size:.75rem;padding:.42rem .65rem">
+            <button class="btn btn-green btn-sm" onclick="admAdd('q')">+</button>
+          </div>
+        </div>
+        <div style="background:rgba(201,149,42,.07);border:1px solid rgba(201,149,42,.2);border-radius:11px;padding:1rem">
+          <div style="font-weight:700;color:var(--gold-light);margin-bottom:.8rem;font-size:.88rem">📖 فصل اللغات</div>
+          <div id="lAdm" style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:.7rem"></div>
+          <div style="display:flex;gap:.4rem;margin-top:.5rem">
+            <input class="form-control" id="lAI" placeholder="قسم جديد..." style="font-size:.75rem;padding:.42rem .65rem">
+            <button class="btn btn-gold btn-sm" onclick="admAdd('lang')">+</button>
+          </div>
+        </div>
+        <div style="background:rgba(142,68,173,.07);border:1px solid rgba(142,68,173,.2);border-radius:11px;padding:1rem">
+          <div style="font-weight:700;color:#c39bd3;margin-bottom:.8rem;font-size:.88rem">⚖️ فصل العلوم الشرعية</div>
+          <div id="sAdm" style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:.7rem"></div>
+          <div style="display:flex;gap:.4rem;margin-top:.5rem">
+            <input class="form-control" id="sAI" placeholder="قسم جديد..." style="font-size:.75rem;padding:.42rem .65rem">
+            <button class="btn btn-purple btn-sm" onclick="admAdd('sharia')">+</button>
+          </div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:11px;padding:1rem">
+        <h4 style="font-size:.85rem;font-weight:700;color:var(--gold);margin-bottom:.8rem">📊 إحصائيات الفصول</h4>
+        <div class="str" style="margin-bottom:0">
+          <div class="stc"><div class="stn" id="adminQCount">4</div><div class="stl">أقسام القرآن</div></div>
+          <div class="stc"><div class="stn" id="adminLCount">5</div><div class="stl">أقسام اللغات</div></div>
+          <div class="stc"><div class="stn" id="adminSCount">5</div><div class="stl">أقسام الشريعة</div></div>
+          <div class="stc"><div class="stn" id="adminTotalCount">14</div><div class="stl">إجمالي الأقسام</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TEACHERS ADMIN ===== -->
+    <div class="apn" id="adm-teachers">
+      <div class="afrm">
+        <h4>➕ إضافة معلم جديد</h4>
+        <div class="afrw">
+          <div class="form-group"><label class="form-label">الاسم الكامل</label><input type="text" class="form-control" placeholder="اسم المعلم"></div>
+          <div class="form-group"><label class="form-label">التخصص</label><select class="form-control"><option>القرآن والتجويد</option><option>اللغة العربية</option><option>العلوم الشرعية</option></select></div>
+          <div class="form-group"><label class="form-label">اللغات</label><input type="text" class="form-control" placeholder="AR, EN, FR"></div>
+          <div class="form-group"><label class="form-label">الحالة</label><select class="form-control"><option>نشط</option><option>معلق</option><option>في مراجعة</option></select></div>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="showToast('تم إضافة المعلم بنجاح!','success')">💾 حفظ المعلم</button>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="adt">
+          <thead><tr><th>المعلم</th><th>التخصص</th><th>الطلاب</th><th>التقييم</th><th>الأرباح الكلية</th><th>معلق للسحب</th><th>الحالة</th><th>إجراءات</th></tr></thead>
+          <tbody>
+            <tr><td><strong>أ. فاطمة الزهراء</strong></td><td>القرآن والتجويد</td><td>600+</td><td>⭐ 5.0</td><td style="color:var(--gold)">$8,400</td><td style="color:var(--gold-light)">$840</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td><button class="ab go" onclick="showToast('تم فتح ملف المعلمة','info')">عرض</button> <button class="ab gn" onclick="showToast('تم الموافقة على السحب ✅','success')">موافقة السحب</button></td></tr>
+            <tr><td><strong>أ. أحمد محمد</strong></td><td>النحو والبلاغة</td><td>400+</td><td>⭐ 4.9</td><td style="color:var(--gold)">$6,930</td><td style="color:var(--gold-light)">$693</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td><button class="ab go" onclick="showToast('تم فتح ملف المعلم','info')">عرض</button> <button class="ab gn" onclick="showToast('تم الموافقة على السحب ✅','success')">موافقة السحب</button></td></tr>
+            <tr><td><strong>أ. يوسف الأمين</strong></td><td>العلوم الشرعية</td><td>350+</td><td>⭐ 4.8</td><td style="color:var(--gold)">$5,740</td><td style="color:var(--gold-light)">$574</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td><button class="ab go" onclick="showToast('تم فتح ملف المعلم','info')">عرض</button> <button class="ab re" onclick="showToast('تم تعليق الحساب','error')">تعليق</button></td></tr>
+            <tr><td><strong>أ. مريم صالح</strong></td><td>العربية للأطفال</td><td>280+</td><td>⭐ 4.9</td><td style="color:var(--gold)">$4,460</td><td style="color:var(--gold-light)">$446</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">نشط</span></td><td><button class="ab go" onclick="showToast('تم فتح ملف المعلمة','info')">عرض</button> <button class="ab gn" onclick="showToast('تم الموافقة على السحب ✅','success')">موافقة السحب</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== FINANCE ===== -->
+    <div class="apn" id="adm-finance">
+      <div class="str">
+        <div class="stc"><div class="stn">$41,520</div><div class="stl">إجمالي الإيرادات</div></div>
+        <div class="stc"><div class="stn" style="color:var(--gold)">$29,064</div><div class="stl">حصص المعلمين 70%</div></div>
+        <div class="stc"><div class="stn" style="color:var(--green)">$12,456</div><div class="stl">حصة المنصة 30%</div></div>
+        <div class="stc"><div class="stn" style="color:#5dade2">$2,553</div><div class="stl">معلق للسحب</div></div>
+      </div>
+      <div class="rbd">
+        <div class="rbc">
+          <h4>⏳ طلبات السحب المعلقة</h4>
+          <table class="adt" style="margin-top:.5rem">
+            <thead><tr><th>المعلم</th><th>المبلغ</th><th>طريقة</th><th>التاريخ</th><th>إجراء</th></tr></thead>
+            <tbody>
+              <tr><td>أ. فاطمة</td><td style="color:var(--gold)">$840</td><td>PayPal</td><td>17 أبريل</td><td><button class="ab gn" onclick="showToast('تم الموافقة ✅','success')">موافقة</button> <button class="ab re" onclick="showToast('تم الرفض','error')">رفض</button></td></tr>
+              <tr><td>أ. أحمد</td><td style="color:var(--gold)">$693</td><td>Wise</td><td>16 أبريل</td><td><button class="ab gn" onclick="showToast('تم الموافقة ✅','success')">موافقة</button> <button class="ab re" onclick="showToast('تم الرفض','error')">رفض</button></td></tr>
+              <tr><td>أ. مريم</td><td style="color:var(--gold)">$446</td><td>تحويل بنكي</td><td>15 أبريل</td><td><button class="ab gn" onclick="showToast('تم الموافقة ✅','success')">موافقة</button> <button class="ab re" onclick="showToast('تم الرفض','error')">رفض</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="rbc">
+          <h4>💳 آخر المدفوعات من الطلاب</h4>
+          <table class="adt" style="margin-top:.5rem">
+            <thead><tr><th>الطالب</th><th>الباقة</th><th>للمعلم</th><th>للمنصة</th><th>الحالة</th></tr></thead>
+            <tbody>
+              <tr><td>Michael</td><td>$45</td><td style="color:var(--gold)">$31.50</td><td style="color:var(--green)">$13.50</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مكتمل</span></td></tr>
+              <tr><td>Sophie</td><td>$10</td><td style="color:var(--gold)">$7.00</td><td style="color:var(--green)">$3.00</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مكتمل</span></td></tr>
+              <tr><td>Carlos</td><td>$80</td><td style="color:var(--gold)">$56.00</td><td style="color:var(--green)">$24.00</td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">معالجة</span></td></tr>
+              <tr><td>Layla</td><td>$45</td><td style="color:var(--gold)">$31.50</td><td style="color:var(--green)">$13.50</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مكتمل</span></td></tr>
+            </tbody>
+          </table>
+          <div style="display:flex;gap:.5rem;margin-top:.8rem;flex-wrap:wrap">
+            <button class="btn btn-gold btn-sm" onclick="showToast('تم تصدير تقرير المالية Excel ✅','success')"><i class="fas fa-download"></i> تصدير Excel</button>
+            <button class="btn btn-ghost btn-sm" onclick="showToast('تم تصدير التقرير PDF ✅','success')"><i class="fas fa-file-pdf"></i> تصدير PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BOOKINGS ===== -->
+    <div class="apn" id="adm-bookings">
+      <div style="display:flex;gap:.5rem;margin-bottom:1.2rem;flex-wrap:wrap">
+        <button class="filter-btn active" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">الكل</button>
+        <button class="filter-btn" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">معلق</button>
+        <button class="filter-btn" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">مؤكد</button>
+        <button class="filter-btn" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">مكتمل</button>
+        <button class="filter-btn" onclick="this.parentElement.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));this.classList.add('active')">ملغى</button>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="adt">
+          <thead><tr><th>الطالب</th><th>المعلم</th><th>الدورة</th><th>التاريخ والوقت</th><th>الباقة</th><th>التوزيع</th><th>الحالة</th><th>إجراءات</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Michael Johnson</strong></td><td>أ. فاطمة</td><td>التجويد - الإدغام</td><td>18 أبريل، 10:00</td><td>$10</td><td style="font-size:.72rem"><span style="color:var(--gold)">$7</span> | <span style="color:var(--green)">$3</span></td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">مؤكد</span></td><td><button class="ab go" onclick="openModal('classroomModal')">🎥 فصل</button> <button class="ab re" onclick="showToast('تم إلغاء الحجز','error')">إلغاء</button></td></tr>
+            <tr><td><strong>Sophie Martin</strong></td><td>أ. أحمد</td><td>النحو - الجملة</td><td>20 أبريل، 16:00</td><td>$45</td><td style="font-size:.72rem"><span style="color:var(--gold)">$31.5</span> | <span style="color:var(--green)">$13.5</span></td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">معلق</span></td><td><button class="ab gn" onclick="showToast('تم تأكيد الحجز ✅','success')">تأكيد</button> <button class="ab re" onclick="showToast('تم الإلغاء','error')">إلغاء</button></td></tr>
+            <tr><td><strong>Anna Schmidt</strong></td><td>أ. يوسف</td><td>الفقه - الطهارة</td><td>22 أبريل، 18:00</td><td>$80</td><td style="font-size:.72rem"><span style="color:var(--gold)">$56</span> | <span style="color:var(--green)">$24</span></td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">مؤكد</span></td><td><button class="ab go" onclick="openModal('classroomModal')">🎥 فصل</button> <button class="ab re" onclick="showToast('تم إلغاء الحجز','error')">إلغاء</button></td></tr>
+            <tr><td><strong>Carlos Ruiz</strong></td><td>أ. فاطمة</td><td>القراءات السبع</td><td>24 أبريل، 08:00</td><td>$45</td><td style="font-size:.72rem"><span style="color:var(--gold)">$31.5</span> | <span style="color:var(--green)">$13.5</span></td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.15rem .5rem;border-radius:6px;font-size:.7rem;font-weight:700">معلق</span></td><td><button class="ab gn" onclick="showToast('تم تأكيد الحجز ✅','success')">تأكيد</button> <button class="ab re" onclick="showToast('تم الإلغاء','error')">إلغاء</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== CONTENT ===== -->
+    <div class="apn" id="adm-content">
+      <div class="afrm">
+        <h4>➕ إضافة مورد تعليمي جديد</h4>
+        <div class="afrw">
+          <div class="form-group"><label class="form-label">اسم المورد</label><input type="text" class="form-control" placeholder="عنوان الملف أو الفيديو"></div>
+          <div class="form-group"><label class="form-label">النوع</label><select class="form-control"><option>PDF</option><option>فيديو</option><option>صوت</option><option>تمارين</option><option>بطاقات</option></select></div>
+          <div class="form-group"><label class="form-label">الفصل</label><select class="form-control"><option>القرآن والتجويد</option><option>اللغات</option><option>العلوم الشرعية</option><option>عام</option></select></div>
+          <div class="form-group"><label class="form-label">الوصول</label><select class="form-control"><option>مجاني</option><option>للمشتركين فقط</option></select></div>
+        </div>
+        <div class="form-group"><label class="form-label">الوصف</label><textarea class="form-control" rows="2" placeholder="وصف مختصر للمورد"></textarea></div>
+        <button class="btn btn-gold btn-sm" onclick="showToast('تم رفع المورد بنجاح!','success')">📤 رفع المورد</button>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="adt">
+          <thead><tr><th>المورد</th><th>النوع</th><th>الفصل</th><th>التحميلات</th><th>الوصول</th><th>إجراءات</th></tr></thead>
+          <tbody>
+            <tr><td>📗 كتاب النحو الأساسي</td><td style="color:var(--gold)">PDF</td><td>اللغات</td><td>1,240</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مجاني</span></td><td><button class="ab go" onclick="showToast('تم فتح الملف','info')">تعديل</button> <button class="ab re" onclick="showToast('تم حذف المورد','error')">حذف</button></td></tr>
+            <tr><td>🎵 سورة البقرة تلاوة</td><td style="color:var(--green)">صوت</td><td>القرآن</td><td>892</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مجاني</span></td><td><button class="ab go" onclick="showToast('تم فتح الملف','info')">تعديل</button> <button class="ab re" onclick="showToast('تم حذف المورد','error')">حذف</button></td></tr>
+            <tr><td>🎬 دروس الحروف للأطفال</td><td style="color:#5dade2">فيديو</td><td>اللغات</td><td>2,100</td><td><span style="background:rgba(39,174,96,.15);color:var(--green);padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مجاني</span></td><td><button class="ab go" onclick="showToast('تم فتح الملف','info')">تعديل</button> <button class="ab re" onclick="showToast('تم حذف المورد','error')">حذف</button></td></tr>
+            <tr><td>📘 أحكام التجويد الشامل</td><td style="color:var(--gold)">PDF</td><td>القرآن</td><td>654</td><td><span style="background:rgba(52,152,219,.15);color:#5dade2;padding:.1rem .4rem;border-radius:5px;font-size:.65rem;font-weight:700">مشتركون</span></td><td><button class="ab go" onclick="showToast('تم فتح الملف','info')">تعديل</button> <button class="ab re" onclick="showToast('تم حذف المورد','error')">حذف</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== SETTINGS ===== -->
+    <div class="apn" id="adm-settings">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem">
+        <div>
+          <h4 style="font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:1rem">⚙️ إعدادات المنصة</h4>
+          <div class="stg-list">
+            <div class="stg-row"><div class="stg-info"><h4>التسجيل المفتوح</h4><p>السماح لطلاب جدد بإنشاء حسابات</p></div><div class="tgl on" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'تم التفعيل ✅':'تم الإيقاف','info')"></div></div>
+            <div class="stg-row"><div class="stg-info"><h4>الدروس التجريبية المجانية</h4><p>تفعيل نظام الدروس المجانية</p></div><div class="tgl on" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'تم التفعيل ✅':'تم الإيقاف','info')"></div></div>
+            <div class="stg-row"><div class="stg-info"><h4>الإشعارات التلقائية</h4><p>إرسال تذكيرات قبل الدرس</p></div><div class="tgl on" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'تم التفعيل ✅':'تم الإيقاف','info')"></div></div>
+            <div class="stg-row"><div class="stg-info"><h4>وضع الصيانة</h4><p>إيقاف المنصة مؤقتاً للصيانة</p></div><div class="tgl" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'وضع الصيانة مفعّل ⚠️':'وضع الصيانة معطّل','info')"></div></div>
+            <div class="stg-row"><div class="stg-info"><h4>نظام التقييم</h4><p>السماح للطلاب بتقييم الدروس</p></div><div class="tgl on" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'تم التفعيل ✅':'تم الإيقاف','info')"></div></div>
+            <div class="stg-row"><div class="stg-info"><h4>الفصول المباشرة</h4><p>تفعيل الفصل الرقمي المباشر</p></div><div class="tgl on" onclick="this.classList.toggle('on');showToast(this.classList.contains('on')?'تم التفعيل ✅':'تم الإيقاف','info')"></div></div>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:1rem">💰 إعدادات التوزيع المالي</h4>
+          <div class="afrm" style="margin-bottom:1rem">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.72rem">
+              <div class="form-group"><label class="form-label">حصة المعلم (%)</label><input type="number" class="form-control" value="70" min="50" max="90" dir="ltr" oninput="document.getElementById('platPct').value=100-this.value"></div>
+              <div class="form-group"><label class="form-label">حصة المنصة (%)</label><input type="number" class="form-control" id="platPct" value="30" readonly dir="ltr"></div>
+            </div>
+            <div class="form-group"><label class="form-label">الحد الأدنى للسحب ($)</label><input type="number" class="form-control" value="20" dir="ltr"></div>
+            <div class="form-group"><label class="form-label">دورية الدفع التلقائي</label><select class="form-control"><option>فوري</option><option>أسبوعي</option><option>شهري</option></select></div>
+          </div>
+          <h4 style="font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:1rem">🔗 إعدادات التكاملات</h4>
+          <div class="afrm">
+            <div class="form-group"><label class="form-label">Stripe Secret Key</label><input type="password" class="form-control" placeholder="sk_live_..." dir="ltr"></div>
+            <div class="form-group"><label class="form-label">Zoom API Key</label><input type="password" class="form-control" placeholder="API key..." dir="ltr"></div>
+            <div class="form-group"><label class="form-label">WhatsApp Business Token</label><input type="password" class="form-control" placeholder="Token..." dir="ltr"></div>
+          </div>
+          <button class="btn btn-gold" onclick="showToast('تم حفظ الإعدادات بنجاح! ✅','success')">💾 حفظ جميع الإعدادات</button>
+        </div>
+        <div>
+          <h4 style="font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:1rem">🎨 إعدادات مظهر المنصة</h4>
+          <div class="afrm">
+            <div class="form-group"><label class="form-label">اسم المنصة</label><input type="text" class="form-control" value="نور العربية"></div>
+            <div class="form-group"><label class="form-label">شعار الترحيب</label><input type="text" class="form-control" value="🎉 عرض خاص: درس تجريبي مجاني هذا الشهر!"></div>
+            <div class="form-group"><label class="form-label">اللغة الافتراضية</label><select class="form-control"><option>العربية</option><option>English</option><option>Français</option></select></div>
+            <div class="form-group"><label class="form-label">رقم واتساب الدعم</label><input type="text" class="form-control" value="+212600000000" dir="ltr"></div>
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="showToast('تم تطبيق تغييرات المظهر!','success')">💾 تطبيق التغييرات</button>
+        </div>
+        <div>
+          <h4 style="font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:1rem">🔔 إعدادات الإشعارات</h4>
+          <div class="afrm">
+            <div class="form-group"><label class="form-label">التذكير قبل الدرس (دقيقة)</label><input type="number" class="form-control" value="60" dir="ltr"></div>
+            <div class="form-group"><label class="form-label">قناة الإشعار</label><select class="form-control"><option>WhatsApp + البريد</option><option>البريد فقط</option><option>WhatsApp فقط</option></select></div>
+            <div class="form-group"><label class="form-label">SMTP Email Server</label><input type="text" class="form-control" placeholder="smtp.gmail.com" dir="ltr"></div>
+          </div>
+          <button class="btn btn-green btn-sm" onclick="showToast('تم اختبار التكاملات بنجاح ✅','success')">🔄 اختبار الاتصالات</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== LOGS ===== -->
+    <div class="apn" id="adm-logs">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem">
+        <h4 style="font-size:.88rem;font-weight:700;color:var(--gold)">📋 سجل النشاط الكامل</h4>
+        <div style="display:flex;gap:.4rem">
+          <button class="btn btn-ghost btn-sm" onclick="showToast('تم تصدير السجل','success')">📥 تصدير</button>
+          <button class="btn btn-sm" style="background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.2);color:#e74c3c" onclick="if(confirm('هل تريد مسح سجل النشاط؟'))showToast('تم مسح السجل','error')">🗑️ مسح السجل</button>
+        </div>
+      </div>
+      <div class="alog" id="actLog">
+        <div class="algi s"><span style="font-size:1.1rem">✅</span><div><div>تم دفع $45 من Michael Johnson — حصة أ. فاطمة $31.50 أُضيفت فوراً</div><div class="algt">اليوم، 10:24 ص</div></div></div>
+        <div class="algi w"><span style="font-size:1.1rem">📅</span><div><div>حجز درس جديد: Sophie Martin مع أ. أحمد — 20 أبريل، 16:00</div><div class="algt">اليوم، 09:45 ص</div></div></div>
+        <div class="algi s"><span style="font-size:1.1rem">👤</span><div><div>تسجيل مستخدم جديد: Carlos Ruiz — إسبانيا 🇪🇸</div><div class="algt">أمس، 08:30 م</div></div></div>
+        <div class="algi s"><span style="font-size:1.1rem">💸</span><div><div>تمت الموافقة على سحب $840 لـ أ. فاطمة عبر PayPal</div><div class="algt">أمس، 03:15 م</div></div></div>
+        <div class="algi w"><span style="font-size:1.1rem">⭐</span><div><div>تقييم جديد: Michael Johnson أعطى أ. فاطمة 5 نجوم</div><div class="algt">أمس، 11:00 ص</div></div></div>
+        <div class="algi e"><span style="font-size:1.1rem">❌</span><div><div>فشل محاولة دفع من Layla Hassan — تحقق من البطاقة</div><div class="algt">أمس، 10:22 ص</div></div></div>
+        <div class="algi s"><span style="font-size:1.1rem">🏛️</span><div><div>تمت إضافة قسم "السيرة النبوية" لفصل العلوم الشرعية</div><div class="algt">16 أبريل، 04:00 م</div></div></div>
+        <div class="algi w"><span style="font-size:1.1rem">📧</span><div><div>تم إرسال تذكير الدرس لـ 42 طالب — الساعة 10:00 ص</div><div class="algt">16 أبريل، 09:00 ص</div></div></div>
+        <div class="algi s"><span style="font-size:1.1rem">📜</span><div><div>إصدار شهادة PDF لـ Jan van Berg — دورة القرآن والتجويد</div><div class="algt">15 أبريل، 06:00 م</div></div></div>
+        <div class="algi s"><span style="font-size:1.1rem">🔐</span><div><div>دخول مدير جديد إلى لوحة التحكم</div><div class="algt">15 أبريل، 09:00 ص</div></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" style="background:var(--navy2)"><div class="si">
+  <div class="tc"><div class="slabel">خطة التطوير</div><h2 class="stitle"><span class="gold">رحلتنا</span> نحو التميز</h2></div>
+  <div class="rogrid reveal">
+    <div class="rocard"><div class="roph">المرحلة الأولى</div><div class="rot">0 – 3 أشهر</div><h3>الأساسيات ✅</h3><ul class="roitems"><li>المنصة والفصول الثلاثة</li><li>نظام حجز بالتقويم</li><li>دفع آمن + توزيع 70/30</li><li>فصل رقمي مباشر</li></ul><div class="ronum">01</div></div>
+    <div class="rocard"><div class="roph">المرحلة الثانية</div><div class="rot">3 – 6 أشهر</div><h3>التفاعل 🚀</h3><ul class="roitems"><li>تطبيق موبايل iOS/Android</li><li>نظام شهادات متقدم</li><li>إشعارات push</li><li>توسيع فريق التدريس</li></ul><div class="ronum">02</div></div>
+    <div class="rocard"><div class="roph">المرحلة الثالثة</div><div class="rot">6 – 12 شهر</div><h3>المنصة المتقدمة 🌟</h3><ul class="roitems"><li>LMS متكامل مع الفصول</li><li>ذكاء اصطناعي للتقييم</li><li>مكتبة موارد ضخمة</li><li>تسويق عالمي +50 دولة</li></ul><div class="ronum">03</div></div>
+  </div>
+</div></section>
+
+<!-- CONTACT -->
+<section id="contact"><div class="si">
+  <div class="cngrid">
+    <div>
+      <div class="slabel">تواصل معنا</div><h2 class="stitle"><span class="gold">نحن</span> هنا لمساعدتك</h2><p class="sdesc">فريق الدعم متاح على مدار الساعة</p>
+      <div class="cnopts">
+        <a href="https://wa.me/212600000000" class="cnopt" target="_blank"><div class="cnoi wa"><i class="fab fa-whatsapp" style="color:var(--green)"></i></div><div><div class="cnol">واتساب</div><div class="cnov">+212 600-000-000</div></div></a>
+        <a href="mailto:info@nour-alarabia.com" class="cnopt"><div class="cnoi em"><i class="fas fa-envelope" style="color:var(--gold)"></i></div><div><div class="cnol">البريد</div><div class="cnov">info@nour-alarabia.com</div></div></a>
+        <a href="tel:+212600000000" class="cnopt"><div class="cnoi ph"><i class="fas fa-phone" style="color:#5dade2"></i></div><div><div class="cnol">الهاتف</div><div class="cnov">+212 600-000-000</div></div></a>
+      </div>
+    </div>
+    <div class="bform reveal">
+      <h3>✉️ أرسل رسالة</h3>
+      <div class="fg"><label class="fl">الاسم</label><input type="text" class="fc" placeholder="اسمك"></div>
+      <div class="fg"><label class="fl">البريد</label><input type="email" class="fc" placeholder="بريدك" dir="ltr"></div>
+      <div class="fg"><label class="fl">الموضوع</label><select class="fc"><option>استفسار عن الدورات</option><option>الانضمام كمعلم</option><option>مشكلة في الحجز</option><option>الشراكات</option><option>أخرى</option></select></div>
+      <div class="fg"><label class="fl">الرسالة</label><textarea class="fc" rows="3" placeholder="اكتب رسالتك..."></textarea></div>
+      <button class="btn btn-gold btn-full" onclick="toast('تم إرسال رسالتك! سنرد خلال 24 ساعة.','s')">📨 إرسال الرسالة</button>
+    </div>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="fi">
+  <div class="fgrid">
+    <div class="fb"><div class="logo"><div class="logo-icon">ن</div><div class="logo-text">نور العربية<span>Nour Al-Arabia</span></div></div><p>منصة تعليمية عالمية — ثلاثة فصول، شهادات معتمدة، توزيع مالي عادل. نخدم طلاباً في +50 دولة.</p><div class="sl"><a class="slink" href="#"><i class="fab fa-facebook-f"></i></a><a class="slink" href="#"><i class="fab fa-instagram"></i></a><a class="slink" href="#"><i class="fab fa-youtube"></i></a><a class="slink" href="#"><i class="fab fa-twitter"></i></a><a class="slink" href="#"><i class="fab fa-tiktok"></i></a></div></div>
+    <div class="fcol"><h4>الفصول</h4><a href="#halls">🕌 القرآن والتجويد</a><a href="#halls">📖 اللغات</a><a href="#halls">⚖️ العلوم الشرعية</a></div>
+    <div class="fcol"><h4>روابط</h4><a href="#teachers">المعلمون</a><a href="#pricing">الأسعار</a><a href="#revenue">التوزيع المالي</a><a href="#resources">المكتبة</a><a href="#" onclick="openM('teachM')">انضم كمعلم</a></div>
+    <div class="fcol"><h4>تواصل</h4><a href="https://wa.me/212600000000">📱 +212 600-000-000</a><a href="mailto:info@nour-alarabia.com">✉️ info@nour-alarabia.com</a><div style="margin-top:.7rem"><div style="font-size:.68rem;color:var(--text-muted);margin-bottom:.38rem">النشرة البريدية:</div><div style="display:flex;gap:.28rem"><input type="email" class="fc" placeholder="بريدك" style="font-size:.72rem;padding:.35rem .55rem" dir="ltr"><button class="btn btn-gold btn-sm">→</button></div></div></div>
+  </div>
+  <div class="fbot"><p>© 2025 نور العربية. جميع الحقوق محفوظة.</p><p>صُنع بـ ❤️ لخدمة طلاب العربية حول العالم</p></div>
+</div></footer>
+
+<!-- MODALS -->
+<!-- AUTH -->
+<div class="mo" id="authM"><div class="modal"><button class="mc" onclick="closeM('authM')">✕</button>
+  <div class="atabs"><div class="atab active" id="lt" onclick="swAuth('l')">تسجيل الدخول</div><div class="atab" id="rt" onclick="swAuth('r')">إنشاء حساب</div></div>
+  <div id="lform">
+    <div class="soclogin"><button class="btn btn-ghost btn-full" onclick="socLogin('google')"><i class="fab fa-google" style="color:#ea4335"></i> Google</button><button class="btn btn-ghost btn-full" onclick="socLogin('fb')"><i class="fab fa-facebook-f" style="color:#1877f2"></i> Facebook</button></div>
+    <div class="dline">أو بالبريد</div>
+    <div class="fg"><label class="fl">البريد</label><input type="email" class="fc" id="lemail" placeholder="email@example.com" dir="ltr"></div>
+    <div class="fg"><label class="fl">كلمة المرور</label><input type="password" class="fc" id="lpass" placeholder="••••••••"></div>
+    <div style="text-align:left;margin-bottom:.9rem"><a href="#" style="font-size:.72rem;color:var(--gold);text-decoration:none">نسيت كلمة المرور؟</a></div>
+    <button class="btn btn-gold btn-full" onclick="doLogin()">تسجيل الدخول</button>
+  </div>
+  <div id="rform" style="display:none">
+    <div class="fg"><label class="fl">الاسم الكامل</label><input type="text" class="fc" id="rname" placeholder="اسمك الكامل"></div>
+    <div class="fg"><label class="fl">البريد</label><input type="email" class="fc" id="remail" placeholder="email@example.com" dir="ltr"></div>
+    <div class="fg"><label class="fl">كلمة المرور</label><input type="password" class="fc" id="rpass" placeholder="••••••••"></div>
+    <div class="fg"><label class="fl">نوع الحساب</label><select class="fc" id="rrole"><option value="student">طالب</option><option value="teacher">معلم</option></select></div>
+    <button class="btn btn-gold btn-full" onclick="doReg()">إنشاء الحساب مجاناً</button>
+  </div>
+</div></div>
+
+<!-- TRIAL -->
+<div class="mo" id="trialM"><div class="modal"><button class="mc" onclick="closeM('trialM')">✕</button>
+  <h3>🎓 درس تجريبي مجاني</h3><p class="sub">لا بطاقة ائتمانية مطلوبة!</p>
+  <div class="fg"><label class="fl">الاسم</label><input type="text" class="fc" placeholder="اسمك"></div>
+  <div class="fg"><label class="fl">البريد / WhatsApp</label><input type="text" class="fc" placeholder="+1 234 567 890" dir="ltr"></div>
+  <div class="fg"><label class="fl">الفصل المهتم به</label><select class="fc"><option>🕌 القرآن والتجويد</option><option>📖 اللغات</option><option>⚖️ العلوم الشرعية</option></select></div>
+  <div class="fg"><label class="fl">مستواك الحالي</label><select class="fc"><option>لا أعرف شيئاً</option><option>مبتدئ</option><option>متوسط</option><option>متقدم</option></select></div>
+  <button class="btn btn-gold btn-full" onclick="closeM('trialM');showSuccess('🎓','درس مجاني محجوز!','سيتواصل معك فريقنا قريباً لتأكيد موعدك. مرحباً بك!')">احجز درسي المجاني</button>
+</div></div>
+
+<!-- PAYMENT -->
+<div class="mo" id="payM"><div class="modal"><button class="mc" onclick="closeM('payM')">✕</button>
+  <h3>💳 إتمام الدفع الآمن</h3>
+  <div style="background:var(--gold-dim);border:1px solid rgba(201,149,42,.28);border-radius:9px;padding:.82rem;margin-bottom:1.1rem">
+    <div style="display:flex;justify-content:space-between;font-size:.84rem;margin-bottom:.35rem"><span>المبلغ الإجمالي</span><strong id="ptot">$45.00</strong></div>
+    <div style="display:flex;justify-content:space-between;font-size:.76rem;color:var(--text-muted)"><span>حصة المعلم (70%)</span><span id="ptea" style="color:var(--gold)">$31.50</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:.76rem;color:var(--text-muted)"><span>حصة المنصة (30%)</span><span id="pplat">$13.50</span></div>
+  </div>
+  <div class="fg"><label class="fl">طريقة الدفع</label></div>
+  <div class="pmgrid">
+    <div class="pmeth sel" onclick="selPM(this)">💳 بطاقة ائتمانية</div>
+    <div class="pmeth" onclick="selPM(this)">🅿️ PayPal</div>
+    <div class="pmeth" onclick="selPM(this)">🟢 WhatsApp Pay</div>
+    <div class="pmeth" onclick="selPM(this)">Stripe</div>
+  </div>
+  <div id="cardF">
+    <div class="fg"><label class="fl">رقم البطاقة</label><input type="text" class="fc" placeholder="1234 5678 9012 3456" dir="ltr" maxlength="19" oninput="fmtCard(this)"></div>
+    <div class="cfield-row">
+      <div class="fg"><label class="fl">الاسم</label><input type="text" class="fc" placeholder="الاسم على البطاقة"></div>
+      <div class="fg"><label class="fl">انتهاء</label><input type="text" class="fc" placeholder="MM/YY" dir="ltr" maxlength="5"></div>
+      <div class="fg"><label class="fl">CVV</label><input type="text" class="fc" placeholder="123" dir="ltr" maxlength="3"></div>
+    </div>
+  </div>
+  <button class="btn btn-gold btn-full btn-lg" id="payBtn" onclick="procPay()">🔒 دفع آمن الآن</button>
+  <div style="text-align:center;font-size:.68rem;color:var(--text-muted);margin-top:.55rem"><i class="fas fa-lock"></i> مشفر بـ SSL 256-bit • مدعوم من Stripe</div>
+</div></div>
+
+<!-- BOOK (from halls) -->
+<div class="mo" id="bookM"><div class="modal"><button class="mc" onclick="closeM('bookM')">✕</button>
+  <h3>📅 حجز درس سريع</h3><p class="sub">اختر تفاصيل درسك</p>
+  <div class="fg"><label class="fl">اسمك</label><input type="text" class="fc" placeholder="الاسم الكامل"></div>
+  <div class="fg"><label class="fl">البريد</label><input type="email" class="fc" placeholder="email@example.com" dir="ltr"></div>
+  <div class="fg"><label class="fl">المعلم</label><select class="fc"><option>أ. فاطمة الزهراء</option><option>أ. أحمد محمد</option><option>أ. يوسف الأمين</option><option>أ. مريم صالح</option></select></div>
+  <div class="fg"><label class="fl">الباقة</label><select class="fc" id="bmpkg" onchange="updBM()"><option value="10">حصة واحدة — $10</option><option value="45" selected>5 حصص — $45</option><option value="80">10 حصص — $80</option></select></div>
+  <div class="bsp"><div class="bspt">💡 توزيع مالي</div><div class="bspr"><span>الإجمالي</span><strong id="bmtot">$45</strong></div><div class="bspr"><span>المعلم 70%</span><strong id="bmtea" style="color:var(--gold)">$31.50</strong></div></div>
+  <button class="btn btn-gold btn-full" style="margin-top:.9rem" onclick="closeM('bookM');openPay(parseFloat(document.getElementById('bmpkg').value))">💳 متابعة للدفع</button>
+</div></div>
+
+<!-- CLASSROOM -->
+<div class="mo" id="classM"><div class="modal modal-xl"><button class="mc" onclick="closeM('classM')">✕</button>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.9rem"><h3 style="font-size:1rem">🎥 الفصل المباشر — التجويد مع أ. فاطمة</h3><div style="display:flex;align-items:center;gap:.45rem;font-size:.74rem"><span style="color:var(--red)">●</span><span>مباشر</span><span style="color:var(--text-muted)">42 متصل</span></div></div>
+  <div class="class-grid">
+    <div>
+      <div class="class-main"><div style="text-align:center"><div style="font-size:2.8rem">👩‍🏫</div><div style="font-size:.9rem;color:var(--text-light);margin-top:.38rem">أ. فاطمة الزهراء</div></div><div class="class-lbl">📡 مباشر</div></div>
+      <div class="vgrid" style="margin-top:.55rem"><div class="vthumb"><span>👨‍💻</span><div class="vtlbl">أنت</div></div><div class="vthumb" style="background:#0a2030"><span>👨‍🎓</span><div class="vtlbl">Michael</div></div><div class="vthumb" style="background:#1a1a2a"><span>👩‍🎓</span><div class="vtlbl">Sophie</div></div><div class="vthumb" style="background:#0a1a0a"><span>🎓</span><div class="vtlbl">Anna</div></div></div>
+      <div class="ctrls">
+        <button class="ctrl on" id="micB" onclick="togCtrl(this,'mic')"><i class="fas fa-microphone"></i></button>
+        <button class="ctrl" id="camB" onclick="togCtrl(this,'cam')"><i class="fas fa-video"></i></button>
+        <button class="ctrl" onclick="togCtrl(this,'scr')"><i class="fas fa-desktop"></i></button>
+        <button class="ctrl" onclick="togCtrl(this,'hand')">✋</button>
+        <button class="ctrl red" onclick="closeM('classM');toast('تم إنهاء الاتصال','i')"><i class="fas fa-phone-slash"></i></button>
+      </div>
+    </div>
+    <div class="csidebar">
+      <div class="cchat">
+        <div style="padding:.55rem .75rem;border-bottom:1px solid rgba(255,255,255,.06);font-size:.74rem;font-weight:700">💬 الدردشة</div>
+        <div class="cmsgs" id="cmsgs"><div class="cmsg"><strong>أ. فاطمة:</strong> أهلاً بكم في درس التجويد 🌟</div><div class="cmsg"><strong>Michael:</strong> شكراً أستاذة!</div><div class="cmsg"><strong>Sophie:</strong> جاهزة!</div></div>
+        <div class="cinput-row"><input class="cinput" id="cinp" placeholder="اكتب رسالة..." onkeypress="if(event.key==='Enter')sendChat()"><button class="btn btn-green btn-sm" onclick="sendChat()">→</button></div>
+      </div>
+      <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:.75rem">
+        <div style="font-size:.74rem;font-weight:700;margin-bottom:.5rem">📋 ملاحظات</div>
+        <textarea style="width:100%;background:transparent;border:none;color:var(--text-light);font-family:'Cairo',sans-serif;font-size:.74rem;resize:vertical;min-height:75px;direction:rtl" placeholder="اكتب ملاحظاتك..."></textarea>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- CURRICULUM -->
+<div class="mo" id="currM"><div class="modal modal-lg"><button class="mc" onclick="closeM('currM')">✕</button>
+  <h3>📋 <span id="currTitle">المنهج</span></h3>
+  <div class="mtabs" id="currTabs">
+    <button class="mtab active" onclick="swCurr(this,'qc')">🕌 القرآن</button>
+    <button class="mtab" onclick="swCurr(this,'lc')">📖 اللغات</button>
+    <button class="mtab" onclick="swCurr(this,'sc')">⚖️ الشريعة</button>
+  </div>
+  <div id="qc"><div style="display:flex;flex-direction:column;gap:.62rem">
+    <div style="background:var(--quran-bg);border:1px solid rgba(39,174,96,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:#52d68a;margin-bottom:.28rem">📖 أحكام التجويد (12 وحدة)</div><div style="font-size:.76rem;color:var(--text-muted)">النون الساكنة، المد، الوقف والابتداء، مخارج الحروف</div></div>
+    <div style="background:var(--quran-bg);border:1px solid rgba(39,174,96,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:#52d68a;margin-bottom:.28rem">🎵 الحفظ والمراجعة (مفتوحة)</div><div style="font-size:.76rem;color:var(--text-muted)">منهج متدرج من جزء عم حتى ختم القرآن مع آليات المراجعة</div></div>
+    <div style="background:var(--quran-bg);border:1px solid rgba(39,174,96,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:#52d68a;margin-bottom:.28rem">📜 الإجازة بالسند (متقدم)</div><div style="font-size:.76rem;color:var(--text-muted)">رواية حفص عن عاصم — سند متصل للنبي ﷺ</div></div>
+    <div style="background:var(--quran-bg);border:1px solid rgba(39,174,96,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:#52d68a;margin-bottom:.28rem">🎙 تقييم النطق بالذكاء الاصطناعي</div><div style="font-size:.76rem;color:var(--text-muted)">تحليل تلقائي للنطق مع تقارير فورية</div></div>
+  </div></div>
+  <div id="lc" style="display:none"><div style="display:flex;flex-direction:column;gap:.62rem">
+    <div style="background:var(--lang-bg);border:1px solid rgba(201,149,42,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:var(--gold-light);margin-bottom:.28rem">🌱 المبتدئين A1-A2 (8 وحدات)</div><div style="font-size:.76rem;color:var(--text-muted)">الحروف، المفردات الأساسية، الجمل البسيطة، النطق الصحيح</div></div>
+    <div style="background:var(--lang-bg);border:1px solid rgba(201,149,42,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:var(--gold-light);margin-bottom:.28rem">📐 النحو والصرف B1-B2 (16 وحدة)</div><div style="font-size:.76rem;color:var(--text-muted)">الجملة الاسمية والفعلية، الإعراب، الأفعال والمشتقات</div></div>
+    <div style="background:var(--lang-bg);border:1px solid rgba(201,149,42,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:var(--gold-light);margin-bottom:.28rem">🗣️ المحادثة المتقدمة C1-C2 (10 وحدات)</div><div style="font-size:.76rem;color:var(--text-muted)">حوارات متقدمة، خطابات رسمية، تقديم عروض احترافية</div></div>
+    <div style="background:var(--lang-bg);border:1px solid rgba(201,149,42,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:var(--gold-light);margin-bottom:.28rem">📚 الأدب العربي (8 وحدات)</div><div style="font-size:.76rem;color:var(--text-muted)">الشعر، النثر، تحليل النصوص، البلاغة العربية</div></div>
+  </div></div>
+  <div id="sc" style="display:none"><div style="display:flex;flex-direction:column;gap:.62rem">
+    <div style="background:var(--sharia-bg);border:1px solid rgba(142,68,173,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:var(--purple-light);margin-bottom:.28rem">⚖️ الفقه وأصوله (14 وحدة)</div><div style="font-size:.76rem;color:var(--text-muted)">فقه العبادات، المعاملات، الفقه المقارن الأساسي</div></div>
+    <div style="background:var(--sharia-bg);border:1px solid rgba(142,68,173,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:var(--purple-light);margin-bottom:.28rem">📚 علم الحديث (10 وحدات)</div><div style="font-size:.76rem;color:var(--text-muted)">مصطلح الحديث، الأربعون النووية، دراسة الأسانيد</div></div>
+    <div style="background:var(--sharia-bg);border:1px solid rgba(142,68,173,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:var(--purple-light);margin-bottom:.28rem">🌟 التفسير والعقيدة (12 وحدة)</div><div style="font-size:.76rem;color:var(--text-muted)">تفسير جزء عم، العقيدة الإسلامية الأساسية</div></div>
+    <div style="background:var(--sharia-bg);border:1px solid rgba(142,68,173,.2);border-radius:9px;padding:.82rem"><div style="font-weight:700;color:var(--purple-light);margin-bottom:.28rem">🕌 السيرة النبوية (8 وحدات)</div><div style="font-size:.76rem;color:var(--text-muted)">سيرة النبي ﷺ من المهد حتى الوفاة</div></div>
+  </div></div>
+  <button class="btn btn-gold btn-full" style="margin-top:1.3rem" onclick="closeM('currM');openM('trialM')">🎓 احجز درساً تجريبياً مجاناً</button>
+</div></div>
+
+<!-- CERTIFICATE -->
+<div class="mo" id="certM"><div class="modal modal-lg"><button class="mc" onclick="closeM('certM')">✕</button>
+  <h3>📜 شهاداتي</h3><p class="sub">شهادات معتمدة لكل دورة مكتملة</p>
+  <div class="cert-box" id="certBox">
+    <div class="cert-seal">🕌</div>
+    <div style="font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:.42rem">نور العربية | Nour Al-Arabia</div>
+    <div class="cert-title">شهادة إتمام الدورة</div>
+    <div style="font-size:.84rem;color:var(--text-muted);margin:.42rem 0">هذه الشهادة تُقدَّم إلى</div>
+    <div class="cert-name" id="certName">الطالب الكريم</div>
+    <div class="cert-course">لإتمامه دورة <strong style="color:var(--gold-light)">القرآن الكريم والتجويد</strong> بنجاح</div>
+    <div class="cert-date">تاريخ الإصدار: <span id="certDate">17 أبريل 2025</span></div>
+    <div style="margin-top:1rem;font-size:.76rem;color:var(--text-muted)">أ. فاطمة الزهراء — المعلمة المعتمدة</div>
+    <div class="cert-deco">✦ ✦ ✦</div>
+  </div>
+  <div style="display:flex;gap:.55rem;margin-top:.9rem">
+    <button class="btn btn-gold btn-full" onclick="window.print()"><i class="fas fa-print"></i> طباعة</button>
+    <button class="btn btn-ghost btn-full" onclick="toast('تم تحميل الشهادة PDF ✓','s')"><i class="fas fa-download"></i> تحميل PDF</button>
+  </div>
+</div></div>
+
+<!-- RATING -->
+<div class="mo" id="rateM"><div class="modal"><button class="mc" onclick="closeM('rateM')">✕</button>
+  <h3 style="text-align:center">⭐ تقييم الدرس</h3><p class="sub" style="text-align:center">درس التجويد — الإدغام مع أ. فاطمة</p>
+  <div style="text-align:center;margin-bottom:1rem"><div style="font-size:.82rem;color:var(--text-muted);margin-bottom:.42rem">كيف كان الدرس؟</div>
+    <div class="rstars" id="rstars"><span class="rstar" onclick="setR(1)">★</span><span class="rstar" onclick="setR(2)">★</span><span class="rstar active" onclick="setR(3)">★</span><span class="rstar active" onclick="setR(4)">★</span><span class="rstar active" onclick="setR(5)">★</span></div>
+    <div id="rlbl" style="font-size:.78rem;color:var(--gold);font-weight:700">ممتاز!</div>
+  </div>
+  <div class="fg"><label class="fl">تعليقك (اختياري)</label><textarea class="fc" rows="3" placeholder="ما رأيك في الدرس؟"></textarea></div>
+  <button class="btn btn-gold btn-full" onclick="submitR()">إرسال التقييم</button>
+</div></div>
+
+<!-- TEACHER REGISTER -->
+<div class="mo" id="teachM"><div class="modal"><button class="mc" onclick="closeM('teachM')">✕</button>
+  <h3>🧑‍🏫 انضم كمعلم</h3><p class="sub">علّم وأنت تكسب — 70% من كل حصة تذهب إليك مباشرة</p>
+  <div class="fg"><label class="fl">الاسم الكامل</label><input type="text" class="fc" placeholder="اسمك"></div>
+  <div class="fg"><label class="fl">البريد</label><input type="email" class="fc" placeholder="email@example.com" dir="ltr"></div>
+  <div class="fg"><label class="fl">تخصصك</label><select class="fc"><option>🕌 القرآن والتجويد</option><option>📖 اللغة العربية</option><option>⚖️ العلوم الشرعية</option><option>💼 العربية للأعمال</option></select></div>
+  <div class="fg"><label class="fl">سنوات الخبرة</label><select class="fc"><option>أقل من سنة</option><option>1-3 سنوات</option><option>3-5 سنوات</option><option>أكثر من 5 سنوات</option></select></div>
+  <div style="background:rgba(39,174,96,.06);border:1px solid rgba(39,174,96,.18);border-radius:9px;padding:.82rem;margin-bottom:.9rem;font-size:.76rem">
+    <div style="color:var(--green);font-weight:700;margin-bottom:.38rem">💰 نظام الأرباح</div>
+    <div style="color:var(--text-muted)">✓ 70% من كل حصة تُضاف فوراً لمحفظتك</div>
+    <div style="color:var(--text-muted)">✓ سحب في أي وقت بدون حد أدنى مرتفع</div>
+    <div style="color:var(--text-muted)">✓ تقارير أرباح تفصيلية شهرية وسنوية</div>
+  </div>
+  <button class="btn btn-gold btn-full" onclick="closeM('teachM');showSuccess('🧑‍🏫','تم استلام طلبك!','سيتواصل معك فريقنا خلال 24-48 ساعة لإكمال انضمامك. شكراً!')">📤 إرسال طلب الانضمام</button>
+</div></div>
+
+<!-- WITHDRAW -->
+<div class="mo" id="wdrawM"><div class="modal"><button class="mc" onclick="closeM('wdrawM')">✕</button>
+  <h3>💸 طلب سحب الأرباح</h3><p class="sub">رصيدك المتاح: <strong style="color:var(--gold)">$126.00</strong></p>
+  <div class="fg"><label class="fl">المبلغ ($)</label><input type="number" class="fc" placeholder="126" dir="ltr"></div>
+  <div class="fg"><label class="fl">طريقة السحب</label><select class="fc"><option>PayPal</option><option>Wise (TransferWise)</option><option>تحويل بنكي دولي</option><option>Western Union</option></select></div>
+  <div class="fg"><label class="fl">حساب الاستلام</label><input type="text" class="fc" placeholder="paypal@example.com" dir="ltr"></div>
+  <button class="btn btn-gold btn-full" onclick="closeM('wdrawM');showSuccess('💸','تم تقديم طلب السحب!','سيتم تحويل الأرباح خلال 1-3 أيام عمل. شكراً!')">✅ تأكيد طلب السحب</button>
+</div></div>
+
+<!-- ADMIN LOGIN -->
+<div class="mo" id="adminM"><div class="modal"><button class="mc" onclick="closeM('adminM')">✕</button>
+  <h3>🔐 وضع الإدارة</h3><p class="sub">أدخل كلمة مرور المدير لتفعيل إضافة وحذف الأقسام</p>
+  <div class="fg"><label class="fl">كلمة المرور</label><input type="password" class="fc" id="apass" placeholder="••••••••" onkeypress="if(event.key==='Enter')chkAdmin()"></div>
+  <div id="aerr" style="color:#e74c3c;font-size:.74rem;margin-top:.28rem;display:none">كلمة مرور خاطئة</div>
+  <button class="btn btn-gold btn-full" onclick="chkAdmin()">دخول</button>
+  <div style="margin-top:.9rem;background:var(--card);border-radius:8px;padding:.82rem;font-size:.74rem;color:var(--text-muted)">💡 كلمة المرور الافتراضية: <code style="color:var(--gold)">admin123</code></div>
+</div></div>
+
+<!-- SUCCESS -->
+<div class="mo" id="successM"><div class="modal" style="text-align:center">
+  <button class="mc" onclick="closeM('successM')">✕</button>
+  <div style="font-size:3.2rem;margin-bottom:.7rem" id="sEmoji">🎉</div>
+  <h3 id="sTitle">تم بنجاح!</h3><p class="sub" id="sMsg">شكراً لك!</p>
+  <button class="btn btn-gold" style="padding:.6rem 2rem" onclick="closeM('successM')">ممتاز!</button>
+</div></div>
+
+<script>
+/* ===== HALLS DATA ===== */
+const HD={
+  q:{secs:[{id:1,ic:'📖',n:'أحكام التجويد',lv:'مبتدئ-متقدم',st:124},{id:2,ic:'🎵',n:'الحفظ ومراجعة القرآن',lv:'جميع المستويات',st:210},{id:3,ic:'📜',n:'القراءات السبع',lv:'متقدم',st:52},{id:4,ic:'🏅',n:'الإجازة بالسند',lv:'متقدم',st:100}],nid:5},
+  l:{secs:[{id:1,ic:'🌱',n:'العربية للمبتدئين',lv:'مبتدئ',st:380},{id:2,ic:'📐',n:'النحو والصرف',lv:'متوسط',st:290},{id:3,ic:'🗣️',n:'المحادثة والتعبير',lv:'جميع المستويات',st:310},{id:4,ic:'✍️',n:'الكتابة والإملاء',lv:'متوسط-متقدم',st:175},{id:5,ic:'📚',n:'الأدب العربي',lv:'متقدم',st:85}],nid:6},
+  s:{secs:[{id:1,ic:'⚖️',n:'الفقه وأصوله',lv:'جميع المستويات',st:210},{id:2,ic:'📜',n:'علم الحديث',lv:'متوسط',st:180},{id:3,ic:'🌟',n:'التفسير القرآني',lv:'متوسط-متقدم',st:155},{id:4,ic:'🕌',n:'العقيدة الإسلامية',lv:'مبتدئ-متوسط',st:130},{id:5,ic:'📖',n:'السيرة النبوية',lv:'جميع المستويات',st:99}],nid:6}
+};
+
+function renderH(k){
+  const h=HD[k],c=document.getElementById(k+'-secs');
+  if(!c)return;c.innerHTML='';
+  h.secs.forEach(s=>{
+    const el=document.createElement('div');el.className='si-item';
+    el.innerHTML=`<span class="sii">${s.ic}</span><div style="flex:1;min-width:0"><div class="sn">${s.n}</div><div class="sm">${s.st} طالب • ${s.lv}</div></div><span class="stag">${s.lv.includes('مبتدئ')?'مبتدئ':s.lv.includes('متقدم')?'متقدم':'⭐'}</span><button class="rm-btn" onclick="rmSec('${k}',${s.id})">✕</button>`;
+    el.addEventListener('click',e=>{if(!e.target.classList.contains('rm-btn'))openCurr(k)});
+    c.appendChild(el);
+  });
+  const ctel=document.getElementById(k+'ct');if(ctel)ctel.textContent=h.secs.length;
+  updTotal();updBCourse();
+}
+
+function addSec(k){
+  const i=document.getElementById(k+'-inp'),n=i.value.trim();
+  if(!n){i.focus();toast('أدخل اسم القسم','e');return;}
+  const ics=['📌','🎯','💡','🔖','📒','🧩','🌿','✨','🔑','⭐'];
+  HD[k].secs.push({id:HD[k].nid++,ic:ics[Math.floor(Math.random()*ics.length)],n,lv:'جميع المستويات',st:0});
+  i.value='';renderH(k);saveH();toast(`تم إضافة قسم "${n}"`,'s');
+}
+
+function rmSec(k,id){
+  if(!document.body.classList.contains('admin'))return;
+  if(!confirm('حذف هذا القسم؟'))return;
+  HD[k].secs=HD[k].secs.filter(s=>s.id!==id);renderH(k);saveH();toast('تم حذف القسم','i');
+}
+
+function updTotal(){
+  const t=HD.q.secs.length+HD.l.secs.length+HD.s.secs.length;
+  const el=document.getElementById('totSecs');if(el)el.textContent=t;
+}
+
+function saveH(){try{localStorage.setItem('nour_hd',JSON.stringify(HD));}catch(e){}}
+function loadH(){try{const s=localStorage.getItem('nour_hd');if(s){const p=JSON.parse(s);Object.assign(HD,p);}}catch(e){}}
+
+function openCurr(k){
+  openM('currM');
+  const m={q:'فصل القرآن والتجويد',l:'فصل اللغات',s:'فصل العلوم الشرعية'};
+  const el=document.getElementById('currTitle');if(el)el.textContent='منهج '+m[k];
+  const ids={q:'qc',l:'lc',s:'sc'};
+  document.querySelectorAll('#currM [id]').forEach(el=>{if(['qc','lc','sc'].includes(el.id))el.style.display='none';});
+  const t=document.getElementById(ids[k]);if(t)t.style.display='block';
+  document.querySelectorAll('#currTabs .mtab').forEach(b=>b.classList.remove('active'));
+  const idx=Object.keys(ids).indexOf(k);
+  const tabs=document.querySelectorAll('#currTabs .mtab');
+  if(tabs[idx])tabs[idx].classList.add('active');
+}
+
+function swCurr(btn,id){
+  document.querySelectorAll('#currTabs .mtab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  ['qc','lc','sc'].forEach(i=>{const el=document.getElementById(i);if(el)el.style.display=i===id?'block':'none';});
+}
+
+/* ===== ADMIN ===== */
+let isAdmin=false;
+function toggleAdmin(){if(isAdmin){isAdmin=false;document.body.classList.remove('admin');document.getElementById('adminBtn').textContent='⚙️ إدارة';toast('تم إيقاف وضع الإدارة','i');}else{openM('adminM');}}
+function chkAdmin(){
+  const p=document.getElementById('apass').value,e=document.getElementById('aerr');
+  if(p==='admin123'){isAdmin=true;document.body.classList.add('admin');document.getElementById('adminBtn').textContent='🔓 مدير';closeM('adminM');document.getElementById('apass').value='';e.style.display='none';toast('وضع الإدارة مفعّل','s');}
+  else{e.style.display='block';}
+}
+
+/* ===== AUTH ===== */
+let CU=null;
+function swAuth(t){
+  document.getElementById('lt').classList.toggle('active',t==='l');document.getElementById('rt').classList.toggle('active',t==='r');
+  document.getElementById('lform').style.display=t==='l'?'block':'none';document.getElementById('rform').style.display=t==='r'?'block':'none';
+}
+function doLogin(){
+  const em=document.getElementById('lemail').value.trim(),pw=document.getElementById('lpass').value;
+  if(!em||!pw){toast('أدخل البريد وكلمة المرور','e');return;}
+  CU={name:em.split('@')[0],email:em,role:'student'};saveU();updUI();closeM('authM');toast(`مرحباً ${CU.name}! 👋`,'s');addN('🎉 مرحباً بك في نور العربية!');
+}
+function doReg(){
+  const n=document.getElementById('rname').value.trim(),em=document.getElementById('remail').value.trim(),pw=document.getElementById('rpass').value,r=document.getElementById('rrole').value;
+  if(!n||!em||!pw){toast('أكمل جميع الحقول','e');return;}
+  CU={name:n,email:em,role:r};saveU();updUI();closeM('authM');toast(`مرحباً ${n}! تم إنشاء حسابك 🎉`,'s');addN('🎓 درسك التجريبي المجاني في انتظارك!');
+}
+function socLogin(p){CU={name:p==='google'?'مستخدم Google':'مستخدم Facebook',email:p+'@nour.com',role:'student'};saveU();updUI();closeM('authM');toast(`تم الدخول عبر ${p==='google'?'Google':'Facebook'} ✓`,'s');}
+function saveU(){try{localStorage.setItem('nour_u',JSON.stringify(CU));}catch(e){}}
+function updUI(){
+  if(!CU)return;
+  const ini=CU.name.slice(0,2);
+  document.getElementById('loginBtn').style.display='none';
+  document.getElementById('uavbtn').classList.add('show');
+  document.getElementById('uavmini').textContent=ini;
+  document.getElementById('uname').textContent=CU.name.split(' ')[0];
+  document.getElementById('dav').textContent=ini;
+  document.getElementById('dname').textContent=CU.name;
+  document.getElementById('drole').textContent=CU.role==='teacher'?'معلم':'طالب';
+  document.getElementById('dauthbtn').textContent='تسجيل الخروج';
+  document.getElementById('dauthbtn').onclick=logout;
+  const cn=document.getElementById('certName');if(cn)cn.textContent=CU.name;
+}
+function logout(){CU=null;try{localStorage.removeItem('nour_u');}catch(e){}document.getElementById('loginBtn').style.display='';document.getElementById('uavbtn').classList.remove('show');document.getElementById('dauthbtn').textContent='تسجيل الدخول';document.getElementById('dauthbtn').onclick=()=>{openM('authM');closeDrawer();};toast('تم تسجيل الخروج','i');}
+
+/* ===== NOTIFICATIONS ===== */
+const notifs=[
+  {id:1,ic:'📅',txt:'لديك درس تجويد غداً الساعة 10:00 مع أ. فاطمة',t:'منذ 5 دقائق',u:true},
+  {id:2,ic:'💰',txt:'تم إضافة $31.50 إلى محفظتك',t:'منذ ساعة',u:true},
+  {id:3,ic:'⭐',txt:'Michael Johnson قيّم درسك بـ 5 نجوم!',t:'منذ 3 ساعات',u:false},
+];
+function renderN(){
+  const l=document.getElementById('nlist');if(!l)return;l.innerHTML='';
+  const un=notifs.filter(n=>n.u).length;
+  document.getElementById('ndot').style.display=un>0?'block':'none';
+  notifs.forEach(n=>{const el=document.createElement('div');el.className='ni'+(n.u?' ur':'');el.innerHTML=`<div class="ni-icon">${n.ic}</div><div><div class="ni-txt">${n.txt}</div><div class="ni-time">${n.t}</div></div>`;l.appendChild(el);});
+}
+function addN(txt){notifs.unshift({id:Date.now(),ic:'🔔',txt,t:'الآن',u:true});renderN();}
+function markRead(){notifs.forEach(n=>n.u=false);renderN();}
+function toggleND(){document.getElementById('ndd').classList.toggle('open');}
+document.addEventListener('click',e=>{if(!e.target.closest('#nbell')&&!e.target.closest('#ndd')){const d=document.getElementById('ndd');if(d)d.classList.remove('open');}});
+
+/* ===== TOAST ===== */
+function toast(msg,type='i'){
+  const c=document.getElementById('toastBox');const el=document.createElement('div');
+  el.className='toast '+type;const ic={s:'✅',e:'❌',i:'ℹ️'};
+  el.innerHTML=`<span>${ic[type]||'📢'}</span><span>${msg}</span>`;c.appendChild(el);
+  setTimeout(()=>{el.style.animation='tOut .3s ease forwards';setTimeout(()=>el.remove(),300);},3000);
+}
+function showSuccess(emoji,title,msg){document.getElementById('sEmoji').textContent=emoji;document.getElementById('sTitle').textContent=title;document.getElementById('sMsg').textContent=msg;openM('successM');}
+
+/* ===== CALENDAR ===== */
+const CS={yr:new Date().getFullYear(),mo:new Date().getMonth(),sel:null};
+const bkdSlots={};let selSlot=null;
+const MN=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+const DN=['أح','إث','ثل','أر','خم','جم','سب'];
+const SLOTS=['08:00','09:30','11:00','12:30','14:00','15:30','17:00','18:30','20:00','21:30'];
+
+function renderCal(){
+  const c=document.getElementById('calW');if(!c)return;
+  const yr=CS.yr,mo=CS.mo,fd=new Date(yr,mo,1).getDay(),dim=new Date(yr,mo+1,0).getDate(),td=new Date();
+  let h=`<div class="calh"><button class="calnav" onclick="calN(1)">‹</button><h4>${MN[mo]} ${yr}</h4><button class="calnav" onclick="calN(-1)">›</button></div><div class="calgrid">`;
+  DN.forEach(d=>h+=`<div class="cdn">${d}</div>`);
+  for(let i=0;i<fd;i++)h+=`<div class="cd empty"></div>`;
+  for(let d=1;d<=dim;d++){
+    const dt=new Date(yr,mo,d);const isPast=dt<td&&!(d===td.getDate()&&mo===td.getMonth()&&yr===td.getFullYear());
+    const isTd=d===td.getDate()&&mo===td.getMonth()&&yr===td.getFullYear();
+    const isSel=CS.sel&&CS.sel.getDate()===d&&CS.sel.getMonth()===mo;
+    const hs=!isPast&&d%3!==0;
+    let cl='cd';if(isPast)cl+=' past';if(isTd)cl+=' today';if(isSel)cl+=' sel';if(hs&&!isPast)cl+=' hs';
+    h+=`<div class="${cl}" onclick="${isPast?'':'selDay('+d+')'}">${d}</div>`;
+  }h+='</div>';c.innerHTML=h;
+}
+function calN(d){CS.mo-=d;if(CS.mo>11){CS.mo=0;CS.yr++;}if(CS.mo<0){CS.mo=11;CS.yr--;}renderCal();}
+function selDay(d){
+  CS.sel=new Date(CS.yr,CS.mo,d);renderCal();
+  const dd=document.getElementById('sddisp'),dt=document.getElementById('sddtxt'),tg=document.getElementById('tslg');
+  if(dd)dd.style.display='block';if(dt)dt.textContent=`${d} ${MN[CS.mo]} ${CS.yr}`;if(tg)tg.style.display='block';
+  renderSlots(d);
+}
+function renderSlots(d){
+  const c=document.getElementById('tsls');if(!c)return;
+  const k=`${CS.yr}-${CS.mo}-${d}`;const bk=bkdSlots[k]||[];
+  selSlot=null;c.innerHTML='';
+  SLOTS.forEach(s=>{
+    const isBk=bk.includes(s);const el=document.createElement('div');
+    el.className='tsl'+(isBk?' bkd':'');el.textContent=s;
+    if(!isBk)el.onclick=()=>{document.querySelectorAll('.tsl').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');selSlot=s;};
+    c.appendChild(el);
+  });
+}
+
+/* ===== BOOKING ===== */
+function updBCourse(){
+  const hk=document.getElementById('bhall')?.value||'q';const s=document.getElementById('bcourse');if(!s)return;
+  s.innerHTML='';HD[hk].secs.forEach(sec=>{const o=document.createElement('option');o.textContent=sec.ic+' '+sec.n;s.appendChild(o);});
+}
+function updBSplit(){
+  const v=parseFloat(document.getElementById('bpkg')?.value)||45;const t=v*.7,p=v*.3;
+  const bt=document.getElementById('btot'),bt2=document.getElementById('btea'),bp=document.getElementById('bplat');
+  if(bt)bt.textContent='$'+v.toFixed(2);if(bt2)bt2.textContent='$'+t.toFixed(2);if(bp)bp.textContent='$'+p.toFixed(2);
+}
+function updBM(){
+  const v=parseFloat(document.getElementById('bmpkg')?.value)||45;const t=v*.7;
+  const bt=document.getElementById('bmtot'),bt2=document.getElementById('bmtea');
+  if(bt)bt.textContent='$'+v.toFixed(2);if(bt2)bt2.textContent='$'+t.toFixed(2);
+}
+function submitBook(){
+  if(!CS.sel){toast('اختر تاريخاً من التقويم','e');return;}
+  if(!selSlot){toast('اختر وقتاً للدرس','e');return;}
+  const n=document.getElementById('bname')?.value.trim(),em=document.getElementById('bemail')?.value.trim();
+  if(!n||!em){toast('أكمل اسمك وبريدك الإلكتروني','e');return;}
+  openPay(parseFloat(document.getElementById('bpkg')?.value)||45);
+}
+
+/* ===== PAYMENT ===== */
+let payAmt=45;
+function openPay(a){
+  payAmt=a;const t=a*.7,p=a*.3;
+  const pt=document.getElementById('ptot'),pt2=document.getElementById('ptea'),pp=document.getElementById('pplat');
+  if(pt)pt.textContent='$'+a.toFixed(2);if(pt2)pt2.textContent='$'+t.toFixed(2);if(pp)pp.textContent='$'+p.toFixed(2);
+  openM('payM');
+}
+function selPM(el){
+  document.querySelectorAll('.pmeth').forEach(m=>m.classList.remove('sel'));el.classList.add('sel');
+  const cf=document.getElementById('cardF');if(cf)cf.style.display=el.textContent.includes('بطاقة')?'block':'none';
+}
+function fmtCard(el){let v=el.value.replace(/\D/g,'');let f='';for(let i=0;i<v.length&&i<16;i++){if(i>0&&i%4===0)f+=' ';f+=v[i];}el.value=f;}
+function procPay(){
+  const btn=document.getElementById('payBtn');if(btn){btn.textContent='⏳ جاري المعالجة...';btn.disabled=true;}
+  setTimeout(()=>{
+    closeM('payM');if(btn){btn.textContent='🔒 دفع آمن الآن';btn.disabled=false;}
+    if(CS.sel&&selSlot){const k=`${CS.yr}-${CS.mo}-${CS.sel.getDate()}`;if(!bkdSlots[k])bkdSlots[k]=[];bkdSlots[k].push(selSlot);}
+    showSuccess('🎉','تم الدفع بنجاح!',`دُفع $${payAmt.toFixed(2)}. حصة معلمك $${(payAmt*.7).toFixed(2)}. ستصلك رابط الفصل المباشر قريباً.`);
+    addN(`💳 تم الدفع — $${payAmt.toFixed(2)}`);
+    if(selSlot)addN(`📅 درسك محجوز الساعة ${selSlot}`);
+  },1600);
+}
+
+/* ===== REVENUE CALC ===== */
+function calcS(){
+  const a=parseFloat(document.getElementById('sinp')?.value)||0;const t=a*.7,p=a*.3;
+  const ta=document.getElementById('tamt'),pa=document.getElementById('pamt');
+  if(ta)ta.textContent='$'+t.toFixed(2);if(pa)pa.textContent='$'+p.toFixed(2);
+  const fmt=n=>('$'+n.toFixed(0)).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+  const e20=document.getElementById('e20'),e40=document.getElementById('e40'),e80=document.getElementById('e80');
+  if(e20)e20.textContent=fmt(t*20);if(e40)e40.textContent=fmt(t*40);if(e80)e80.textContent=fmt(t*80);
+}
+
+/* ===== RATING ===== */
+let curR=5;
+function setR(r){curR=r;document.querySelectorAll('.rstar').forEach((s,i)=>s.classList.toggle('active',i<r));const lb={1:'ضعيف',2:'مقبول',3:'جيد',4:'جيد جداً',5:'ممتاز!'};const el=document.getElementById('rlbl');if(el)el.textContent=lb[r]||'';}
+function submitR(){closeM('rateM');toast(`شكراً! قيّمت الدرس بـ ${curR} نجوم ⭐`,'s');addN('⭐ تم إرسال تقييمك، شكراً!');}
+
+/* ===== CLASSROOM CHAT ===== */
+function sendChat(){
+  const i=document.getElementById('cinp'),c=document.getElementById('cmsgs');const t=i?.value.trim();if(!t||!c)return;
+  const n=CU?CU.name.split(' ')[0]:'أنت';const el=document.createElement('div');el.className='cmsg';el.innerHTML=`<strong style="color:var(--gold-light)">${n}:</strong> ${t}`;c.appendChild(el);i.value='';c.scrollTop=c.scrollHeight;
+}
+function togCtrl(btn,type){btn.classList.toggle('on');const m={mic:'الميكروفون',cam:'الكاميرا',scr:'مشاركة الشاشة',hand:'رفع اليد'};toast(`${m[type]||type}: ${btn.classList.contains('on')?'مفعّل':'معطّل'}`,'i');}
+
+/* ===== AI CHAT ===== */
+const AR=['سؤال ممتاز! دعني أشرح... 📚','بالتأكيد! هذا مهم في العربية. 🌟','رائع! إليك الشرح... ✨','هذا سؤال شائع! الجواب... 💡','ممتاز جداً! نقطة دقيقة. 🎯'];
+function sendAI(){
+  const i=document.getElementById('aiinp'),c=document.getElementById('aichat');const t=i?.value.trim();if(!t||!c)return;
+  const um=document.createElement('div');um.className='aim usr';um.textContent=t;c.appendChild(um);i.value='';
+  setTimeout(()=>{const bm=document.createElement('div');bm.className='aim bot';bm.textContent=AR[Math.floor(Math.random()*AR.length)];c.appendChild(bm);c.scrollTop=c.scrollHeight;},700);
+  c.scrollTop=c.scrollHeight;
+}
+
+/* ===== DASHBOARD TABS ===== */
+function switchT(btn,p){
+  document.querySelectorAll('.dtab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  const m={sp:'sp',tp:'tp',ep:'ep'};['sp','tp','ep'].forEach(id=>{const el=document.getElementById(id);if(el)el.style.display='none';});
+  const t=document.getElementById(p);if(t)t.style.display='block';
+}
+
+/* ===== MODALS ===== */
+function openM(id){const el=document.getElementById(id);if(el){el.classList.add('open');document.body.style.overflow='hidden';}}
+function closeM(id){const el=document.getElementById(id);if(el){el.classList.remove('open');document.body.style.overflow='';}}
+document.querySelectorAll('.mo').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeM(o.id);}));
+
+/* ===== DRAWER ===== */
+function openDrawer(){document.getElementById('drawer').classList.add('open');document.getElementById('doverlay').classList.add('open');document.getElementById('burger').classList.add('open');document.body.style.overflow='hidden';}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('doverlay').classList.remove('open');document.getElementById('burger').classList.remove('open');document.body.style.overflow='';}
+function toggleDrawer(){document.getElementById('drawer').classList.contains('open')?closeDrawer():openDrawer();}
+
+/* ===== HEADER SCROLL ===== */
+window.addEventListener('scroll',()=>{const h=document.getElementById('hdr');if(h){if(window.scrollY>50)h.classList.add('sc');else h.classList.remove('sc');}});
+
+/* ===== REVEAL ===== */
+const obs=new IntersectionObserver(ens=>ens.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ===== RESOURCES FILTER ===== */
+function filterR(cat,btn){
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  document.querySelectorAll('.rc').forEach(c=>{c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none';});
+}
+
+/* ===== TIMEZONE ===== */
+function detectTZ(){
+  try{
+    const tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const tzS=new Date().toLocaleTimeString('en',{timeZoneName:'short'}).split(' ').pop();
+    const el1=document.getElementById('dtz'),el2=document.getElementById('tzDisp'),el3=document.getElementById('tzSlbl');
+    if(el1)el1.textContent=tz;if(el2)el2.textContent=tz+' ('+tzS+')';if(el3)el3.textContent=tzS;
+  }catch(e){}
+}
+
+/* ===== ANALYTICS CHARTS ===== */
+function renderCharts(){
+  const rd=[{l:'نوف',v:7800},{l:'ديس',v:9200},{l:'يناير',v:8400},{l:'فبراير',v:11000},{l:'مارس',v:9800},{l:'أبريل',v:12450}];
+  const sd=[{l:'أح',v:18},{l:'إث',v:24},{l:'ثل',v:21},{l:'أر',v:30},{l:'خم',v:27},{l:'جم',v:15},{l:'سب',v:13}];
+  const m1=Math.max(...rd.map(d=>d.v));const m2=Math.max(...sd.map(d=>d.v));
+  const rc=document.getElementById('rChart'),sc=document.getElementById('sChart');
+  if(rc)rc.innerHTML=rd.map(d=>`<div class="ccol"><div class="cval">$${(d.v/1000).toFixed(1)}k</div><div class="cbo"><div class="cb" style="height:${Math.max(6,(d.v/m1)*80)}px"></div></div><div class="clbl">${d.l}</div></div>`).join('');
+  if(sc)sc.innerHTML=sd.map(d=>`<div class="ccol"><div class="cval">${d.v}</div><div class="cbo"><div class="cb pu" style="height:${Math.max(6,(d.v/m2)*80)}px"></div></div><div class="clbl">${d.l}</div></div>`).join('');
+}
+
+/* ===== SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}}));
+
+/* ===== I18N ===== */
+const i18n={
+  ar:{bannerTxt:'🎉 عرض خاص: درس تجريبي مجاني للطلاب الجدد! احجز الآن'},
+  en:{bannerTxt:'🎉 Special offer: Free trial lesson for new students! Book now'},
+  fr:{bannerTxt:"🎉 Offre spéciale: Cours d'essai gratuit ce mois-ci!"},
+  es:{bannerTxt:'🎉 ¡Oferta especial: Clase de prueba gratis este mes!'},
+  de:{bannerTxt:'🎉 Sonderangebot: Kostenlose Probestunde diesen Monat!'}
+};
+function applyLang(lang){
+  const t=i18n[lang]||i18n['ar'];const isRtl=lang==='ar';
+  document.documentElement.dir=isRtl?'rtl':'ltr';document.documentElement.lang=lang;
+  const b=document.getElementById('bannerTxt');if(b&&t.bannerTxt)b.textContent=t.bannerTxt;
+}
+document.getElementById('langSel').addEventListener('change',function(){applyLang(this.value);});
+
+/* ===== INIT ===== */
+document.addEventListener('DOMContentLoaded',()=>{
+  loadH();
+  renderH('q');renderH('l');renderH('s');
+  calcS();updBCourse();updBSplit();updBM();
+  detectTZ();renderN();renderCal();renderCharts();
+  document.getElementById('bhall')?.addEventListener('change',()=>{updBCourse();});
+  document.getElementById('bpkg')?.addEventListener('change',updBSplit);
+  // Set cert date
+  const cd=document.getElementById('certDate');if(cd)cd.textContent=new Date().toLocaleDateString('ar-EG',{day:'numeric',month:'long',year:'numeric'});
+  // Load user
+  try{const u=localStorage.getItem('nour_u');if(u){CU=JSON.parse(u);updUI();}}catch(e){}
+  // Simulate notification after 3s
+  setTimeout(()=>{addN('📅 تذكير: درس التجويد غداً الساعة 10:00 مع أ. فاطمة');},3000);
+});
+
+// ===== ADMIN PANEL FUNCTIONS =====
+function swAdmTab(btn, panelId) {
+  document.querySelectorAll('.aptb').forEach(b => b.classList.remove('ac'));
+  btn.classList.add('ac');
+  document.querySelectorAll('.apn').forEach(p => p.classList.remove('sh'));
+  const panel = document.getElementById(panelId);
+  if (panel) panel.classList.add('sh');
+}
+
+function deAdminMode() {
+  isAdmin = false;
+  document.body.classList.remove('adm');
+  document.getElementById('adminToggle').textContent = '⚙️ إدارة';
+  document.getElementById('adminToggle').classList.remove('active');
+  const al = document.getElementById('adminLink');
+  if (al) al.style.display = 'none';
+  showToast('تم إيقاف وضع الإدارة', 'info');
+}
+
+function admAdd(hallKey) {
+  const inputMap = {'q':'qAI','lang':'lAI','sharia':'sAI'};
+  const hallMap = {'q':'quran','lang':'lang','sharia':'sharia'};
+  const inp = document.getElementById(inputMap[hallKey]);
+  if (!inp) return;
+  const name = inp.value.trim();
+  if (!name) { inp.focus(); showToast('أدخل اسم القسم', 'error'); return; }
+  const icons = ['📌','🎯','💡','🔖','📒','🧩'];
+  const icon = icons[Math.floor(Math.random() * icons.length)];
+  const hk = hallMap[hallKey];
+  if (hallsData[hk]) {
+    hallsData[hk].sections.push({ id: hallsData[hk].nextId++, icon, name, level: 'جميع المستويات', students: 0 });
+    inp.value = '';
+    renderHall(hk);
+    renderAdmHall(hk);
+    updateAdmCounts();
+    saveHalls();
+    showToast('تم إضافة "' + name + '" بنجاح', 'success');
+    addNotification('🏛️ تمت إضافة قسم جديد: ' + name);
+  }
+}
+
+function renderAdmHall(hk) {
+  const keyMap = {'quran':'qAdm','lang':'lAdm','sharia':'sAdm'};
+  const cont = document.getElementById(keyMap[hk]);
+  if (!cont) return;
+  cont.innerHTML = '';
+  hallsData[hk].sections.forEach(sec => {
+    const el = document.createElement('div');
+    el.style.cssText = 'display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.04);border-radius:7px;padding:.42rem .65rem;font-size:.75rem;border:1px solid rgba(255,255,255,.06)';
+    el.innerHTML = '<span>' + sec.icon + '</span><span style="flex:1">' + sec.name + '</span><span style="font-size:.65rem;color:var(--text-muted)">' + sec.students + ' طالب</span><button onclick="admRemSec(\'' + hk + '\',' + sec.id + ')" style="background:rgba(192,57,43,.13);border:none;color:#e74c3c;border-radius:5px;cursor:pointer;padding:.15rem .4rem;font-size:.7rem">حذف</button>';
+    cont.appendChild(el);
+  });
+}
+
+function admRemSec(hk, id) {
+  if (!confirm('حذف هذا القسم؟')) return;
+  hallsData[hk].sections = hallsData[hk].sections.filter(s => s.id !== id);
+  renderHall(hk);
+  renderAdmHall(hk);
+  updateAdmCounts();
+  saveHalls();
+  showToast('تم حذف القسم', 'info');
+}
+
+function updateAdmCounts() {
+  const qc = document.getElementById('adminQCount');
+  const lc = document.getElementById('adminLCount');
+  const sc = document.getElementById('adminSCount');
+  const tc = document.getElementById('adminTotalCount');
+  const q = hallsData.quran.sections.length;
+  const l = hallsData.lang.sections.length;
+  const s = hallsData.sharia.sections.length;
+  if (qc) qc.textContent = q;
+  if (lc) lc.textContent = l;
+  if (sc) sc.textContent = s;
+  if (tc) tc.textContent = q + l + s;
+}
+
+// ===== CHARTS =====
+function renderCharts() {
+  const revData = [7.8, 9.2, 8.4, 11.0, 9.8, 12.45];
+  const revLabels = ['نوف', 'ديس', 'يناير', 'فبر', 'مارس', 'أبريل'];
+  const sesData = [18, 24, 21, 30, 27, 15, 13];
+  const sesLabels = ['أح', 'إث', 'ثل', 'أر', 'خم', 'جم', 'سب'];
+  const max1 = Math.max(...revData), max2 = Math.max(...sesData);
+  const rc = document.getElementById('revChart');
+  const sc2 = document.getElementById('sesChart');
+  if (rc) rc.innerHTML = revData.map((v, i) => '<div class="chco"><div class="chvl">$' + v + 'k</div><div class="chbo"><div class="chb" style="height:' + Math.max(5, (v/max1)*78) + 'px"></div></div><div class="chlb">' + revLabels[i] + '</div></div>').join('');
+  if (sc2) sc2.innerHTML = sesData.map((v, i) => '<div class="chco"><div class="chvl">' + v + '</div><div class="chbo"><div class="chb pu" style="height:' + Math.max(5, (v/max2)*78) + 'px"></div></div><div class="chlb">' + sesLabels[i] + '</div></div>').join('');
+}
+
+</script>
+</body>
+</html>
