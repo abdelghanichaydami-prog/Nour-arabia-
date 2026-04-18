@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#080f1a">
-<title>نور العربية | منصة تعليمية عالمية</title>
+<title>منارة المعرفة | منصة تعليمية عالمية</title>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -14,7 +14,7 @@ body{display:flex;flex-direction:column}
 #app{flex:1;display:flex;flex-direction:column;overflow:hidden}
 header{height:var(--hh);flex-shrink:0;background:rgba(8,15,26,.97);border-bottom:1px solid var(--bd);backdrop-filter:blur(20px);display:flex;align-items:center;padding:0 1rem;gap:.65rem;z-index:100}
 .logo{width:36px;height:36px;flex-shrink:0;background:linear-gradient(135deg,var(--go),var(--gl));border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:"Amiri",serif;font-size:1.2rem;color:var(--navy);font-weight:700;box-shadow:0 4px 14px rgba(201,149,42,.35)}
-.lo-t .ar{font-size:.82rem;font-weight:700;display:block}.lo-t .en{font-size:.55rem;color:var(--gl);letter-spacing:.5px;display:block}
+.lo-t .ar{font-size:.76rem;font-weight:700;display:block}.lo-t .en{font-size:.5rem;color:var(--gl);letter-spacing:.3px;display:block}
 .hm{flex:1}.live{display:inline-flex;align-items:center;gap:.3rem;background:rgba(39,174,96,.1);border:1px solid rgba(39,174,96,.25);border-radius:100px;padding:.18rem .55rem;font-size:.62rem;color:var(--grl);font-weight:600}
 .ldot{width:5px;height:5px;background:var(--grl);border-radius:50%;animation:blink 1.5s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
@@ -217,30 +217,109 @@ body.adm .aadd{display:flex}
 .chb{width:100%;border-radius:4px 4px 0 0;min-height:3px;transition:height .6s ease}.chb.go{background:linear-gradient(180deg,var(--gl),rgba(201,149,42,.3))}
 .chlb{font-size:.54rem;color:var(--tm);text-align:center}.chvl{font-size:.58rem;color:var(--gl);font-weight:700;text-align:center}
 @media(min-width:769px){body{background:#030710;align-items:center;justify-content:center;height:100vh}#app{max-width:430px;height:90vh;border-radius:28px;overflow:hidden;box-shadow:0 0 80px rgba(0,0,0,.7)}}
+
+/* ===PAGE: LIBRARY=== */
+#p-lib{background:var(--navy)}
+.lib-hd{padding:.88rem 1rem .52rem;background:rgba(8,15,26,.9);position:sticky;top:0;z-index:10;backdrop-filter:blur(12px)}
+.lib-search{display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.06);border:1px solid var(--bdl);border-radius:11px;padding:.45rem .75rem;margin-bottom:.6rem}
+.lib-search svg{flex-shrink:0;color:var(--tm)}
+.lib-search input{flex:1;background:none;border:none;color:#fff;font-family:"Cairo",sans-serif;font-size:.82rem;direction:rtl;outline:none}
+.lib-search input::placeholder{color:var(--tm)}
+.lib-cats{display:flex;gap:.38rem;overflow-x:auto;scrollbar-width:none;padding-bottom:.2rem}
+.lib-cats::-webkit-scrollbar{display:none}
+.lib-cat{flex-shrink:0;padding:.32rem .75rem;border-radius:100px;font-family:"Cairo",sans-serif;font-size:.68rem;font-weight:700;cursor:pointer;border:1.5px solid;transition:all .22s}
+.lib-cat.on{color:var(--navy);border-color:transparent}
+.lib-cat[data-c="all"]{border-color:var(--bd);color:var(--gl)}.lib-cat[data-c="all"].on{background:linear-gradient(135deg,var(--go),var(--gl))}
+.lib-cat[data-c="q"]{border-color:rgba(39,174,96,.3);color:#52d68a}.lib-cat[data-c="q"].on{background:rgba(39,174,96,.8)}
+.lib-cat[data-c="l"]{border-color:rgba(201,149,42,.3);color:var(--gl)}.lib-cat[data-c="l"].on{background:rgba(201,149,42,.8)}
+.lib-cat[data-c="s"]{border-color:rgba(142,68,173,.3);color:#c39bd3}.lib-cat[data-c="s"].on{background:rgba(142,68,173,.8)}
+.lib-cat[data-c="kids"]{border-color:rgba(52,152,219,.3);color:#5dade2}.lib-cat[data-c="kids"].on{background:rgba(52,152,219,.8)}
+.lib-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;padding:.75rem 1rem 1rem}
+.book-card{background:rgba(255,255,255,.04);border:1px solid var(--bdl);border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:all .25s;position:relative}
+.book-card:hover{border-color:var(--go);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.book-cover{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden}
+.book-cover.q{background:linear-gradient(145deg,rgba(39,174,96,.2),rgba(39,174,96,.08))}
+.book-cover.l{background:linear-gradient(145deg,rgba(201,149,42,.2),rgba(201,149,42,.08))}
+.book-cover.s{background:linear-gradient(145deg,rgba(142,68,173,.2),rgba(142,68,173,.08))}
+.book-cover.kids{background:linear-gradient(145deg,rgba(52,152,219,.2),rgba(52,152,219,.08))}
+.book-cover img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.book-badge{position:absolute;top:.5rem;right:.5rem;font-size:.55rem;font-weight:700;padding:.1rem .38rem;border-radius:100px}
+.book-badge.free{background:rgba(39,174,96,.85);color:#fff}
+.book-badge.new{background:rgba(201,149,42,.85);color:var(--navy)}
+.book-badge.hot{background:rgba(192,57,43,.85);color:#fff}
+.book-info{padding:.65rem .7rem .7rem}
+.book-title{font-size:.78rem;font-weight:700;margin-bottom:.2rem;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.book-author{font-size:.62rem;color:var(--tm);margin-bottom:.45rem}
+.book-footer{display:flex;align-items:center;justify-content:space-between}
+.book-pages{font-size:.6rem;color:var(--tm)}
+.book-btn{font-size:.65rem;font-weight:700;padding:.22rem .6rem;border-radius:7px;border:none;cursor:pointer;font-family:"Cairo",sans-serif;transition:all .2s}
+.book-btn.read{background:linear-gradient(135deg,var(--go),var(--gl));color:var(--navy)}
+.book-btn.lock{background:rgba(255,255,255,.07);color:var(--tm);border:1px solid rgba(255,255,255,.1)}
+.lib-empty{text-align:center;padding:3rem 1rem;color:var(--tm)}
+.lib-empty div{font-size:2.5rem;margin-bottom:.6rem}
+/* PDF Viewer Modal */
+#mo-pdf .md{border-radius:var(--rxl) var(--rxl) 0 0;max-height:95vh}
+.pdf-hdr{display:flex;align-items:center;gap:.65rem;padding:.75rem 1rem;border-bottom:1px solid var(--bdl);position:sticky;top:0;background:var(--n2);z-index:10}
+.pdf-title{flex:1;font-size:.82rem;font-weight:700;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdf-actions{display:flex;gap:.38rem;flex-shrink:0}
+.pdf-frame{width:100%;height:70vh;border:none;background:#fff}
+.pdf-info-card{margin:1rem;background:rgba(255,255,255,.04);border:1px solid var(--bdl);border-radius:var(--r);padding:1rem}
+.pdf-info-card .book-cover{border-radius:10px;width:80px;height:107px;font-size:2rem;flex-shrink:0}
+
+
+/* ===PAGE: ABOUT=== */
+#p-about{background:var(--navy)}
+.about-hero{padding:2rem 1.2rem 1.5rem;text-align:center;background:linear-gradient(180deg,rgba(201,149,42,.08),transparent);border-bottom:1px solid var(--bdl)}
+.about-bismillah{font-family:"Amiri",serif;font-size:1.6rem;color:var(--gl);margin-bottom:1rem;line-height:1.6}
+.about-title{font-family:"Amiri",serif;font-size:1.5rem;font-weight:700;margin-bottom:.35rem;color:#fff}
+.about-sub{font-size:.75rem;color:var(--tm);letter-spacing:1px;text-transform:uppercase;margin-bottom:1.2rem}
+.about-divider{width:60px;height:3px;background:linear-gradient(90deg,var(--go),var(--gl));border-radius:2px;margin:0 auto 1.5rem}
+.about-body{padding:1.2rem 1.2rem .5rem}
+.about-p{font-family:"Amiri",serif;font-size:1.05rem;line-height:2;color:var(--wh);margin-bottom:1.2rem;text-align:justify}
+.about-p em{color:var(--gl);font-style:normal;font-weight:700}
+.about-p .italic{font-style:italic;color:var(--tm)}
+.about-quote{
+  margin:1.2rem 0;padding:1rem 1.2rem;
+  border-right:3px solid var(--go);
+  background:rgba(201,149,42,.06);
+  border-radius:0 10px 10px 0;
+  font-family:"Amiri",serif;font-size:1.1rem;
+  color:var(--gl);line-height:1.8;font-style:italic;
+}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;padding:0 0 1rem}
+.av-card{background:rgba(255,255,255,.03);border:1px solid var(--bdl);border-radius:var(--r);padding:.95rem .85rem;text-align:center;transition:all .2s}
+.av-card:hover{border-color:var(--go);background:var(--gd)}
+.av-ic{font-size:1.5rem;margin-bottom:.4rem}
+.av-title{font-size:.78rem;font-weight:700;color:var(--gl);margin-bottom:.2rem}
+.av-desc{font-size:.65rem;color:var(--tm);line-height:1.5}
+.about-cta{margin:1.2rem 0;text-align:center;padding:1.5rem 1rem;background:rgba(201,149,42,.07);border:1px solid rgba(201,149,42,.18);border-radius:var(--rl)}
+.about-cta-t{font-family:"Amiri",serif;font-size:1.2rem;color:var(--gl);margin-bottom:.35rem}
+.about-cta-s{font-size:.75rem;color:var(--tm);margin-bottom:.85rem}
+
 </style></head><body><div id="tc"></div>
 <div id="app">
 <header>
   <div class="logo">ن</div>
-  <div class="lo-t"><span class="ar">نور العربية</span><span class="en">Nour Al-Arabia</span></div>
+  <div class="lo-t"><span class="ar">منارة المعرفة</span><span class="en">Manarat Al-Maarifa</span></div>
   <div class="hm">
     <div class="live"><div class="ldot"></div><span id="lcnt">42</span> متصل الآن</div>
   </div>
-  <select id="lsel" onchange="applyLang(this.value)" style="background:rgba(255,255,255,.06);border:1px solid var(--bd);border-radius:8px;color:#fff;font-family:'Cairo',sans-serif;font-size:.62rem;padding:.22rem .45rem;cursor:pointer;max-width:90px">
-    <option value="ar">🇸🇦 العربية</option>
-    <option value="en">🇬🇧 English</option>
-    <option value="fr">🇫🇷 Français</option>
-    <option value="es">🇪🇸 Español</option>
-    <option value="de">🇩🇪 Deutsch</option>
-    <option value="nl">🇳🇱 Nederlands</option>
-    <option value="tr">🇹🇷 Türkçe</option>
-    <option value="it">🇮🇹 Italiano</option>
-    <option value="pt">🇧🇷 Português</option>
-    <option value="id">🇮🇩 Indonesia</option>
+  <select id="lsel" onchange="applyLang(this.value)" style="background:rgba(255,255,255,.06);border:1px solid var(--bd);border-radius:8px;color:#fff;font-family:'Cairo',sans-serif;font-size:.65rem;padding:.22rem .38rem;cursor:pointer;width:46px;text-align:center">
+    <option value="ar">🇸🇦</option>
+    <option value="en">🇬🇧</option>
+    <option value="fr">🇫🇷</option>
+    <option value="es">🇪🇸</option>
+    <option value="de">🇩🇪</option>
+    <option value="nl">🇳🇱</option>
+    <option value="tr">🇹🇷</option>
+    <option value="it">🇮🇹</option>
+    <option value="pt">🇧🇷</option>
+    <option value="id">🇮🇩</option>
   </select>
   <div class="hr">
     <div class="ib" onclick="openMo('mo-notif')"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg><div class="ndot" id="ndot"></div></div>
     <div class="uc" id="uchip" onclick="goP('p-acc')"><div class="uav" id="uav">ط</div><span class="unm" id="unm">مستخدم</span></div>
-    <button class="btn bgo bsm" id="lbtn" onclick="goP('p-acc');showAuth()" style="font-size:.7rem;padding:.3rem .75rem">دخول</button>
+    <button class="btn bgo bsm" id="lbtn" onclick="goP('p-acc');showAuth()" style="font-size:.68rem;padding:.28rem .6rem">دخول</button>
   </div>
 </header>
 <div id="cnt">
@@ -252,7 +331,7 @@ body.adm .aadd{display:flex}
       <p class="hsb">فصول تفاعلية مباشرة مع نخبة المعلمين المتخصصين حول العالم — 11 لغة تدريس</p>
       <div class="hbs">
         <button class="btn bgo blg" onclick="goP('p-book')">📅 احجز درسك الأول</button>
-        <a href="https://wa.me/212600000000" class="btn bgr blg" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>واتساب</a>
+        <a href="https://wa.me/212681883238" class="btn bgr blg" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>واتساب</a>
       </div>
     </div>
     <div class="sts"><div class="sc"><div class="scn">2500+</div><div class="scl">طالب</div></div><div class="sc"><div class="scn">35+</div><div class="scl">معلم</div></div><div class="sc"><div class="scn">50+</div><div class="scl">دولة</div></div><div class="sc"><div class="scn">4.9★</div><div class="scl">تقييم</div></div></div>
@@ -269,7 +348,7 @@ body.adm .aadd{display:flex}
       <div class="tmc" onclick="goP('p-book')"><div class="tav" style="background:linear-gradient(135deg,#3498db,#5dade2)">يو</div><div class="tnm">أ. يوسف</div><div class="tsp">العلوم الشرعية</div><div class="trt">⭐ 4.8</div></div>
       <div class="tmc" onclick="goP('p-book')"><div class="tav" style="background:linear-gradient(135deg,var(--pu),#c39bd3)">مر</div><div class="tnm">أ. مريم</div><div class="tsp">العربية للأطفال</div><div class="trt">⭐ 4.9</div></div>
     </div>
-    <div class="shr" style="padding-top:.4rem"><div class="sht">✨ <em>لماذا</em> نور العربية؟</div></div>
+    <div class="shr" style="padding-top:.4rem"><div class="sht">✨ <em>لماذا</em> منارة المعرفة؟</div></div>
     <div class="why">
       <div class="wc"><div class="wic">🎓</div><div class="wt">معلمون متخصصون</div><div class="wd">شهادات عليا وخبرة أكثر من 5 سنوات</div></div>
       <div class="wc"><div class="wic">🌍</div><div class="wt">11 لغة تدريس</div><div class="wd">شرح بلغتك الأم مهما كانت</div></div>
@@ -316,16 +395,19 @@ body.adm .aadd{display:flex}
       <div class="bks" id="bs4"><div class="snum">4</div><span class="stxt">الدفع</span></div>
     </div>
     <div class="bkp on" id="bp1">
+      <div style="background:rgba(201,149,42,.08);border:1px solid rgba(201,149,42,.2);border-radius:12px;padding:1rem;text-align:center;margin-bottom:.85rem">
+        <div style="font-size:.72rem;color:var(--tm);margin-bottom:.25rem">سعر الحصة الواحدة</div>
+        <div style="font-size:2.2rem;font-weight:900;color:var(--gl);font-family:'Amiri',serif">$12</div>
+        <div style="font-size:.7rem;color:var(--tm)">45 دقيقة • مع معلم متخصص</div>
+      </div>
       <div class="fg"><label class="fl">الاسم الكامل</label><input type="text" class="fc" id="b-nm" placeholder="أدخل اسمك"></div>
       <div class="fg"><label class="fl">البريد الإلكتروني</label><input type="email" class="fc" id="b-em" placeholder="email@example.com" dir="ltr"></div>
       <div class="f2">
         <div class="fg"><label class="fl">الفصل</label><select class="fc" id="b-hall" onchange="updBkS()"><option value="q">🕌 القرآن</option><option value="l">📖 اللغة العربية</option><option value="s">⚖️ الشريعة</option></select></div>
         <div class="fg"><label class="fl">القسم</label><select class="fc" id="b-sec"></select></div>
       </div>
-      <div class="f2">
-        <div class="fg"><label class="fl">المعلم</label><select class="fc" id="b-tch"><option>أ. فاطمة الزهراء</option><option>أ. أحمد محمد</option><option>أ. يوسف الأمين</option><option>أ. مريم صالح</option></select></div>
-        <div class="fg"><label class="fl">الباقة</label><select class="fc" id="b-pkg"><option value="10">حصة واحدة — $10</option><option value="45" selected>5 حصص — $45</option><option value="80">10 حصص — $80</option></select></div>
-      </div>
+      <div class="fg"><label class="fl">المعلم</label><select class="fc" id="b-tch"><option>أ. فاطمة الزهراء</option><option>أ. أحمد محمد</option><option>أ. يوسف الأمين</option><option>أ. مريم صالح</option></select></div>
+      <input type="hidden" id="b-pkg" value="12">
       <button class="btn bgo bfw" onclick="goBk(2)">التالي — اختر الموعد ›</button>
     </div>
     <div class="bkp" id="bp2">
@@ -342,7 +424,7 @@ body.adm .aadd{display:flex}
         <div class="smrw"><span>المعلم</span><strong id="sm-tc">—</strong></div>
         <div class="smrw"><span>التاريخ</span><strong id="sm-dt">—</strong></div>
         <div class="smrw"><span>الوقت</span><strong id="sm-sl">—</strong></div>
-        <div class="smto"><span>الإجمالي</span><span id="sm-tot" style="color:var(--gl)">$45</span></div>
+        <div class="smto"><span>الإجمالي</span><span id="sm-tot" style="color:var(--gl)">$12</span></div>
       </div>
       <div style="display:flex;gap:.55rem"><button class="btn bgh" onclick="goBk(2)">‹ رجوع</button><button class="btn bgo" style="flex:1" onclick="goBk(4)">متابعة للدفع ›</button></div>
     </div>
@@ -384,8 +466,8 @@ body.adm .aadd{display:flex}
         <div style="display:flex;align-items:center;gap:.6rem;margin-top:.75rem"><span style="font-size:.65rem;color:var(--tm)">70%</span><div style="flex:1;height:8px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden;display:flex"><div style="width:70%;height:100%;background:linear-gradient(90deg,var(--go),var(--gl))"></div><div style="flex:1;background:rgba(255,255,255,.06)"></div></div><span style="font-size:.65rem;color:var(--tm)">المنصة 30%</span></div>
       </div>
       <div style="font-size:.8rem;font-weight:700;margin-bottom:.55rem;color:var(--gl)">📊 آخر المعاملات</div>
-      <div class="txnr"><div class="txic in">💳</div><div class="txinf"><div class="txnm">Michael — تجويد x5</div><div class="txdt">15 أبريل 2026</div></div><div class="txam in">+$31.50</div></div>
-      <div class="txnr"><div class="txic in">💳</div><div class="txinf"><div class="txnm">Anna — فقه x10</div><div class="txdt">10 أبريل 2026</div></div><div class="txam in">+$56.00</div></div>
+      <div class="txnr"><div class="txic in">💳</div><div class="txinf"><div class="txnm">Michael — تجويد x5</div><div class="txdt">15 أبريل 2026</div></div><div class="txam in">+$8.40</div></div>
+      <div class="txnr"><div class="txic in">💳</div><div class="txinf"><div class="txnm">Anna — فقه x10</div><div class="txdt">10 أبريل 2026</div></div><div class="txam in">+$8.40</div></div>
       <div class="txnr"><div class="txic out">💸</div><div class="txinf"><div class="txnm">سحب — PayPal</div><div class="txdt">1 أبريل 2026</div></div><div class="txam out">-$200.00</div></div>
       <button class="btn bgo bfw" style="margin-top:.85rem" onclick="openMo('mo-wd')">💸 طلب سحب الأرباح</button>
     </div>
@@ -400,13 +482,14 @@ body.adm .aadd{display:flex}
         <div class="mi" onclick="toast('الشهادات ستكون متاحة قريباً! 🎓','i')"><div class="miic bl">📜</div><div class="mitx"><div class="mitt">شهاداتي</div><div class="mits">قريباً 🎓</div></div><div class="miar">›</div></div>
       </div>
       <div class="mg"><div class="mgt">المنصة</div>
-        <div class="mi" onclick="window.open('https://wa.me/212600000000')"><div class="miic gn">📱</div><div class="mitx"><div class="mitt">الدعم والمساعدة</div><div class="mits">واتساب • +212 600-000-000</div></div><div class="miar">›</div></div>
+        <div class="mi" onclick="goP('p-about')"><div class="miic go">🕌</div><div class="mitx"><div class="mitt">عن منارة المعرفة</div><div class="mits">قصتنا ورسالتنا</div></div><div class="miar">›</div></div>
+        <div class="mi" onclick="window.open('https://wa.me/212681883238')"><div class="miic gn">📱</div><div class="mitx"><div class="mitt">الدعم والمساعدة</div><div class="mits">واتساب • +212 600-000-000</div></div><div class="miar">›</div></div>
         <div class="mi" onclick="openMo('mo-adm')"><div class="miic pu">🔐</div><div class="mitx"><div class="mitt">وضع الإدارة</div><div class="mits">للمديرين فقط</div></div><div class="miar">›</div></div>
         <div class="mi" onclick="doLogout()"><div class="miic re">🚪</div><div class="mitx"><div class="mitt">تسجيل الخروج</div><div class="mits" id="acc-em">email@example.com</div></div><div class="miar">›</div></div>
       </div>
     </div>
     <div class="authf on" id="auth-form">
-      <div style="text-align:center;padding:1.5rem 0 1rem"><div style="font-size:2.5rem;margin-bottom:.5rem">🌙</div><div style="font-family:'Amiri',serif;font-size:1.4rem;font-weight:700;margin-bottom:.25rem">نور العربية</div><div style="font-size:.78rem;color:var(--tm)">سجّل دخولك أو أنشئ حساباً جديداً</div></div>
+      <div style="text-align:center;padding:1.5rem 0 1rem"><div style="font-size:2.5rem;margin-bottom:.5rem">🌙</div><div style="font-family:'Amiri',serif;font-size:1.4rem;font-weight:700;margin-bottom:.25rem">منارة المعرفة</div><div style="font-size:.78rem;color:var(--tm)">سجّل دخولك أو أنشئ حساباً جديداً</div></div>
       <div class="atbs"><button class="atb on" onclick="swA(this,'ap-l')">تسجيل الدخول</button><button class="atb" onclick="swA(this,'ap-r')">إنشاء حساب</button></div>
       <div class="apn on" id="ap-l">
         <div class="socr"><button class="socb" onclick="socLogin('google')"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Google</button>
@@ -455,8 +538,8 @@ body.adm .aadd{display:flex}
       <div style="display:flex;gap:.5rem;margin-top:.85rem"><button class="btn bgo bsm" onclick="toast('تم تصدير Excel','s')">📥 Excel</button><button class="btn bgh bsm" onclick="toast('تم تصدير PDF','s')">📄 PDF</button></div>
     </div>
     <div class="admp" id="ab"><div style="overflow-x:auto"><table class="dt"><thead><tr><th>الطالب</th><th>المعلم</th><th>الباقة</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody>
-      <tr><td><strong>Michael</strong><br><small style="color:var(--tm)">18 أبريل، 10:00</small></td><td>أ. فاطمة</td><td style="color:var(--gl)">$10</td><td><span class="pill pgg">مؤكد</span></td><td><button class="ab abr" onclick="toast('تم إلغاء الحجز','i')">إلغاء</button></td></tr>
-      <tr><td><strong>Sophie</strong><br><small style="color:var(--tm)">20 أبريل، 16:00</small></td><td>أ. أحمد</td><td style="color:var(--gl)">$45</td><td><span class="pill pgb">معلق</span></td><td><button class="ab abg" onclick="toast('تم التأكيد ✅','s')">تأكيد</button></td></tr>
+      <tr><td><strong>Michael</strong><br><small style="color:var(--tm)">18 أبريل، 10:00</small></td><td>أ. فاطمة</td><td style="color:var(--gl)">$12</td><td><span class="pill pgg">مؤكد</span></td><td><button class="ab abr" onclick="toast('تم إلغاء الحجز','i')">إلغاء</button></td></tr>
+      <tr><td><strong>Sophie</strong><br><small style="color:var(--tm)">20 أبريل، 16:00</small></td><td>أ. أحمد</td><td style="color:var(--gl)">$12</td><td><span class="pill pgb">معلق</span></td><td><button class="ab abg" onclick="toast('تم التأكيد ✅','s')">تأكيد</button></td></tr>
     </tbody></table></div></div>
     <div class="admp" id="ast">
       <div class="setr"><div><h4>التسجيل المفتوح</h4><p>السماح لطلاب جدد بإنشاء حسابات</p></div><div class="tgl on" onclick="this.classList.toggle('on');toast(this.classList.contains('on')?'تم التفعيل':'تم الإيقاف','i')"></div></div>
@@ -466,11 +549,64 @@ body.adm .aadd{display:flex}
       <button class="btn bgo bfw" style="margin-top:.85rem" onclick="toast('تم حفظ الإعدادات ✅','s')">💾 حفظ الإعدادات</button>
     </div>
     <div class="admp" id="alg">
-      <div class="logi"><div class="logd s"></div><div><div>دفع $45 من Michael — حصة أ. فاطمة أُضيفت فوراً</div><div class="logt">اليوم، 10:24 ص</div></div></div>
+      <div class="logi"><div class="logd s"></div><div><div>دفع $12 من Michael — حصة أ. فاطمة أُضيفت فوراً</div><div class="logt">اليوم، 10:24 ص</div></div></div>
       <div class="logi"><div class="logd w"></div><div><div>حجز جديد: Sophie مع أ. أحمد — 20 أبريل</div><div class="logt">اليوم، 09:45 ص</div></div></div>
       <div class="logi"><div class="logd s"></div><div><div>تسجيل مستخدم جديد: Carlos Ruiz — إسبانيا</div><div class="logt">أمس، 08:30 م</div></div></div>
       <div class="logi"><div class="logd s"></div><div><div>تمت الموافقة على سحب $840 لـ أ. فاطمة</div><div class="logt">أمس، 03:15 م</div></div></div>
       <div class="logi"><div class="logd e"></div><div><div>فشل دفع من Layla Hassan — تحقق من البطاقة</div><div class="logt">أمس، 10:22 ص</div></div></div>
+    </div>
+  </div>
+
+  <!-- LIBRARY -->
+  <div class="pg" id="p-lib">
+    <div class="lib-hd">
+      <div class="lib-search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" id="lib-q" placeholder="ابحث عن كتاب..." oninput="filterBooks()">
+      </div>
+      <div class="lib-cats">
+        <div class="lib-cat on" data-c="all" onclick="filterCat('all',this)">📚 الكل</div>
+        <div class="lib-cat" data-c="q" onclick="filterCat('q',this)">🕌 القرآن والتجويد</div>
+        <div class="lib-cat" data-c="l" onclick="filterCat('l',this)">📖 اللغة العربية</div>
+        <div class="lib-cat" data-c="s" onclick="filterCat('s',this)">⚖️ العلوم الشرعية</div>
+        <div class="lib-cat" data-c="kids" onclick="filterCat('kids',this)">🌟 للأطفال</div>
+      </div>
+    </div>
+    <div class="lib-grid" id="lib-grid"></div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="pg" id="p-about">
+    <div class="about-hero">
+      <div class="about-bismillah">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</div>
+      <div class="about-title">منارة المعرفة</div>
+      <div class="about-sub">Manarat Al-Maarifa</div>
+      <div class="about-divider"></div>
+    </div>
+    <div class="about-body">
+      <p class="about-p">
+        في زمنٍ تتلاشى فيه الحدود، وتتقارب فيه القلوب عبر أثير الفضاء الرقمي، وُلدت <em>منارة المعرفة</em> لتكون جسراً بين لغة القرآن الكريم وكل من يتوق إلى تعلّمها أينما كان.
+      </p>
+      <div class="about-quote">
+        "كيف أتعلم العربية وأنا بعيد عن أرضها؟"
+      </div>
+      <p class="about-p">
+        لم تكن فكرةً عابرة، بل كانت إجابةً حقيقية على سؤال يتردد في قلوب الآلاف حول العالم. <em>منارة المعرفة</em> ليست مجرد منصة تعليمية — هي مكانٌ يجمع بين أصالة العلم وعصرية التواصل، حيث يلتقي المعلم المتخصص بطالبه من أقصى الأرض إلى أدناها.
+      </p>
+      <p class="about-p">
+        نؤمن أن <em>اللغة العربية حقٌّ للجميع</em> — للطفل الذي يتهجى أول حرف، وللبالغ الذي يريد أن يفهم كلام ربه، وللمسلم في المهجر الذي يريد أن يورث أبناءه لغة هويتهم.
+      </p>
+      <div class="about-values">
+        <div class="av-card"><div class="av-ic">🕌</div><div class="av-title">الأصالة</div><div class="av-desc">منهج علمي رصين يربطك بالسند المتصل</div></div>
+        <div class="av-card"><div class="av-ic">🌍</div><div class="av-title">الشمولية</div><div class="av-desc">ندرّس بـ 11 لغة لطلاب من 50 دولة</div></div>
+        <div class="av-card"><div class="av-ic">💡</div><div class="av-title">الحداثة</div><div class="av-desc">فصل رقمي تفاعلي بأحدث التقنيات</div></div>
+        <div class="av-card"><div class="av-ic">❤️</div><div class="av-title">الإخلاص</div><div class="av-desc">نعلّم بحبٍّ وننير الطريق بصدق</div></div>
+      </div>
+      <div class="about-cta">
+        <div class="about-cta-t">هنا في منارة المعرفة، نضيء لك الطريق 🌟</div>
+        <div class="about-cta-s">درسك الأول مجاناً — جرّب بدون أي التزام</div>
+        <button class="btn bgo" onclick="goP('p-book')">📅 ابدأ رحلتك الآن</button>
+      </div>
     </div>
   </div>
 </div>
@@ -478,13 +614,14 @@ body.adm .aadd{display:flex}
 <nav>
   <button class="ni on" id="ni-home" onclick="goP('p-home')"><div class="ni-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="ni-lb">الرئيسية</span></button>
   <button class="ni" id="ni-halls" onclick="goP('p-halls')"><div class="ni-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div><span class="ni-lb">الفصول</span></button>
+  <button class="ni" id="ni-lib" onclick="goP('p-lib')"><div class="ni-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg></div><span class="ni-lb">المكتبة</span></button>
   <div class="ni-cta"><div class="ctab" onclick="goP('p-book')"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-2 .89-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.11-.9-2-2-2zm0 16H5V8h14v11zM13 10h-2v3H8v2h3v3h2v-3h3v-2h-3z"/></svg></div></div>
   <button class="ni" id="ni-dash" onclick="goP('p-dash')"><div class="ni-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg></div><span class="ni-lb">لوحتي</span></button>
   <button class="ni" id="ni-acc" onclick="goP('p-acc')"><div class="ni-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><span class="ni-lb">حسابي</span></button>
 </nav>
 </div><!-- MODALS -->
 <div class="mo" id="mo-wd" onclick="if(event.target===this)closeMo('mo-wd')"><div class="md"><div class="mhd"></div><div class="mtt">💸 طلب سحب الأرباح</div><div class="mbd"><div style="background:rgba(201,149,42,.08);border:1px solid rgba(201,149,42,.2);border-radius:10px;padding:.85rem;margin-bottom:.85rem;text-align:center"><div style="font-size:.72rem;color:var(--tm)">رصيدك المتاح</div><div style="font-size:1.8rem;font-weight:900;color:var(--gl)">$126.00</div></div><div class="fg"><label class="fl">المبلغ ($)</label><input type="number" class="fc" placeholder="126" dir="ltr"></div><div class="fg"><label class="fl">طريقة السحب</label><select class="fc"><option>PayPal</option><option>Wise</option><option>تحويل بنكي دولي</option></select></div><div class="fg"><label class="fl">حساب الاستلام</label><input type="text" class="fc" placeholder="paypal@example.com" dir="ltr"></div><button class="btn bgo bfw" onclick="closeMo('mo-wd');toast('تم إرسال طلب السحب! سيصلك المبلغ خلال 2-5 أيام','s')">✅ تأكيد طلب السحب</button></div></div></div>
-<div class="mo" id="mo-adm" onclick="if(event.target===this)closeMo('mo-adm')"><div class="md"><div class="mhd"></div><div class="mtt">🔐 وضع الإدارة</div><div class="mbd"><div class="fg"><label class="fl">كلمة مرور المدير</label><div class="pwd"><input type="password" class="fc" id="adm-pw" placeholder="••••••••" onkeypress="if(event.key==='Enter')chkAdm()"><button class="pwdt" onclick="tPwd('adm-pw',this)">👁</button></div></div><div id="adm-err" style="color:#e74c3c;font-size:.72rem;margin-bottom:.55rem;display:none">كلمة مرور خاطئة</div><div style="background:rgba(255,255,255,.03);border-radius:8px;padding:.75rem;margin-bottom:.85rem;font-size:.72rem;color:var(--tm)">كلمة المرور: <code style="color:var(--gl)">admin123</code></div><button class="btn bgo bfw" onclick="chkAdm()">دخول</button></div></div></div>
+<div class="mo" id="mo-adm" onclick="if(event.target===this)closeMo('mo-adm')"><div class="md"><div class="mhd"></div><div class="mtt">🔐 وضع الإدارة</div><div class="mbd"><div class="fg"><label class="fl">كلمة مرور المدير</label><div class="pwd"><input type="password" class="fc" id="adm-pw" placeholder="••••••••" onkeypress="if(event.key==='Enter')chkAdm()"><button class="pwdt" onclick="tPwd('adm-pw',this)">👁</button></div></div><div id="adm-err" style="color:#e74c3c;font-size:.72rem;margin-bottom:.55rem;display:none">كلمة مرور خاطئة</div><div style="background:rgba(255,255,255,.03);border-radius:8px;padding:.75rem;margin-bottom:.85rem;font-size:.72rem;color:var(--tm)">كلمة المرور سرية 🔐</div><button class="btn bgo bfw" onclick="chkAdm()">دخول</button></div></div></div>
 <div class="mo" id="mo-notif" onclick="if(event.target===this)closeMo('mo-notif')"><div class="md"><div class="mhd"></div><div class="mtt" style="display:flex;justify-content:space-between;align-items:center"><span>🔔 الإشعارات</span><button class="btn bgh bsm" onclick="closeMo('mo-notif')">إغلاق</button></div><div class="mbd" id="notif-list"><div class="logi"><div class="logd w"></div><div><div>📅 درس تجويد غداً 10:00 مع أ. فاطمة</div><div class="logt">منذ 5 دقائق</div></div></div><div class="logi"><div class="logd s"></div><div><div>💰 تم إضافة $31.50 إلى محفظتك</div><div class="logt">منذ ساعة</div></div></div><div class="logi"><div class="logd s"></div><div><div>⭐ Michael قيّم درسك بـ 5 نجوم!</div><div class="logt">منذ 3 ساعات</div></div></div></div></div></div>
 <div class="mo" id="mo-suc" onclick="if(event.target===this)closeMo('mo-suc')"><div class="md"><div class="mhd"></div><div class="mbd" style="text-align:center;padding:2rem"><div style="font-size:3.5rem;margin-bottom:.75rem" id="suc-ic">🎉</div><div style="font-size:1.3rem;font-weight:700;margin-bottom:.4rem" id="suc-t">تم بنجاح!</div><div style="font-size:.82rem;color:var(--tm);margin-bottom:1.5rem" id="suc-m">تمت العملية بنجاح</div><button class="btn bgo bfw" onclick="closeMo('mo-suc')">ممتاز! 👍</button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -504,7 +641,7 @@ function goP(id){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.ni').forEach(n=>n.classList.remove('on'));
   const pg=document.getElementById(id);if(pg)pg.classList.add('on');
-  const map={'p-home':'ni-home','p-halls':'ni-halls','p-dash':'ni-dash','p-acc':'ni-acc'};
+  const map={'p-home':'ni-home','p-halls':'ni-halls','p-lib':'ni-lib','p-dash':'ni-dash','p-acc':'ni-acc','p-about':'ni-acc'};
   const ni=document.getElementById(map[id]);if(ni)ni.classList.add('on');
   if(id==='p-book')initCal();
 }
@@ -541,8 +678,8 @@ function updBkS(){
   const ss=document.getElementById('b-sec');if(!ss)return;
   ss.innerHTML=HD[h].secs.map(s=>`<option value="${s.id}">${s.ic} ${s.nm}</option>`).join('');
 }
-function svH(){try{localStorage.setItem('nh_v3',JSON.stringify(HD));}catch(e){}}
-function ldH(){try{const d=localStorage.getItem('nh_v3');if(d)Object.assign(HD,JSON.parse(d));}catch(e){}}
+function svH(){try{localStorage.setItem('mm_halls_v3',JSON.stringify(HD));}catch(e){}}
+function ldH(){try{const d=localStorage.getItem('mm_halls_v3');if(d)Object.assign(HD,JSON.parse(d));}catch(e){}}
 function initCal(){renderCal();const sw=document.getElementById('slw');if(sw)sw.style.display='none';}
 function renderCal(){
   const{y,m}=CAL,t=document.getElementById('cal-t');if(t)t.textContent=MNS[m]+' '+y;
@@ -583,11 +720,11 @@ function buildSum(){
   document.getElementById('sm-tc').textContent=document.getElementById('b-tch')?.value||'—';
   document.getElementById('sm-dt').textContent=CAL.sel?CAL.sel.toLocaleDateString('ar-SA'):'—';
   document.getElementById('sm-sl').textContent=selSlot||'—';
-  document.getElementById('sm-tot').textContent='$'+pkg;
+  document.getElementById('sm-tot').textContent='$12';
 }
 function selPay(el){document.querySelectorAll('.paym').forEach(m=>m.classList.remove('on'));el.classList.add('on');}
 async function procPay(){
-  const pkg=parseInt(document.getElementById('b-pkg')?.value||'45');
+  const pkg=12;
   toast('⏳ جاري معالجة الدفع...','i');
   try{const dk=CAL.sel?`${CAL.y}-${CAL.m}-${CAL.sel.getDate()}`:'x';if(!BKD[dk])BKD[dk]=[];BKD[dk].push(selSlot);if(_sb)await _sb.from('bookings').insert([{teacher_name:document.getElementById('b-tch')?.value,hall:document.getElementById('b-hall')?.value,date:CAL.sel?.toISOString(),time:selSlot,package_price:pkg,teacher_share:pkg*.7,platform_share:pkg*.3,status:'confirmed'}]);}catch(e){console.log(e);}
   setTimeout(()=>{goBk(1);CAL.sel=null;selSlot=null;document.getElementById('suc-ic').textContent='🎉';document.getElementById('suc-t').textContent='تم الحجز والدفع!';document.getElementById('suc-m').textContent=`دُفع $${pkg} بنجاح. ستصلك رسالة واتساب بتفاصيل الدرس قريباً!`;openMo('mo-suc');addNotif('💳 تم الدفع $'+pkg+' بنجاح');},1800);
@@ -597,7 +734,7 @@ function swAdm(b,id){document.querySelectorAll('.admt').forEach(t=>t.classList.r
 function swA(b,id){document.querySelectorAll('.atb').forEach(t=>t.classList.remove('on'));document.querySelectorAll('.apn').forEach(p=>p.classList.remove('on'));b.classList.add('on');document.getElementById(id)?.classList.add('on');}
 function showAuth(){document.getElementById('auth-form').classList.add('on');document.getElementById('logged-in').style.display='none';}
 function setUser(u){
-  CU=u;try{localStorage.setItem('nu_v3',JSON.stringify(u));}catch(e){}
+  CU=u;try{localStorage.setItem('mm_v3',JSON.stringify(u));}catch(e){}
   const ini=u.name.slice(0,2);
   document.getElementById('uchip').classList.add('on');
   document.getElementById('lbtn').style.display='none';
@@ -624,18 +761,18 @@ async function doReg(){
   if(pw.length<6){toast('كلمة المرور 6 أحرف على الأقل','e');return;}
   toast('جاري إنشاء الحساب...','i');
   try{if(_sb)await _sb.auth.signUp({email:em,password:pw,options:{data:{name:n,role:ro}}});}catch(e){console.log(e);}
-  setUser({name:n,email:em,role:ro});toast('مرحباً '+n+'! 🎉','s');addNotif('🎉 مرحباً بك في نور العربية!');
+  setUser({name:n,email:em,role:ro});toast('مرحباً '+n+'! 🎉','s');addNotif('🎉 مرحباً بك في منارة المعرفة!');
 }
 function socLogin(p){setUser({name:p==='google'?'مستخدم Google':'مستخدم Facebook',email:p+'@nour.com',role:'student'});toast('تم الدخول ✓','s');}
 function doLogout(){
-  CU=null;isAdm=false;document.body.classList.remove('adm');try{localStorage.removeItem('nu_v3');}catch(e){}
+  CU=null;isAdm=false;document.body.classList.remove('adm');try{localStorage.removeItem('mm_v3');}catch(e){}
   document.getElementById('uchip').classList.remove('on');document.getElementById('lbtn').style.display='';
   document.getElementById('auth-form').classList.add('on');document.getElementById('logged-in').style.display='none';
   toast('تم تسجيل الخروج','i');
 }
 function chkAdm(){
   const pw=document.getElementById('adm-pw')?.value,err=document.getElementById('adm-err');
-  if(pw==='admin123'){isAdm=true;document.body.classList.add('adm');closeMo('mo-adm');document.getElementById('adm-pw').value='';if(err)err.style.display='none';['q','l','s'].forEach(k=>renderH(k));toast('وضع الإدارة مفعّل ✅','s');goP('p-adm');}
+  if(pw==='1987@abdo??WL'){isAdm=true;document.body.classList.add('adm');closeMo('mo-adm');document.getElementById('adm-pw').value='';if(err)err.style.display='none';['q','l','s'].forEach(k=>renderH(k));toast('وضع الإدارة مفعّل ✅','s');goP('p-adm');}
   else{if(err)err.style.display='block';}
 }
 function deAdm(){isAdm=false;document.body.classList.remove('adm');['q','l','s'].forEach(k=>renderH(k));toast('تم إيقاف وضع الإدارة','i');goP('p-home');}
@@ -664,9 +801,11 @@ function mkChart(){
 }
 document.addEventListener('DOMContentLoaded',()=>{
   ldH();['q','l','s'].forEach(k=>renderH(k));updBkS();mkChart();
-  try{const s=localStorage.getItem('nu_v3');if(s){CU=JSON.parse(s);setUser(CU);}}catch(e){}
+  try{const s=localStorage.getItem('mm_v3');if(s){CU=JSON.parse(s);setUser(CU);}}catch(e){}
   setTimeout(async()=>{try{if(_sb){const{data:{user}}=await _sb.auth.getUser();if(user&&!CU)setUser({name:user.user_metadata?.name||user.email.split('@')[0],email:user.email,role:user.user_metadata?.role||'student'});}}catch(e){}},600);
   setInterval(()=>{const el=document.getElementById('lcnt');if(el)el.textContent=38+Math.floor(Math.random()*12);},4000);
+  renderBooks();
+  renderBooks();
   setTimeout(()=>addNotif('📅 تذكير: درس التجويد غداً الساعة 10:00 مع أ. فاطمة'),3000);
 });
 
@@ -683,7 +822,7 @@ const T = {
     halls_h:'🏛️ الفصول الثلاثة',
     all:'عرض الكل',
     teachers_h:'👨‍🏫 معلمونا',
-    why_h:'✨ لماذا نور العربية؟',
+    why_h:'✨ لماذا منارة المعرفة؟',
     hallnames:['القرآن والتجويد','اللغة العربية','العلوم الشرعية'],
     hallsubs:['حفظ وتلاوة بسند متصل','لغير الناطقين بها','فقه وحديث وعقيدة'],
     nav:['الرئيسية','الفصول','لوحتي','حسابي'],
@@ -700,7 +839,7 @@ const T = {
     halls_h:'🏛️ Three Halls',
     all:'View all',
     teachers_h:'👨‍🏫 Our Teachers',
-    why_h:'✨ Why Nour Al-Arabia?',
+    why_h:'✨ Why Manarat Al-Maarifa?',
     hallnames:['Quran & Tajweed','Arabic Language','Islamic Sciences'],
     hallsubs:['Memorization & recitation with certified chain','For non-native speakers','Fiqh, Hadith & Aqeedah'],
     nav:['Home','Halls','Dashboard','Account'],
@@ -717,7 +856,7 @@ const T = {
     halls_h:'🏛️ Trois Salles',
     all:'Voir tout',
     teachers_h:'👨‍🏫 Nos Enseignants',
-    why_h:'✨ Pourquoi Nour Al-Arabia?',
+    why_h:'✨ Pourquoi Manarat Al-Maarifa?',
     hallnames:['Coran & Tajweed','Langue Arabe','Sciences Islamiques'],
     hallsubs:['Mémorisation & récitation','Pour les non-arabophones','Fiqh, Hadith & Aqeedah'],
     nav:['Accueil','Salles','Tableau','Compte'],
@@ -734,7 +873,7 @@ const T = {
     halls_h:'🏛️ Tres Salones',
     all:'Ver todo',
     teachers_h:'👨‍🏫 Nuestros Maestros',
-    why_h:'✨ ¿Por qué Nour Al-Arabia?',
+    why_h:'✨ ¿Por qué Manarat Al-Maarifa?',
     hallnames:['Corán y Tajweed','Lengua Árabe','Ciencias Islámicas'],
     hallsubs:['Memorización y recitación','Para no arabófonos','Fiqh, Hadith y Aqeedah'],
     nav:['Inicio','Salones','Panel','Cuenta'],
@@ -751,7 +890,7 @@ const T = {
     halls_h:'🏛️ Drei Hallen',
     all:'Alle anzeigen',
     teachers_h:'👨‍🏫 Unsere Lehrer',
-    why_h:'✨ Warum Nour Al-Arabia?',
+    why_h:'✨ Warum Manarat Al-Maarifa?',
     hallnames:['Quran & Tajweed','Arabische Sprache','Islamische Wissenschaften'],
     hallsubs:['Auswendiglernen & Rezitation','Für Nicht-Muttersprachler','Fiqh, Hadith & Aqeedah'],
     nav:['Startseite','Hallen','Dashboard','Konto'],
@@ -768,7 +907,7 @@ const T = {
     halls_h:'🏛️ Üç Salon',
     all:'Hepsini gör',
     teachers_h:'👨‍🏫 Öğretmenlerimiz',
-    why_h:'✨ Neden Nour Al-Arabia?',
+    why_h:'✨ Neden Manarat Al-Maarifa?',
     hallnames:['Kuran & Tecvid','Arapça Dili','İslami Bilimler'],
     hallsubs:['Ezberleme ve okuma','Ana dili Arapça olmayanlar için','Fıkıh, Hadis ve Akide'],
     nav:['Ana Sayfa','Salonlar','Panel','Hesap'],
@@ -785,7 +924,7 @@ const T = {
     halls_h:'🏛️ Tre Sale',
     all:'Vedi tutto',
     teachers_h:'👨‍🏫 I nostri insegnanti',
-    why_h:'✨ Perché Nour Al-Arabia?',
+    why_h:'✨ Perché Manarat Al-Maarifa?',
     hallnames:['Corano & Tajweed','Lingua Araba','Scienze Islamiche'],
     hallsubs:['Memorizzazione e recitazione','Per non madrelingua','Fiqh, Hadith e Aqeedah'],
     nav:['Home','Sale','Dashboard','Account'],
@@ -802,7 +941,7 @@ const T = {
     halls_h:'🏛️ Três Salas',
     all:'Ver tudo',
     teachers_h:'👨‍🏫 Nossos Professores',
-    why_h:'✨ Por que Nour Al-Arabia?',
+    why_h:'✨ Por que Manarat Al-Maarifa?',
     hallnames:['Alcorão & Tajweed','Língua Árabe','Ciências Islâmicas'],
     hallsubs:['Memorização e recitação','Para não falantes de árabe','Fiqh, Hadith e Aqeedah'],
     nav:['Início','Salas','Painel','Conta'],
@@ -819,7 +958,7 @@ const T = {
     halls_h:'🏛️ Drie Zalen',
     all:'Alles bekijken',
     teachers_h:'👨‍🏫 Onze Leraren',
-    why_h:'✨ Waarom Nour Al-Arabia?',
+    why_h:'✨ Waarom Manarat Al-Maarifa?',
     hallnames:['Koran & Tajweed','Arabische Taal','Islamitische Wetenschappen'],
     hallsubs:['Memorisatie en recitatie','Voor niet-moedertaalsprekers','Fiqh, Hadith en Aqeedah'],
     nav:['Home','Zalen','Dashboard','Account'],
@@ -836,7 +975,7 @@ const T = {
     halls_h:'🏛️ Tiga Aula',
     all:'Lihat semua',
     teachers_h:'👨‍🏫 Guru Kami',
-    why_h:'✨ Mengapa Nour Al-Arabia?',
+    why_h:'✨ Mengapa Manarat Al-Maarifa?',
     hallnames:['Al-Quran & Tajweed','Bahasa Arab','Ilmu Islam'],
     hallsubs:['Hafalan dan bacaan bersambung','Untuk penutur non-Arab','Fiqh, Hadis & Aqidah'],
     nav:['Beranda','Aula','Dasbor','Akun'],
@@ -901,13 +1040,13 @@ function applyLang(lang) {
     niLbs[3].textContent = l.nav[3];
   }
   // Save
-  try { localStorage.setItem('nour_lang', lang); } catch(e) {}
+  try { localStorage.setItem('mm_lang', lang); } catch(e) {}
 }
 
 // Load saved language on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
   try {
-    const saved = localStorage.getItem('nour_lang');
+    const saved = localStorage.getItem('mm_lang');
     if(saved) {
       const sel = document.getElementById('lsel');
       if(sel) sel.value = saved;
@@ -916,4 +1055,82 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch(e) {}
 });
 
-</script></body></html>
+
+// ============================================================
+//   LIBRARY
+// ============================================================
+const BOOKS = [
+  {id:1,cat:'q',ic:'📖',title:'متن الجزرية في التجويد',author:'ابن الجزري',pages:24,free:true,badge:'free',pdf:'https://drive.google.com/file/d/PLACEHOLDER_Q1/preview'},
+  {id:2,cat:'q',ic:'🕌',title:'تحفة الأطفال في التجويد',author:'سليمان الجمزوري',pages:16,free:true,badge:'free',pdf:''},
+  {id:3,cat:'q',ic:'📜',title:'الوافي في شرح الشاطبية',author:'عبد الفتاح القاضي',pages:312,free:false,badge:'',pdf:''},
+  {id:4,cat:'q',ic:'🏅',title:'النشر في القراءات العشر',author:'ابن الجزري',pages:420,free:false,badge:'hot',pdf:''},
+  {id:5,cat:'l',ic:'✍️',title:'النحو الواضح للمبتدئين',author:'علي الجارم',pages:180,free:true,badge:'new',pdf:''},
+  {id:6,cat:'l',ic:'📐',title:'قواعد اللغة العربية المبسطة',author:'مصطفى الغلاييني',pages:240,free:false,badge:'',pdf:''},
+  {id:7,cat:'l',ic:'🗣️',title:'تعلم العربية بسهولة',author:'د. محمود فهمي',pages:160,free:true,badge:'new',pdf:''},
+  {id:8,cat:'l',ic:'📚',title:'معجم الأفعال العربية',author:'م. السباعي',pages:320,free:false,badge:'',pdf:''},
+  {id:9,cat:'s',ic:'⚖️',title:'متن الأربعين النووية',author:'الإمام النووي',pages:48,free:true,badge:'free',pdf:''},
+  {id:10,cat:'s',ic:'🌟',title:'متن أبي شجاع في الفقه',author:'أبو شجاع الأصفهاني',pages:64,free:true,badge:'free',pdf:''},
+  {id:11,cat:'s',ic:'📜',title:'العقيدة الطحاوية',author:'الإمام الطحاوي',pages:80,free:false,badge:'',pdf:''},
+  {id:12,cat:'kids',ic:'🌟',title:'قصص القرآن للأطفال',author:'محمد الأبشيهي',pages:96,free:true,badge:'new',pdf:''},
+  {id:13,cat:'kids',ic:'🎨',title:'أتعلم العربية معك',author:'سلسلة تعليمية',pages:64,free:true,badge:'free',pdf:''},
+  {id:14,cat:'kids',ic:'🌙',title:'حكايات الأنبياء للصغار',author:'أ. فاطمة الزهراء',pages:120,free:false,badge:'hot',pdf:''},
+];
+let libCat='all',libQ='',selBook=null;
+
+function renderBooks(){
+  const g=document.getElementById('lib-grid');if(!g)return;
+  const books=BOOKS.filter(b=>{
+    const mc=libCat==='all'||b.cat===libCat;
+    const mq=!libQ||b.title.includes(libQ)||b.author.includes(libQ);
+    return mc&&mq;
+  });
+  if(!books.length){g.innerHTML='<div class="lib-empty" style="grid-column:1/-1"><div>📭</div><div>لا توجد كتب في هذه الفئة</div></div>';return;}
+  g.innerHTML=books.map(b=>`<div class="book-card" onclick="openBook(${b.id})">
+    <div class="book-cover ${b.cat}"><span>${b.ic}</span>
+      ${b.badge?`<div class="book-badge ${b.badge}">${b.badge==='free'?'مجاني':b.badge==='new'?'جديد':'🔥 رائج'}</div>`:''}
+    </div>
+    <div class="book-info">
+      <div class="book-title">${b.title}</div>
+      <div class="book-author">${b.author}</div>
+      <div class="book-footer">
+        <span class="book-pages">${b.pages} صفحة</span>
+        <button class="book-btn ${b.free?'read':'lock'}">${b.free?'📖 قراءة':'🔒 للأعضاء'}</button>
+      </div>
+    </div>
+  </div>`).join('');
+}
+
+function filterCat(cat,el){
+  libCat=cat;
+  document.querySelectorAll('.lib-cat').forEach(c=>c.classList.remove('on'));
+  el.classList.add('on');renderBooks();
+}
+
+function filterBooks(){
+  libQ=document.getElementById('lib-q')?.value.trim()||'';renderBooks();
+}
+
+function openBook(id){
+  const book=BOOKS.find(b=>b.id===id);if(!book)return;
+  selBook=book;
+  const mo=document.getElementById('mo-pdf');
+  const cnt=document.getElementById('pdf-cnt');
+  if(!mo||!cnt)return;
+  if(!book.free&&!CU){toast('سجّل دخولك للوصول إلى هذا الكتاب','i');goP('p-acc');showAuth();return;}
+  if(!book.free){
+    cnt.innerHTML=`<div class="pdf-hdr"><button class="btn bgh bsm" onclick="closeMo('mo-pdf')">✕</button><div class="pdf-title">${book.title}</div></div><div style="padding:1.2rem;text-align:center"><div style="font-size:2.5rem;margin-bottom:.6rem">🔐</div><div style="font-size:.88rem;font-weight:700;margin-bottom:.35rem">كتاب للأعضاء المميزين</div><div style="font-size:.75rem;color:var(--tm);margin-bottom:.85rem">احجز درسك الأول للوصول إلى جميع الكتب المميزة</div><button class="btn bgo bfw" onclick="closeMo('mo-pdf');goP('p-book')">📅 احجز درسك الأول</button></div>`;
+    mo.classList.add('on');return;
+  }
+  if(!book.pdf){
+    cnt.innerHTML=`<div class="pdf-hdr"><button class="btn bgh bsm" onclick="closeMo('mo-pdf')">✕</button><div class="pdf-title">${book.title}</div></div><div style="padding:1.2rem;text-align:center"><div style="font-size:2.5rem;margin-bottom:.6rem">📤</div><div style="font-size:.88rem;font-weight:700;margin-bottom:.35rem">يمكنك إضافة الكتاب</div><div style="font-size:.75rem;color:var(--tm);margin-bottom:.5rem">ارفع الكتاب على Google Drive وأرسل الرابط للمدير</div><button class="btn bgo bfw" onclick="closeMo('mo-pdf');toast('افتح لوحة الإدارة وأضف رابط PDF','i')">فهمت ✅</button></div>`;
+    mo.classList.add('on');return;
+  }
+  cnt.innerHTML=`<div class="pdf-hdr"><button class="btn bgh bsm" onclick="closeMo('mo-pdf')">✕</button><div class="pdf-title">${book.title}</div><a href="${book.pdf}" target="_blank" class="btn bgo bsm">⬇️</a></div><iframe class="pdf-frame" src="${book.pdf}" allowfullscreen></iframe>`;
+  mo.classList.add('on');
+}
+</script>
+<!-- PDF Viewer Modal -->
+<div class="mo" id="mo-pdf" onclick="if(event.target===this)closeMo('mo-pdf')">
+  <div class="md" id="pdf-cnt"></div>
+</div>
+</body></html>
