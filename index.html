@@ -1068,10 +1068,10 @@ const BOOKS = [
   {id:6,cat:'l',ic:'📐',title:'قواعد اللغة العربية المبسطة',author:'مصطفى الغلاييني',pages:240,free:false,badge:'',pdf:''},
   {id:7,cat:'l',ic:'🗣️',title:'تعلم العربية بسهولة',author:'د. محمود فهمي',pages:160,free:true,badge:'new',pdf:''},
   {id:8,cat:'l',ic:'📚',title:'معجم الأفعال العربية',author:'م. السباعي',pages:320,free:false,badge:'',pdf:''},
-  {id:9,cat:'s',ic:'⚖️',title:'متن الأربعين النووية',author:'الإمام النووي',pages:48,free:true,badge:'free',pdf:''},
-  {id:10,cat:'s',ic:'🌟',title:'متن أبي شجاع في الفقه',author:'أبو شجاع الأصفهاني',pages:64,free:true,badge:'free',pdf:''},
-  {id:11,cat:'s',ic:'📜',title:'العقيدة الطحاوية',author:'الإمام الطحاوي',pages:80,free:false,badge:'',pdf:''},
-  {id:12,cat:'kids',ic:'🌟',title:'قصص القرآن للأطفال',author:'محمد الأبشيهي',pages:96,free:true,badge:'new',pdf:''},
+  {id:9,cat:'s',ic:'📖',title:'شرح الأصول الثلاثة',author:'الشيخ عبد الرزاق البدر',pages:476,free:true,badge:'free',pdf:'https://drive.google.com/file/d/1PYeJu5pUu1vRwJ-b_iSQO8oKo3_t8Ldu/preview'},
+  {id:10,cat:'l',ic:'📐',title:'الدروس النحوية',author:'مجموعة من الأساتذة',pages:415,free:false,badge:'',pdf:'https://drive.google.com/file/d/1wxLdJlylyYU1N-C2f-RnVLcqLm3ERc6t/view'},
+  {id:11,cat:'q',ic:'📖',title:'شرح تحفة الأطفال بالإنجليزية',author:'ترجمة متخصصة',pages:84,free:false,badge:'new',pdf:'https://drive.google.com/file/d/1lW38C4EY4AOHDBwldAmboX2j9RXgTlHF/view'},
+  {id:12,cat:'kids',ic:'🌟',title:'القاعدة النورانية',author:'محمد نور محمد الرعيني',pages:40,free:false,badge:'',pdf:'https://drive.google.com/file/d/1RtxmyDxkNo5DsvRlpSYxVG8GRaj5Tsdh/view'},
   {id:13,cat:'kids',ic:'🎨',title:'أتعلم العربية معك',author:'سلسلة تعليمية',pages:64,free:true,badge:'free',pdf:''},
   {id:14,cat:'kids',ic:'🌙',title:'حكايات الأنبياء للصغار',author:'أ. فاطمة الزهراء',pages:120,free:false,badge:'hot',pdf:''},
 ];
@@ -1125,8 +1125,8 @@ function openBook(id){
     cnt.innerHTML=`<div class="pdf-hdr"><button class="btn bgh bsm" onclick="closeMo('mo-pdf')">✕</button><div class="pdf-title">${book.title}</div></div><div style="padding:1.2rem;text-align:center"><div style="font-size:2.5rem;margin-bottom:.6rem">📤</div><div style="font-size:.88rem;font-weight:700;margin-bottom:.35rem">يمكنك إضافة الكتاب</div><div style="font-size:.75rem;color:var(--tm);margin-bottom:.5rem">ارفع الكتاب على Google Drive وأرسل الرابط للمدير</div><button class="btn bgo bfw" onclick="closeMo('mo-pdf');toast('افتح لوحة الإدارة وأضف رابط PDF','i')">فهمت ✅</button></div>`;
     mo.classList.add('on');return;
   }
-  cnt.innerHTML=`<div class="pdf-hdr"><button class="btn bgh bsm" onclick="closeMo('mo-pdf')">✕</button><div class="pdf-title">${book.title}</div><a href="${book.pdf}" target="_blank" class="btn bgo bsm">⬇️</a></div><iframe class="pdf-frame" src="${book.pdf}" allowfullscreen></iframe>`;
-  mo.classList.add('on');
+  window.open(book.pdf.replace('/preview','/view'), '_blank');
+  toast('جاري فتح الكتاب في تبويب جديد 📖','s');
 }
 </script>
 <!-- PDF Viewer Modal -->
