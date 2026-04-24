@@ -296,6 +296,117 @@ body.adm .aadd{display:flex}
 .about-cta-t{font-family:"Amiri",serif;font-size:1.2rem;color:var(--gl);margin-bottom:.35rem}
 .about-cta-s{font-size:.75rem;color:var(--tm);margin-bottom:.85rem}
 
+
+/* ===HOME REDESIGN=== */
+#p-home{background:var(--navy);overflow-x:hidden}
+
+/* Hero */
+.hero-wrap{position:relative;min-height:88vw;max-height:420px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding:0 0 1.5rem}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(145deg,#050c18 0%,#0a1628 40%,#0d1f35 100%);z-index:0}
+.hero-orb1{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(201,149,42,.18) 0%,transparent 70%);top:-60px;right:-80px;z-index:0;animation:orbFloat 6s ease-in-out infinite}
+.hero-orb2{position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(39,174,96,.1) 0%,transparent 70%);bottom:20px;left:-60px;z-index:0;animation:orbFloat 8s ease-in-out infinite reverse}
+.hero-pattern{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f0c04a' fill-opacity='1'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");z-index:0}
+@keyframes orbFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-15px) scale(1.05)}}
+.hero-content{position:relative;z-index:1;padding:1.5rem 1.2rem 0}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(201,149,42,.1);border:1px solid rgba(201,149,42,.25);border-radius:100px;padding:.28rem .75rem;font-size:.65rem;color:var(--gl);font-weight:700;margin-bottom:.85rem;backdrop-filter:blur(8px)}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gl);animation:blink 1.5s infinite}
+.hero-title{font-family:"Amiri",serif;font-size:2.6rem;line-height:1.2;font-weight:700;margin-bottom:.65rem}
+.hero-title span{background:linear-gradient(135deg,var(--gl) 0%,#fff 50%,var(--go) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-title em{font-style:normal;color:#fff}
+.hero-desc{font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:1.2rem;max-width:340px}
+.hero-cta{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:.45rem;padding:.72rem 1.3rem;background:linear-gradient(135deg,var(--go),var(--gl));color:var(--navy);border:none;border-radius:12px;font-family:"Cairo",sans-serif;font-size:.82rem;font-weight:800;cursor:pointer;transition:all .25s;text-decoration:none;box-shadow:0 6px 24px rgba(201,149,42,.4),0 2px 8px rgba(0,0,0,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(201,149,42,.5)}
+.btn-secondary{display:inline-flex;align-items:center;gap:.45rem;padding:.72rem 1.3rem;background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:12px;font-family:"Cairo",sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .25s;text-decoration:none;backdrop-filter:blur(8px)}
+.btn-secondary:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
+
+/* Stats bar */
+.stats-bar{display:flex;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);margin:0}
+.stat-item{flex:1;padding:.85rem .4rem;text-align:center;border-left:1px solid rgba(255,255,255,.06)}
+.stat-item:last-child{border:none}
+.stat-num{font-family:"Amiri",serif;font-size:1.3rem;font-weight:700;color:var(--gl);line-height:1;display:block}
+.stat-lbl{font-size:.58rem;color:var(--tm);font-weight:600;margin-top:.18rem;display:block}
+
+/* How it works */
+.hiw{padding:1.4rem 1.2rem}
+.sec-label{font-size:.62rem;font-weight:700;color:var(--go);letter-spacing:2px;text-transform:uppercase;margin-bottom:.38rem}
+.sec-title{font-family:"Amiri",serif;font-size:1.4rem;font-weight:700;margin-bottom:.35rem;line-height:1.3}
+.sec-title em{color:var(--gl);font-style:normal}
+.sec-sub{font-size:.75rem;color:var(--tm);line-height:1.7;margin-bottom:1.2rem}
+.steps{display:flex;flex-direction:column;gap:.65rem}
+.step{display:flex;gap:.9rem;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:.9rem;transition:all .2s;cursor:pointer}
+.step:hover{background:rgba(201,149,42,.06);border-color:rgba(201,149,42,.2)}
+.step-num{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--go),var(--gl));display:flex;align-items:center;justify-content:center;font-family:"Amiri",serif;font-size:1.1rem;font-weight:700;color:var(--navy);flex-shrink:0;box-shadow:0 4px 12px rgba(201,149,42,.3)}
+.step-info{flex:1}.step-t{font-size:.82rem;font-weight:700;margin-bottom:.18rem}
+.step-d{font-size:.68rem;color:var(--tm);line-height:1.55}
+
+/* Halls modern */
+.halls-sec{padding:1.4rem 1.2rem}
+.halls-grid{display:flex;flex-direction:column;gap:.7rem}
+.hall-card{border-radius:18px;overflow:hidden;position:relative;cursor:pointer;transition:all .28s}
+.hall-card:hover{transform:translateY(-3px)}
+.hall-card.q{background:linear-gradient(135deg,rgba(39,174,96,.15) 0%,rgba(39,174,96,.05) 100%);border:1px solid rgba(39,174,96,.2)}
+.hall-card.l{background:linear-gradient(135deg,rgba(201,149,42,.15) 0%,rgba(201,149,42,.05) 100%);border:1px solid rgba(201,149,42,.2)}
+.hall-card.s{background:linear-gradient(135deg,rgba(142,68,173,.15) 0%,rgba(142,68,173,.05) 100%);border:1px solid rgba(142,68,173,.2)}
+.hall-inner{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem}
+.hall-emoji{font-size:2.2rem;flex-shrink:0}
+.hall-info{flex:1}
+.hall-name{font-size:.92rem;font-weight:700;margin-bottom:.22rem}
+.q .hall-name{color:#52d68a}.l .hall-name{color:var(--gl)}.s .hall-name{color:#c39bd3}
+.hall-desc{font-size:.68rem;color:var(--tm);line-height:1.5;margin-bottom:.42rem}
+.hall-meta{display:flex;gap:.6rem}
+.hall-tag{font-size:.6rem;font-weight:700;padding:.12rem .45rem;border-radius:100px}
+.q .hall-tag{background:rgba(39,174,96,.15);color:#52d68a}
+.l .hall-tag{background:rgba(201,149,42,.15);color:var(--gl)}
+.s .hall-tag{background:rgba(142,68,173,.15);color:#c39bd3}
+.hall-arr{font-size:1.1rem;color:var(--td);flex-shrink:0}
+
+/* Teachers */
+.teachers-sec{padding:0 1.2rem 1.4rem}
+.teachers-scroll{display:flex;gap:.75rem;overflow-x:auto;scrollbar-width:none;padding-bottom:.3rem}
+.teachers-scroll::-webkit-scrollbar{display:none}
+.teacher-card{flex-shrink:0;width:140px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:.95rem .75rem;text-align:center;cursor:pointer;transition:all .25s}
+.teacher-card:hover{border-color:var(--go);background:rgba(201,149,42,.06);transform:translateY(-3px)}
+.teacher-av{width:54px;height:54px;border-radius:50%;margin:0 auto .6rem;display:flex;align-items:center;justify-content:center;font-family:"Amiri",serif;font-size:1.2rem;font-weight:700;border:2.5px solid transparent;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.teacher-name{font-size:.76rem;font-weight:700;margin-bottom:.15rem}
+.teacher-spec{font-size:.62rem;color:var(--tm);margin-bottom:.45rem;line-height:1.4}
+.teacher-stars{font-size:.68rem;color:var(--go)}
+
+/* Testimonials */
+.testi-sec{padding:0 1.2rem 1.4rem}
+.testi-scroll{display:flex;gap:.7rem;overflow-x:auto;scrollbar-width:none;padding-bottom:.3rem}
+.testi-scroll::-webkit-scrollbar{display:none}
+.testi-card{flex-shrink:0;width:240px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1rem;transition:all .2s}
+.testi-card:hover{border-color:var(--bd)}
+.testi-stars{font-size:.75rem;margin-bottom:.5rem}
+.testi-text{font-size:.72rem;color:var(--wh);line-height:1.65;margin-bottom:.65rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:.5rem}
+.testi-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0}
+.testi-info .name{font-size:.7rem;font-weight:700}
+.testi-info .country{font-size:.6rem;color:var(--tm)}
+
+/* Free trial CTA */
+.trial-cta{margin:0 1.2rem 1.4rem;background:linear-gradient(135deg,rgba(201,149,42,.15) 0%,rgba(201,149,42,.05) 100%);border:1px solid rgba(201,149,42,.25);border-radius:20px;padding:1.4rem 1.2rem;text-align:center;position:relative;overflow:hidden}
+.trial-cta::before{content:"🕌";position:absolute;font-size:5rem;opacity:.06;right:-10px;top:-10px;filter:blur(2px)}
+.trial-cta .tc-title{font-family:"Amiri",serif;font-size:1.3rem;font-weight:700;margin-bottom:.35rem}
+.trial-cta .tc-sub{font-size:.74rem;color:var(--tm);margin-bottom:.95rem;line-height:1.65}
+.trial-cta .tc-badge{display:inline-block;background:rgba(39,174,96,.15);border:1px solid rgba(39,174,96,.3);border-radius:100px;padding:.22rem .75rem;font-size:.68rem;color:var(--grl);font-weight:700;margin-bottom:.85rem}
+
+/* Languages */
+.langs-sec{padding:0 1.2rem 1.4rem}
+.langs-wrap{display:flex;flex-wrap:wrap;gap:.45rem}
+.lang-pill{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:100px;padding:.32rem .72rem;font-size:.7rem;font-weight:600;transition:all .2s;cursor:pointer}
+.lang-pill:hover{background:var(--gd);border-color:var(--bd)}
+
+/* Why us */
+.why-sec{padding:0 1.2rem 1.4rem}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.why-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:15px;padding:1rem;transition:all .2s}
+.why-card:hover{background:rgba(201,149,42,.06);border-color:rgba(201,149,42,.2)}
+.why-ic{font-size:1.5rem;margin-bottom:.42rem}
+.why-t{font-size:.78rem;font-weight:700;margin-bottom:.2rem;color:#fff}
+.why-d{font-size:.65rem;color:var(--tm);line-height:1.55}
+
 </style></head><body><div id="tc"></div>
 <div id="app">
 <header>
@@ -325,40 +436,216 @@ body.adm .aadd{display:flex}
 <div id="cnt">
   <!-- HOME -->
   <div class="pg on" id="p-home">
-    <div class="hero">
-      <div class="htg">🌙 منصة تعليمية عالمية</div>
-      <h1 class="htt">اكتشف جمال<br>العربية والقرآن</h1>
-      <p class="hsb">فصول تفاعلية مباشرة مع نخبة المعلمين المتخصصين حول العالم — 11 لغة تدريس</p>
-      <div class="hbs">
-        <button class="btn bgo blg" onclick="goP('p-book')">📅 احجز درسك الأول</button>
-        <a href="https://wa.me/212681883238" class="btn bgr blg" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>واتساب</a>
+
+    <!-- HERO -->
+    <div class="hero-wrap">
+      <div class="hero-bg"></div>
+      <div class="hero-pattern"></div>
+      <div class="hero-orb1"></div>
+      <div class="hero-orb2"></div>
+      <div class="hero-content">
+        <div class="hero-badge"><div class="hero-badge-dot"></div>منصة تعليمية عالمية مميزة</div>
+        <h1 class="hero-title"><span>تعلّم القرآن والعربية</span><br><em>بالطريقة الصحيحة</em></h1>
+        <p class="hero-desc">فصول تفاعلية مباشرة مع معلمين متخصصين من أرجاء العالم — بلغتك الأم، في وقتك المناسب</p>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="goP('p-book')">🎓 ابدأ مجاناً الآن</button>
+          <a href="https://wa.me/212681883238" class="btn-secondary" target="_blank">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            تواصل معنا
+          </a>
+        </div>
       </div>
     </div>
-    <div class="sts"><div class="sc"><div class="scn">2500+</div><div class="scl">طالب</div></div><div class="sc"><div class="scn">35+</div><div class="scl">معلم</div></div><div class="sc"><div class="scn">50+</div><div class="scl">دولة</div></div><div class="sc"><div class="scn">4.9★</div><div class="scl">تقييم</div></div></div>
-    <div class="shr"><div class="sht">🏛️ <em>الفصول</em> الثلاثة</div><div class="slk" onclick="goP('p-halls')">عرض الكل ›</div></div>
-    <div class="hsc">
-      <div class="hmc q" onclick="goP('p-halls');swH('q')"><div class="hmbd" id="qbd">4 أقسام</div><em class="hmic">🕌</em><div class="hmnm">القرآن والتجويد</div><div class="hmss">حفظ وتلاوة بسند متصل</div></div>
-      <div class="hmc l" onclick="goP('p-halls');swH('l')"><div class="hmbd" id="lbd">6 أقسام</div><em class="hmic">📖</em><div class="hmnm">اللغة العربية</div><div class="hmss">لغير الناطقين بها</div></div>
-      <div class="hmc s" onclick="goP('p-halls');swH('s')"><div class="hmbd" id="sbd">5 أقسام</div><em class="hmic">⚖️</em><div class="hmnm">العلوم الشرعية</div><div class="hmss">فقه وحديث وعقيدة</div></div>
+
+    <!-- STATS -->
+    <div class="stats-bar">
+      <div class="stat-item"><span class="stat-num">2500+</span><span class="stat-lbl">طالب</span></div>
+      <div class="stat-item"><span class="stat-num">35+</span><span class="stat-lbl">معلم</span></div>
+      <div class="stat-item"><span class="stat-num">50+</span><span class="stat-lbl">دولة</span></div>
+      <div class="stat-item"><span class="stat-num">4.9★</span><span class="stat-lbl">تقييم</span></div>
     </div>
-    <div class="shr"><div class="sht">👨‍🏫 <em>معلمونا</em></div><div class="slk" onclick="toast('قائمة المعلمين قريباً','i')">عرض الكل ›</div></div>
-    <div class="tsc">
-      <div class="tmc" onclick="goP('p-book')"><div class="tav" style="background:linear-gradient(135deg,#27ae60,#52d68a)">فا</div><div class="tnm">أ. فاطمة</div><div class="tsp">القرآن والتجويد</div><div class="trt">⭐ 5.0</div></div>
-      <div class="tmc" onclick="goP('p-book')"><div class="tav" style="background:linear-gradient(135deg,var(--go),var(--gl))">أح</div><div class="tnm">أ. أحمد</div><div class="tsp">النحو والبلاغة</div><div class="trt">⭐ 4.9</div></div>
-      <div class="tmc" onclick="goP('p-book')"><div class="tav" style="background:linear-gradient(135deg,#3498db,#5dade2)">يو</div><div class="tnm">أ. يوسف</div><div class="tsp">العلوم الشرعية</div><div class="trt">⭐ 4.8</div></div>
-      <div class="tmc" onclick="goP('p-book')"><div class="tav" style="background:linear-gradient(135deg,var(--pu),#c39bd3)">مر</div><div class="tnm">أ. مريم</div><div class="tsp">العربية للأطفال</div><div class="trt">⭐ 4.9</div></div>
+
+    <!-- HOW IT WORKS -->
+    <div class="hiw">
+      <div class="sec-label">كيف يعمل</div>
+      <h2 class="sec-title">3 خطوات فقط<br><em>للبدء في التعلم</em></h2>
+      <p class="sec-sub">من التسجيل إلى أول درس في دقائق معدودة</p>
+      <div class="steps">
+        <div class="step" onclick="goP('p-acc');showAuth()">
+          <div class="step-num">١</div>
+          <div class="step-info">
+            <div class="step-t">أنشئ حسابك مجاناً</div>
+            <div class="step-d">سجّل في ثوانٍ بالبريد أو Google — بدون بطاقة بنكية</div>
+          </div>
+        </div>
+        <div class="step" onclick="goP('p-halls')">
+          <div class="step-num">٢</div>
+          <div class="step-info">
+            <div class="step-t">اختر فصلك ومعلمك</div>
+            <div class="step-d">قرآن وتجويد، لغة عربية، أو علوم شرعية — مع معلم متخصص تختاره أنت</div>
+          </div>
+        </div>
+        <div class="step" onclick="goP('p-book')">
+          <div class="step-num">٣</div>
+          <div class="step-info">
+            <div class="step-t">احجز وابدأ فوراً</div>
+            <div class="step-d">احجز في التقويم بتوقيتك المحلي وادفع $12 للحصة فقط</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="shr" style="padding-top:.4rem"><div class="sht">✨ <em>لماذا</em> منارة المعرفة؟</div></div>
-    <div class="why">
-      <div class="wc"><div class="wic">🎓</div><div class="wt">معلمون متخصصون</div><div class="wd">شهادات عليا وخبرة أكثر من 5 سنوات</div></div>
-      <div class="wc"><div class="wic">🌍</div><div class="wt">11 لغة تدريس</div><div class="wd">شرح بلغتك الأم مهما كانت</div></div>
-      <div class="wc"><div class="wic">📱</div><div class="wt">فصل رقمي حي</div><div class="wd">فيديو وصوت وسبورة تفاعلية</div></div>
-      <div class="wc"><div class="wic">⭐</div><div class="wt">تقييمات حقيقية</div><div class="wd">تقييم بعد كل درس شفاف 100%</div></div>
-      <div class="wc"><div class="wic">🕐</div><div class="wt">مرونة كاملة</div><div class="wd">احجز بتوقيتك المحلي تلقائياً</div></div>
-      <div class="wc"><div class="wic">🔰</div><div class="wt">درسك الأول مجاني</div><div class="wd">جرّب بدون أي التزام مسبق</div></div>
+
+    <!-- HALLS -->
+    <div class="halls-sec">
+      <div class="sec-label">فصولنا</div>
+      <h2 class="sec-title"><em>ثلاثة فصول</em> متخصصة</h2>
+      <p class="sec-sub">كل فصل مصمم بمنهج علمي رصين مع معلمين مجازين</p>
+      <div class="halls-grid">
+        <div class="hall-card q" onclick="goP('p-halls');swH('q')">
+          <div class="hall-inner">
+            <div class="hall-emoji">🕌</div>
+            <div class="hall-info">
+              <div class="hall-name">القرآن والتجويد</div>
+              <div class="hall-desc">حفظ وتلاوة بسند متصل — من المخارج إلى الإجازة</div>
+              <div class="hall-meta"><span class="hall-tag">4 أقسام</span><span class="hall-tag">486 طالب</span></div>
+            </div>
+            <div class="hall-arr">›</div>
+          </div>
+        </div>
+        <div class="hall-card l" onclick="goP('p-halls');swH('l')">
+          <div class="hall-inner">
+            <div class="hall-emoji">📖</div>
+            <div class="hall-info">
+              <div class="hall-name">اللغة العربية</div>
+              <div class="hall-desc">من الصفر للمحترفين — نحو ومحادثة وأدب</div>
+              <div class="hall-meta"><span class="hall-tag">6 أقسام</span><span class="hall-tag">1240 طالب</span></div>
+            </div>
+            <div class="hall-arr">›</div>
+          </div>
+        </div>
+        <div class="hall-card s" onclick="goP('p-halls');swH('s')">
+          <div class="hall-inner">
+            <div class="hall-emoji">⚖️</div>
+            <div class="hall-info">
+              <div class="hall-name">العلوم الشرعية</div>
+              <div class="hall-desc">فقه وحديث وتفسير وعقيدة وسيرة</div>
+              <div class="hall-meta"><span class="hall-tag">5 أقسام</span><span class="hall-tag">774 طالب</span></div>
+            </div>
+            <div class="hall-arr">›</div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- TEACHERS -->
+    <div class="teachers-sec">
+      <div class="sec-label">معلمونا</div>
+      <h2 class="sec-title">نخبة من <em>المعلمين المتخصصين</em></h2>
+      <p class="sec-sub" style="margin-bottom:.85rem">معلمون مجازون بشهادات عليا وخبرة أكثر من 5 سنوات</p>
+      <div class="teachers-scroll">
+        <div class="teacher-card" onclick="goP('p-book')">
+          <div class="teacher-av" style="background:linear-gradient(135deg,#27ae60,#52d68a);color:#fff">فا</div>
+          <div class="teacher-name">أ. فاطمة الزهراء</div>
+          <div class="teacher-spec">القرآن والتجويد<br>سند متصل</div>
+          <div class="teacher-stars">⭐⭐⭐⭐⭐ 5.0</div>
+        </div>
+        <div class="teacher-card" onclick="goP('p-book')">
+          <div class="teacher-av" style="background:linear-gradient(135deg,#c9952a,#f0c04a);color:#080f1a">أح</div>
+          <div class="teacher-name">أ. أحمد محمد</div>
+          <div class="teacher-spec">النحو والبلاغة<br>اللغة العربية</div>
+          <div class="teacher-stars">⭐⭐⭐⭐⭐ 4.9</div>
+        </div>
+        <div class="teacher-card" onclick="goP('p-book')">
+          <div class="teacher-av" style="background:linear-gradient(135deg,#3498db,#5dade2);color:#fff">يو</div>
+          <div class="teacher-name">أ. يوسف الأمين</div>
+          <div class="teacher-spec">العلوم الشرعية<br>فقه وحديث</div>
+          <div class="teacher-stars">⭐⭐⭐⭐⭐ 4.8</div>
+        </div>
+        <div class="teacher-card" onclick="goP('p-book')">
+          <div class="teacher-av" style="background:linear-gradient(135deg,#8e44ad,#c39bd3);color:#fff">مر</div>
+          <div class="teacher-name">أ. مريم صالح</div>
+          <div class="teacher-spec">العربية للأطفال<br>قرآن كريم</div>
+          <div class="teacher-stars">⭐⭐⭐⭐⭐ 4.9</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="testi-sec">
+      <div class="sec-label">شهادات الطلاب</div>
+      <h2 class="sec-title">ماذا يقول <em>طلابنا؟</em></h2>
+      <p class="sec-sub" style="margin-bottom:.85rem">تقييمات حقيقية من طلاب من 50 دولة</p>
+      <div class="testi-scroll">
+        <div class="testi-card">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <div class="testi-text">"أفضل منصة تعلمت منها القرآن — المعلمة فاطمة صبورة ومتخصصة جداً. تحسّن نطقي بشكل كبير في أسابيع قليلة!"</div>
+          <div class="testi-author">
+            <div class="testi-av" style="background:linear-gradient(135deg,#3498db,#5dade2);color:#fff">MJ</div>
+            <div class="testi-info"><div class="name">Michael Johnson</div><div class="country">🇬🇧 المملكة المتحدة</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <div class="testi-text">"كنت أحلم بتعلم العربية منذ سنوات — مع منارة المعرفة أصبح الأمر ممكناً وممتعاً. الدروس واضحة ومنظمة!"</div>
+          <div class="testi-author">
+            <div class="testi-av" style="background:linear-gradient(135deg,#e74c3c,#e91e63);color:#fff">AS</div>
+            <div class="testi-info"><div class="name">Anna Schmidt</div><div class="country">🇩🇪 ألمانيا</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <div class="testi-text">"درست الفقه مع أ. يوسف وفهمت ما لم أفهمه في سنوات. أسلوبه في الشرح سهل ومبسط. أنصح به بشدة!"</div>
+          <div class="testi-author">
+            <div class="testi-av" style="background:linear-gradient(135deg,#27ae60,#52d68a);color:#fff">KA</div>
+            <div class="testi-info"><div class="name">Karim Al-Farsi</div><div class="country">🇸🇦 السعودية</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="langs-sec">
+      <div class="sec-label">لغات التدريس</div>
+      <h2 class="sec-title">ندرّس <em>بلغتك الأم</em></h2>
+      <p class="sec-sub" style="margin-bottom:.85rem">11 لغة — المعلم يشرح بالطريقة التي تفهمها</p>
+      <div class="langs-wrap">
+        <div class="lang-pill">🇸🇦 العربية</div>
+        <div class="lang-pill">🇬🇧 English</div>
+        <div class="lang-pill">🇫🇷 Français</div>
+        <div class="lang-pill">🇪🇸 Español</div>
+        <div class="lang-pill">🇩🇪 Deutsch</div>
+        <div class="lang-pill">🇳🇱 Nederlands</div>
+        <div class="lang-pill">🇹🇷 Türkçe</div>
+        <div class="lang-pill">🇮🇹 Italiano</div>
+        <div class="lang-pill">🇧🇷 Português</div>
+        <div class="lang-pill">🇮🇩 Indonesia</div>
+      </div>
+    </div>
+
+    <!-- WHY US -->
+    <div class="why-sec">
+      <div class="sec-label">لماذا نحن</div>
+      <h2 class="sec-title">ما يجعلنا <em>مختلفين</em></h2>
+      <div class="why-grid" style="margin-top:.85rem">
+        <div class="why-card"><div class="why-ic">🏅</div><div class="why-t">سند متصل</div><div class="why-d">معلمو القرآن مجازون بسند موصول للنبي ﷺ</div></div>
+        <div class="why-card"><div class="why-ic">🌍</div><div class="why-t">11 لغة</div><div class="why-d">الأكثر تنوعاً بين منصات تعليم العربية</div></div>
+        <div class="why-card"><div class="why-ic">📱</div><div class="why-t">فصل رقمي حي</div><div class="why-d">فيديو وسبورة تفاعلية وتسجيل الدروس</div></div>
+        <div class="why-card"><div class="why-ic">💰</div><div class="why-t">سعر عادل</div><div class="why-d">$12 للحصة فقط — بدون باقات معقدة</div></div>
+        <div class="why-card"><div class="why-ic">🕐</div><div class="why-t">مرونة كاملة</div><div class="why-d">احجز في أي وقت يناسبك حول العالم</div></div>
+        <div class="why-card"><div class="why-ic">🎓</div><div class="why-t">منهج علمي</div><div class="why-d">مناهج معتمدة من علماء متخصصين</div></div>
+      </div>
+    </div>
+
+    <!-- FREE TRIAL CTA -->
+    <div class="trial-cta">
+      <div class="tc-badge">🎁 درسك الأول مجاناً تماماً</div>
+      <div class="tc-title">جاهز لتبدأ رحلتك؟</div>
+      <div class="tc-sub">انضم إلى أكثر من 2500 طالب من 50 دولة<br>يتعلمون القرآن والعربية مع منارة المعرفة</div>
+      <button class="btn-primary" onclick="goP('p-book')" style="margin:0 auto">📅 احجز درسك المجاني الآن</button>
+    </div>
+
   </div>
-  <!-- HALLS -->
+    <!-- HALLS -->
   <div class="pg" id="p-halls">
     <div class="hahd">
       <div class="htbs">
