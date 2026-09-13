@@ -24,10 +24,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;overflow:hidden;font-family:"Cairo",sans-serif;background:#080f1a;color:#fff;direction:rtl}
+html,body{height:100%;overflow:hidden;font-family:"Cairo",sans-serif;background:#080f1a;color:#fff;direction:rtl;display:flex;flex-direction:column}
 body{display:flex;flex-direction:column}
 :root{--navy:#080f1a;--n2:#0d1b2a;--go:#c9952a;--gl:#f0c04a;--gd:rgba(201,149,42,.12);--gr:#27ae60;--grl:#52d68a;--re:#c0392b;--pu:#8e44ad;--wh:#e8edf5;--tm:#8899aa;--td:#4a5a6a;--bd:rgba(201,149,42,.18);--bdl:rgba(201,149,42,.08);--r:14px;--rl:20px;--rxl:28px;--sh:0 8px 32px rgba(0,0,0,.4);--nh:64px;--hh:56px}
-#app{flex:1;display:flex;flex-direction:column;overflow:hidden}
+#app{flex:1 1 auto;min-height:0;height:100%;display:flex;flex-direction:column;overflow:hidden}
 header{height:var(--hh);flex-shrink:0;background:rgba(8,15,26,.97);border-bottom:1px solid var(--bd);backdrop-filter:blur(20px);display:flex;align-items:center;padding:0 1rem;gap:.65rem;z-index:100}
 .logo{width:38px;height:38px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .lo-t .ar{font-size:.76rem;font-weight:700;display:block}.lo-t .en{font-size:.5rem;color:var(--gl);letter-spacing:.3px;display:block}
@@ -42,11 +42,11 @@ header{height:var(--hh);flex-shrink:0;background:rgba(8,15,26,.97);border-bottom
 .uc:hover{border-color:var(--go)}.uc.on{display:flex}
 .uav{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--go),var(--gl));display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;color:var(--navy)}
 .unm{font-size:.7rem;font-weight:600}
-#cnt{flex:1;overflow:hidden;position:relative}
+#cnt{flex:1 1 auto;min-height:0;overflow:hidden;position:relative}
 .pg{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding-bottom:calc(var(--nh) + .5rem);opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s ease,transform .25s ease}
 .pg.on{opacity:1;pointer-events:all;transform:translateY(0)}
 .pg::-webkit-scrollbar{width:3px}.pg::-webkit-scrollbar-thumb{background:var(--go);border-radius:2px}
-nav{height:var(--nh);flex-shrink:0;background:rgba(6,12,22,.98);border-top:1px solid var(--bd);backdrop-filter:blur(24px);display:flex;align-items:stretch;z-index:100}
+nav{position:fixed;bottom:0;left:0;right:0;height:var(--nh);background:rgba(6,12,22,.98);border-top:1px solid var(--bd);backdrop-filter:blur(24px);display:flex;align-items:stretch;z-index:500}
 .ni{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.16rem;cursor:pointer;color:var(--td);transition:all .22s;position:relative;padding:.3rem 0;border:none;background:none;font-family:"Cairo",sans-serif}
 .ni::before{content:"";position:absolute;top:0;left:22%;right:22%;height:2px;background:linear-gradient(90deg,var(--go),var(--gl));border-radius:0 0 2px 2px;opacity:0;transition:opacity .22s}
 .ni.on{color:var(--gl)}.ni.on::before{opacity:1}
@@ -2401,6 +2401,7 @@ body.adm .aadd{display:flex}
       </div>
     </div>
   </div>
+</div>
 
 <nav>
   <button class="ni on" id="ni-home" onclick="goP('p-home')"><div class="ni-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div><span class="ni-lb">الرئيسية</span></button>
